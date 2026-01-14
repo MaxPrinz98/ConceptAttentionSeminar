@@ -65,6 +65,10 @@ def compute_heatmaps_from_vectors(
     if softmax:
         heatmaps = torch.nn.functional.softmax(heatmaps, dim=-2)
     # Pull out the timesteps and layers
+
+    print(f"DEBUG: Heatmaps shape is {heatmaps.shape}")
+    print(f"DEBUG: Requested layer_indices are {layer_indices}")
+
     heatmaps = heatmaps[timesteps]
     heatmaps = heatmaps[:, layer_indices]
     # Average over the heatmaps
@@ -111,7 +115,7 @@ class ConceptAttentionFluxPipeline():
         width: int = 1024,
         height: int = 1024,
         return_cross_attention = False,
-        layer_indices = list(range(15, 19)),
+        layer_indices = list(range(0, 4)),
         return_pil_heatmaps = True,
         seed: int = 0,
         num_inference_steps: int = 4,
