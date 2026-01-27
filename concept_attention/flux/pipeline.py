@@ -147,11 +147,20 @@ class ConceptAttentionFluxPipeline():
             layer_indices=layer_indices,
             timestep_indices=timesteps,
         )
-        
+        # When the generator was called with a non-None `layer_indices` it
+        # only cached those layers. The stacked tensors returned therefore
+        # have a compact layer axis (0..N-1) rather than the original
+        # absolute layer indices (e.g. 15..18). Map the requested absolute
+        # indices to the compact positions before computing heatmaps.
+        if layer_indices is None:
+            heatmap_layer_indices = None
+        else:
+            heatmap_layer_indices = list(range(len(layer_indices)))
+
         cross_attention_maps = compute_heatmaps_from_vectors(
             concept_attention_dict["cross_attention_image_vectors"],
             concept_attention_dict["cross_attention_concept_vectors"],
-            layer_indices=layer_indices,
+            layer_indices=heatmap_layer_indices,
             timesteps=timesteps,
             softmax=softmax
         )
@@ -159,7 +168,7 @@ class ConceptAttentionFluxPipeline():
         concept_heatmaps = compute_heatmaps_from_vectors(
             concept_attention_dict["output_space_image_vectors"],
             concept_attention_dict["output_space_concept_vectors"],
-            layer_indices=layer_indices,
+            layer_indices=heatmap_layer_indices,
             timesteps=timesteps,
             softmax=softmax
         )
@@ -377,4 +386,3 @@ class ConceptAttentionFluxPipeline():
             concept_output_vectors=concept_output_vectors,
             image_output_vectors=image_output_vectors,
         )
-

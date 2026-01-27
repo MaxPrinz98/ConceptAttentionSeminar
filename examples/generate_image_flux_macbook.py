@@ -22,14 +22,19 @@ if __name__ == "__main__":
         device=device
     )
 
-    prompt = "A cat in a park on the grass by a tree"
-    concepts = ["cat", "grass", "sky", "tree"]
+    print(f"Number of double blocks: {len(pipeline.flux_generator.model.double_blocks)}")
 
+
+    prompt = "An Owl flying over a university campus"
+    concepts = ["Owl", "university" , "sky", "feathers", "bird", "buldings", "ground", "trees"]
     pipeline_output = pipeline.generate_image(
         prompt=prompt,
         concepts=concepts,
         width=1024,  # Start with 512 to test if your memory can handle it
         height=1024,
+        layer_indices=[16, 17, 18],
+        num_inference_steps=4,
+        timesteps=list(range(0, 4))
     )
 
     image = pipeline_output.image
