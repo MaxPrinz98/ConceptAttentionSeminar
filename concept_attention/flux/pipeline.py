@@ -115,7 +115,7 @@ class ConceptAttentionFluxPipeline():
         width: int = 1024,
         height: int = 1024,
         return_cross_attention = False,
-        layer_indices = list(range(0, 4)),
+        layer_indices = list(range(15, 19)),
         return_pil_heatmaps = True,
         seed: int = 0,
         num_inference_steps: int = 4,

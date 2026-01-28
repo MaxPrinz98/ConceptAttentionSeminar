@@ -216,7 +216,6 @@ class FluxGenerator():
 
         # decode latents to pixel space
         x = unpack(x.float(), opts.height, opts.width)
-        # with torch.autocast(device_type=self.device.type, dtype=torch.bfloat16):
         x = self.ae.decode(x.to(torch.float32).to(self.device))
 
         self.ae.decoder.cpu()

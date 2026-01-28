@@ -4,12 +4,9 @@
 import os
 import torch
 from concept_attention import ConceptAttentionFluxPipeline
-#from huggingface_hub import login
+# from huggingface_hub import login
 
-# 1. Use your real token here (keep 'token=' to be safe)
-#login(token='')
-
-# 2. Define the device for Apple Silicon
+# Define the device for Apple Silicon
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 print(f"Using device: {device}")
 
@@ -27,14 +24,18 @@ if __name__ == "__main__":
 
     prompt = "An Owl flying over a university campus"
     concepts = ["Owl", "university" , "sky", "feathers", "bird", "buldings", "ground", "trees"]
+
+    prompt = "An Owl with scales flying over a university campus"
+    concepts = ["feathers", "beak", "ground", "buildings", "scaly"]
+
     pipeline_output = pipeline.generate_image(
         prompt=prompt,
         concepts=concepts,
         width=1024,  # Start with 512 to test if your memory can handle it
         height=1024,
-        layer_indices=[16, 17, 18],
-        num_inference_steps=4,
-        timesteps=list(range(0, 4))
+        #layer_indices=[16, 17, 18],
+        num_inference_steps=4
+        #timesteps=list(range(0, 10))
     )
 
     image = pipeline_output.image
