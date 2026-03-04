@@ -1,0 +1,29 @@
+{# ── Reusable macros for the evaluation dashboard ── #}
+
+{% macro metric_item(label, value, metric_class) %}
+<div class="metric-item" title="{{ label }}">
+    <div class="metric-label">{{ label }}</div>
+    <div class="metric-val {{ metric_class }}">{{ "%.2f%%" | format(value * 100) }}</div>
+</div>
+{% endmacro %}
+
+{% macro metric_item_plain(label, value, style="") %}
+<div class="metric-item">
+    <div class="metric-label">{{ label }}</div>
+    <div class="metric-val" style="{{ style }}">{{ value }}</div>
+</div>
+{% endmacro %}
+
+{% macro image_card(src, caption, style="") %}
+<div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d; {{ style }}">
+    <img src="{{ src }}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
+    <div style="color: #8b949e; font-size: 0.85rem;">{{ caption }}</div>
+</div>
+{% endmacro %}
+
+{% macro image_card_small(src, caption) %}
+<div style="text-align: center;">
+    <img src="{{ src }}" style="width: 100%; border-radius: 6px; border: 1px solid #30363d;" loading="lazy">
+    <div style="color: #8b949e; font-size: 0.75rem; margin-top: 5px;">{{ caption }}</div>
+</div>
+{% endmacro %}

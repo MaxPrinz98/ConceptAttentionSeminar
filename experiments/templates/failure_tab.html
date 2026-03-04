@@ -1,0 +1,71 @@
+{% from "macros.html" import metric_item, image_card_small %}
+
+{# ── FAILURE ANALYSIS TAB ── #}
+<div id="failure" class="tab-content">
+    <div
+        style="margin-bottom: 30px; padding: 20px; background: rgba(248, 81, 73, 0.05); border: 1px solid #30363d; border-radius: 8px; border-left: 4px solid #f85149;">
+        <h2 style="margin-top: 0; color: #f85149;">Failure Case Analysis</h2>
+        <p style="color: #8b949e;">Cases where Concept Attention significantly diverges from SAM Ground Truth.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+            <div
+                style="background: rgba(248, 81, 73, 0.1); padding: 12px; border-radius: 6px; border: 1px solid #f8514933;">
+                <strong style="color: #f85149;">Hallucinations (Low Precision)</strong><br>
+                <span style="color: #8b949e; font-size: 0.85rem;">Attention activates where no matching SAM segment
+                    exists.</span>
+            </div>
+            <div
+                style="background: rgba(210, 153, 34, 0.1); padding: 12px; border-radius: 6px; border: 1px solid #d2992233;">
+                <strong style="color: #d29922;">Missed Localizations (Low Recall)</strong><br>
+                <span style="color: #8b949e; font-size: 0.85rem;">SAM finds the object but Attention fails to activate
+                    on it.</span>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="color: #f85149; border-bottom: 1px solid #f8514933; padding-bottom: 10px;">Hallucinations (showing worst
+        {{ [10, hallucination_candidates | length] | min }} of {{ hallucination_candidates | length }})</h3>
+    {% if hallucination_candidates %}
+    {% for cand in hallucination_candidates[:10] %}
+    {{ _self.failure_card(cand, "#f85149") }}
+    {% endfor %}
+    {% else %}
+    <p style="color: #8b949e; text-align: center; padding: 20px;">No cases found matching these criteria.</p>
+    {% endif %}
+
+    <h3 style="color: #d29922; margin-top: 40px; border-bottom: 1px solid #d2992233; padding-bottom: 10px;">Missed
+        Localizations (showing worst {{ [10, missed_localization_candidates | length] | min }} of {{
+        missed_localization_candidates | length }})</h3>
+    {% if missed_localization_candidates %}
+    {% for cand in missed_localization_candidates[:10] %}
+    {{ _self.failure_card(cand, "#d29922") }}
+    {% endfor %}
+    {% else %}
+    <p style="color: #8b949e; text-align: center; padding: 20px;">No cases found matching these criteria.</p>
+    {% endif %}
+</div>
+
+{% macro failure_card(cand, color_hex) %}
+<div class="case-block" style="border-left: 4px solid {{ color_hex }};">
+    <div class="case-info" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <div class="case-title" style="color: {{ color_hex }};">{{ cand.concept }}</div>
+            <div class="prompt">"{{ cand.prompt }}" | seed_{{ cand.seed }}</div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            {{ metric_item("IoU", cand.iou, cand.iou_class) }}
+            {{ metric_item("Prec", cand.precision, cand.prec_class) }}
+            {{ metric_item("Rec", cand.recall, cand.rec_class) }}
+            <div class="metric-item">
+                <div class="metric-label">Coverage</div>
+                <div class="metric-val" style="color: #8b949e;">{{ "%.1f" | format(cand.coverage_percent) }}%</div>
+            </div>
+        </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px;">
+        {{ image_card_small(cand.orig_img_src, "Original") }}
+        {{ image_card_small(cand.masked_img_src, "Masked Attention") }}
+        {{ image_card_small(cand.sam_img_src, "SAM Ground Truth") }}
+        {{ image_card_small(cand.coverage_img_src, "SAM Coverage (" ~ "%.1f" | format(cand.coverage_percent) ~ "%)") }}
+    </div>
+</div>
+{% endmacro %}

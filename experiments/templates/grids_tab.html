@@ -1,0 +1,28 @@
+{# ── GRIDS TAB ── #}
+<div id="grids" class="tab-content">
+    <div class="search-container">
+        <input type="text" id="grid-search-input" class="search-input" placeholder="Search grid images...">
+    </div>
+    <h2 style="margin-top:0;">Heatmap Grids</h2>
+    <div class="findings-grid" id="grids-container">
+        {% if grid_items %}
+        {% for item in grid_items %}
+        <div class="case-block" data-search-text="{{ item.filename_lower }}">
+            <div class="case-info" style="display: flex; justify-content: space-between; align-items: start;">
+                <div class="case-title">{{ item.filename }}</div>
+                <button onclick="viewInGallery('{{ item.search_term_lower }}')"
+                    style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;">View
+                    in Gallery →</button>
+            </div>
+            <div
+                style="text-align: center; background: #161b22; padding: 15px; border: 1px solid #30363d; border-radius: 8px;">
+                <img src="{{ item.img_src }}" alt="{{ item.filename }}"
+                    style="max-width: 100%; height: auto; border-radius: 4px;" loading="lazy">
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p style="color: #8b949e;">No grid images found in results_heatmap_grids directory.</p>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,121 @@
+{% from "macros.html" import metric_item %}
+
+{# ── GALLERY TAB ── #}
+<div id="gallery" class="tab-content">
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input"
+            placeholder="Search concepts, prompts, or case names...">
+        <div class="category-filters">
+            <span style="color: #8b949e; align-self: center; font-size: 0.85rem; margin-right: 5px;">Filter by
+                category:</span>
+            <button class="cat-btn" data-category="object">Object</button>
+            <button class="cat-btn" data-category="color">Color</button>
+            <button class="cat-btn" data-category="texture">Texture</button>
+            <button class="cat-btn" data-category="abstract">Abstract</button>
+            <button class="cat-btn" data-category="spatial">Spatial</button>
+        </div>
+    </div>
+    <h2 style="margin-top:0;">Complete Gallery</h2>
+
+    {% for group in gallery_groups %}
+    <div class="group-section" id="group-{{ group.idx }}">
+        <h2>{{ group.name }}</h2>
+
+        {% for case in group.cases %}
+        <div class="case-block" data-search-text="{{ case.search_text }}" data-categories="{{ case.categories_str }}">
+            <div class="case-info" style="display: flex; justify-content: space-between; align-items: start;">
+                <div>
+                    <div class="case-title">{{ case.case_name }} | {{ case.seed }}</div>
+                    <div class="prompt">"{{ case.prompt }}"</div>
+                </div>
+                <button onclick="viewInGrids('{{ case.case_name_lower }}')"
+                    style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;">View
+                    Grid →</button>
+            </div>
+
+            <div class="image-grid" style="display: flex; gap: 20px;">
+                <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
+                    <img src="{{ case.image_src }}" alt="Generated Image" style="max-width: 400px; border-radius: 8px;"
+                        loading="lazy">
+                    <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">Generated Image</div>
+                </div>
+                <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
+                    <img src="{{ case.coverage_img_src }}" alt="SAM Coverage"
+                        style="max-width: 400px; border-radius: 8px;" loading="lazy">
+                    <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">SAM Coverage ({{ "%.1f" |
+                        format(case.coverage_percent) }}%)</div>
+                </div>
+            </div>
+
+            <details class="sets-details" open>
+                <summary class="sets-summary">Concept Sets ({{ case.sets | length }})</summary>
+                <div class="sets-container">
+                    {% for s in case.sets %}
+                    <div class="set-block">
+                        <div class="set-title">{{ s.set_idx }}: [{{ s.concepts_str }}]</div>
+                        <div class="heatmap-grid">
+                            {% for concept in s.concepts %}
+                            <div class="concept-block">
+                                <div class="concept-label">{{ concept.name }}</div>
+                                <div
+                                    style="color: #8b949e; font-size: 0.8rem; font-family: monospace; margin-top: 2px;">
+                                    Tokens: {{ concept.tokens_json }}</div>
+                                <div class="viz-grid">
+                                    <div class="viz-item">
+                                        <img src="{{ concept.primary_src }}" alt="{{ concept.name }}" loading="lazy">
+                                        <div class="viz-label">Primary View</div>
+                                    </div>
+                                    <details class="viz-item">
+                                        <summary>View Alternate Heatmaps</summary>
+                                        <div class="heatmap-toggles">
+                                            <div>
+                                                <img src="{{ concept.upscaled_src }}" alt="Upscaled {{ concept.name }}"
+                                                    loading="lazy">
+                                                <div class="viz-label">Raw Attention (1024x1024)</div>
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+                                {% if concept.sam_data %}
+                                <div class="sam-results">
+                                    <div class="sam-header">
+                                        <span>SAM Comparison (#{{ concept.sam_segment_label }})</span>
+                                        <span>IoU: <span class="metric-val {{ concept.sam_data.iou_class }}">{{ "%.3f" |
+                                                format(concept.sam_data.iou) }}</span></span>
+                                    </div>
+                                    <div
+                                        style="display: flex; gap: 10px; padding: 10px; background: #0d1117; align-items: center; border-bottom: 1px solid #30363d;">
+                                        {% if concept.sam_masked_src %}
+                                        <img src="{{ concept.sam_masked_src }}" alt="SAM Match {{ concept.name }}"
+                                            style="max-width: 100px; border-radius: 4px; border: 1px solid #30363d;"
+                                            loading="lazy">
+                                        {% endif %}
+                                        <div class="sam-metrics" style="flex: 1; padding: 0;">
+                                            {{ metric_item("IoU", concept.sam_data.iou, concept.sam_data.iou_class) }}
+                                            {{ metric_item("Precision", concept.sam_data.precision,
+                                            concept.sam_data.precision_class) }}
+                                            {{ metric_item("Recall", concept.sam_data.recall,
+                                            concept.sam_data.recall_class) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </details>
+
+            {% if case.comments %}
+            <div class="comment-section">
+                <span class="comment-label">💡 Observation</span>
+                <div class="comment-area">{{ case.comments | join("<br>") }}</div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>

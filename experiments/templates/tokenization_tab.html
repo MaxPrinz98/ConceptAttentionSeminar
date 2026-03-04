@@ -1,0 +1,33 @@
+{# ── TOKENIZATION TAB ── #}
+<div id="tokenization" class="tab-content">
+    <h2 style="margin-top:0;">T5 Tokenization Glossary</h2>
+    <p style="color: #8b949e; margin-bottom: 30px;">This table lists all unique concepts found across the generated
+        dataset, showcasing how the T5 encoder splits them into text tokens. Ordered by token count descending.</p>
+    <div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 20px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background: #161b22;">
+                    <th style="padding: 10px; border-bottom: 2px solid #30363d;">Concept</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #30363d;">Token Count</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #30363d;">Token Splits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if concept_tokens_list %}
+                {% for ct in concept_tokens_list %}
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #30363d;">{{ ct.concept }}</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #30363d;">{{ ct.count }}</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #30363d; font-family: monospace;">{{ ct.tokens }}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3" style="padding: 8px;">No concepts found or tokenizer failed to load.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
