@@ -1,0 +1,32 @@
+{
+    "category": "attribute_texture",
+    "case_name": "metallic_smooth",
+    "prompt": "A smooth metallic sphere on a silk cloth",
+    "concepts": [
+        "smooth",
+        "metallic",
+        "sphere",
+        "silk",
+        "cloth"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T07:54:24.014214",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

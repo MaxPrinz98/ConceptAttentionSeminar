@@ -1,0 +1,30 @@
+{
+    "category": "attribute_color",
+    "case_name": "zebra_red_stripes",
+    "prompt": "A zebra with bright red and black stripes standing in the savanna",
+    "concepts": [
+        "animal",
+        "stripes",
+        "savanna"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T06:57:35.532225",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

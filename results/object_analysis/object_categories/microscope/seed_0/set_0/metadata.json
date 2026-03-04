@@ -1,0 +1,31 @@
+{
+    "category": "object_categories",
+    "case_name": "microscope",
+    "prompt": "A scientist looking through a complex laboratory microscope",
+    "concepts": [
+        "microscope",
+        "lens",
+        "scientist",
+        "laboratory"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T05:31:11.704864",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

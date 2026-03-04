@@ -1,0 +1,30 @@
+{
+    "category": "object_categories",
+    "case_name": "knitted_fabric",
+    "prompt": "A close up photo of a multi-colored intricately knitted wool sweater",
+    "concepts": [
+        "texture",
+        "weaving",
+        "colors"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T04:25:09.051330",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

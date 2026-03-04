@@ -1,0 +1,30 @@
+{
+    "category": "failure_cases",
+    "case_name": "jumbled_clock",
+    "prompt": "A wall clock where the numbers are jumbled and in wrong positions",
+    "concepts": [
+        "time",
+        "structure",
+        "error"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T15:00:26.175898",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

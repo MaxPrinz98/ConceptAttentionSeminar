@@ -1,0 +1,31 @@
+{
+    "category": "attribute_spatial",
+    "case_name": "cat_between_dogs",
+    "prompt": "A small kitten sitting directly between two large husky dogs",
+    "concepts": [
+        "kitten",
+        "between",
+        "dogs",
+        "middle"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T10:43:43.543689",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

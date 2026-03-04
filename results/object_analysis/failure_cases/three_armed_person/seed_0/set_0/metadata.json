@@ -1,0 +1,31 @@
+{
+    "category": "failure_cases",
+    "case_name": "three_armed_person",
+    "prompt": "A detailed photo of a person with three arms holding different tools",
+    "concepts": [
+        "person",
+        "arms",
+        "three",
+        "tools"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T11:46:46.421599",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

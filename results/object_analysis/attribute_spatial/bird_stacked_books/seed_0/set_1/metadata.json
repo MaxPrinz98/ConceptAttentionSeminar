@@ -1,0 +1,31 @@
+{
+    "category": "attribute_spatial",
+    "case_name": "bird_stacked_books",
+    "prompt": "A bird perched on top of a stack of old books, next to a lit candle",
+    "concepts": [
+        "perched",
+        "old",
+        "books",
+        "flame"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T09:45:22.611478",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

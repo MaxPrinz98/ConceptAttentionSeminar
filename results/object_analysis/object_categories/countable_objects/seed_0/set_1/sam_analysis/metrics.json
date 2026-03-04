@@ -1,0 +1,23 @@
+{
+    "count": {
+        "iou": 0.6774845098703166,
+        "coverage": 0.9916523916767389,
+        "precision": 0.6813703524463325,
+        "recall": 0.9916523916767389,
+        "segment_index": 1
+    },
+    "objects": {
+        "iou": 0.3136925750726436,
+        "coverage": 0.6241819683588538,
+        "precision": 0.38673685157691096,
+        "recall": 0.6241819683588538,
+        "segment_index": 0
+    },
+    "colorful": {
+        "iou": 0.5970216403473253,
+        "coverage": 1.0,
+        "precision": 0.5970216403473253,
+        "recall": 1.0,
+        "segment_index": 0
+    }
+}

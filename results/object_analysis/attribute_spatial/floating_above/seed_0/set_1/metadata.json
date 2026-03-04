@@ -1,0 +1,30 @@
+{
+    "category": "attribute_spatial",
+    "case_name": "floating_above",
+    "prompt": "A golden ring floating silently above a black stone pedestal",
+    "concepts": [
+        "gold",
+        "stone",
+        "gap"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T10:21:23.788298",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

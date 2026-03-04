@@ -1,0 +1,30 @@
+{
+    "category": "failure_cases",
+    "case_name": "landscape_in_cup",
+    "prompt": "A vast mountain landscape inside a small coffee cup",
+    "concepts": [
+        "scale",
+        "internal",
+        "surreal"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T13:07:44.144779",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "category": "object_categories",
+    "case_name": "glass_bottles",
+    "prompt": "A collection of overlapping translucent colored glass bottles on a windowsill",
+    "concepts": [
+        "glass",
+        "bottles",
+        "translucent",
+        "overlapping"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T04:46:40.428208",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "category": "object_categories",
+    "case_name": "water_splash",
+    "prompt": "A high speed photo of a strawberry splashing into a bowl of milk",
+    "concepts": [
+        "splash",
+        "water",
+        "milk",
+        "strawberry"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T05:04:22.232094",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

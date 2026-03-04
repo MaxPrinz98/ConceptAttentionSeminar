@@ -1,0 +1,30 @@
+{
+    "category": "failure_cases",
+    "case_name": "compositional_astronaut_horse",
+    "prompt": "A horse riding an astronaut in space",
+    "concepts": [
+        "unusual",
+        "reversal",
+        "composition"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T11:24:41.435556",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "category": "attribute_texture",
+    "case_name": "molten_lava",
+    "prompt": "Glowing orange molten lava flowing over black rock",
+    "concepts": [
+        "liquid",
+        "rock",
+        "heat"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T09:27:29.810595",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "category": "object_categories",
+    "case_name": "mirror_reflection",
+    "prompt": "A ornate mirror in a vintage room reflecting a person with a camera",
+    "concepts": [
+        "glass",
+        "frame",
+        "room"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T04:17:09.576955",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

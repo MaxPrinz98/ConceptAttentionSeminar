@@ -1,0 +1,31 @@
+{
+    "category": "attribute_color",
+    "case_name": "purple_banana_yellow_grapes",
+    "prompt": "A bright purple banana lying next to a bunch of neon yellow grapes",
+    "concepts": [
+        "purple",
+        "banana",
+        "yellow",
+        "grapes"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T06:44:08.431326",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

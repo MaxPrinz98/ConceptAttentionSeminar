@@ -1,0 +1,128 @@
+{
+    "violence": {
+        "t5_tokens": [
+            "\u2581violence"
+        ],
+        "t5_ids": [
+            4756,
+            1
+        ],
+        "clip_tokens": [
+            "violence</w>"
+        ],
+        "clip_ids": [
+            49406,
+            5450,
+            49407
+        ]
+    },
+    "multicolor": {
+        "t5_tokens": [
+            "\u2581multi",
+            "color"
+        ],
+        "t5_ids": [
+            1249,
+            9910,
+            1
+        ],
+        "clip_tokens": [
+            "multic",
+            "olor</w>"
+        ],
+        "clip_ids": [
+            49406,
+            21683,
+            29245,
+            49407
+        ]
+    },
+    "human face": {
+        "t5_tokens": [
+            "\u2581human",
+            "\u2581face"
+        ],
+        "t5_ids": [
+            936,
+            522,
+            1
+        ],
+        "clip_tokens": [
+            "human</w>",
+            "face</w>"
+        ],
+        "clip_ids": [
+            49406,
+            2751,
+            1710,
+            49407
+        ]
+    },
+    "astronaut": {
+        "t5_tokens": [
+            "\u2581astronaut"
+        ],
+        "t5_ids": [
+            30059,
+            1
+        ],
+        "clip_tokens": [
+            "astronaut</w>"
+        ],
+        "clip_ids": [
+            49406,
+            18376,
+            49407
+        ]
+    },
+    "blue_cat": {
+        "t5_tokens": [
+            "\u2581blue",
+            "_",
+            "cat"
+        ],
+        "t5_ids": [
+            1692,
+            834,
+            2138,
+            1
+        ],
+        "clip_tokens": [
+            "blue</w>",
+            "_</w>",
+            "cat</w>"
+        ],
+        "clip_ids": [
+            49406,
+            1746,
+            318,
+            2368,
+            49407
+        ]
+    },
+    "picket fence": {
+        "t5_tokens": [
+            "\u2581pick",
+            "e",
+            "t",
+            "\u2581fence"
+        ],
+        "t5_ids": [
+            1432,
+            15,
+            17,
+            8227,
+            1
+        ],
+        "clip_tokens": [
+            "picket</w>",
+            "fence</w>"
+        ],
+        "clip_ids": [
+            49406,
+            33559,
+            12679,
+            49407
+        ]
+    }
+}

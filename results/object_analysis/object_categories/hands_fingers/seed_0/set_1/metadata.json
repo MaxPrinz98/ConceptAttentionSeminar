@@ -1,0 +1,30 @@
+{
+    "category": "object_categories",
+    "case_name": "hands_fingers",
+    "prompt": "A close up photo of a person's hands holding a red apple",
+    "concepts": [
+        "person",
+        "holding",
+        "fruit"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T03:42:19.529506",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

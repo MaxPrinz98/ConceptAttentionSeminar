@@ -1,0 +1,30 @@
+{
+    "category": "attribute_texture",
+    "case_name": "coarse_sandpaper",
+    "prompt": "A close up macro photo of coarse gritty sandpaper",
+    "concepts": [
+        "texture",
+        "rough",
+        "surface"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T08:15:41.104346",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

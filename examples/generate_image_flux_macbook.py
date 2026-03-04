@@ -25,8 +25,8 @@ if __name__ == "__main__":
     prompt = "An Owl flying over a university campus"
     concepts = ["Owl", "university" , "sky", "feathers", "bird", "buldings", "ground", "trees"]
 
-    prompt = "An Owl with scales flying over a university campus"
-    concepts = ["feathers", "beak", "ground", "buildings", "scaly"]
+    prompt = "A german caucasian student jumping for joy in front of his macbook that his coding project compiles"
+    concepts = ["student", "joy", "macbook", "program", "caucasian"]
 
     pipeline_output = pipeline.generate_image(
         prompt=prompt,

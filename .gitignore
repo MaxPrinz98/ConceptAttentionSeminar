@@ -1,4 +1,5 @@
 *.png
+*.pdf
 *.pyc
 __pycache__/
 concept_attention.egg-info
@@ -10,3 +11,8 @@ src/
 *.gif
 .gradio/
 examples/results/
+
+# Large files and generated galleries
+results/object_analysis/evaluation_gallery.html
+results/object_analysis/evaluation_gallery_full.html
+sam2_b.pt

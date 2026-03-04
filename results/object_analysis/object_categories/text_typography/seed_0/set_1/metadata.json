@@ -1,0 +1,31 @@
+{
+    "category": "object_categories",
+    "case_name": "text_typography",
+    "prompt": "A neon sign that says 'CONCEPT'",
+    "concepts": [
+        "typography",
+        "glow",
+        "blue",
+        "pink"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T03:54:40.975254",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

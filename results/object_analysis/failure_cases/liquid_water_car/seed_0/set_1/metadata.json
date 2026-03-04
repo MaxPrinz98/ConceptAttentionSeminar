@@ -1,0 +1,30 @@
+{
+    "category": "failure_cases",
+    "case_name": "liquid_water_car",
+    "prompt": "A car made entirely of flowing liquid transparent water driving on a road",
+    "concepts": [
+        "transparent",
+        "material",
+        "logic"
+    ],
+    "concept_set_index": 1,
+    "seed": 0,
+    "timestamp": "2026-03-01T13:22:42.340750",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

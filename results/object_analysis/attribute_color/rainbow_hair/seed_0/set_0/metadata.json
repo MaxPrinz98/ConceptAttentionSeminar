@@ -1,0 +1,31 @@
+{
+    "category": "attribute_color",
+    "case_name": "rainbow_hair",
+    "prompt": "A close up of hair with a perfect rainbow gradient from roots to tips",
+    "concepts": [
+        "rainbow",
+        "gradient",
+        "hair",
+        "colors"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-01T07:12:00.477416",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}
