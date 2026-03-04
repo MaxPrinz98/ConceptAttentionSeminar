@@ -441,6 +441,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
 
     single_token_metrics = get_empty_metrics()
     multi_token_metrics = get_empty_metrics()
+    concept_iou_aggregates = {}
 
     # Store top performing concepts across all runs
     top_iou_candidates = []
@@ -478,6 +479,10 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                             target_metrics[c_class]["iou"].append(iou_val)
                             target_metrics[c_class]["precision"].append(prec_val)
                             target_metrics[c_class]["recall"].append(rec_val)
+
+                            if concept not in concept_iou_aggregates:
+                                concept_iou_aggregates[concept] = []
+                            concept_iou_aggregates[concept].append(iou_val)
 
                             safe_concept = (
                                 concept.replace(" ", "_")
@@ -555,6 +560,13 @@ def generate_gallery(results_dir, output_html, mode="relative"):
         try:
             with open(umap_path, "r") as f:
                 umap_coords = json.load(f)
+
+            concept_avg_iou = {
+                c: sum(v) / len(v)
+                for c, v in concept_iou_aggregates.items()
+                if len(v) > 0
+            }
+
             for concept, coords in umap_coords.items():
                 c_class = get_concept_class(concept)
                 umap_js_data.append(
@@ -563,6 +575,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                         "y": coords[1],
                         "label": concept,
                         "category": c_class,
+                        "iou": concept_avg_iou.get(concept, 0.0),
                     }
                 )
         except Exception as e:
@@ -868,9 +881,18 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     # Render metrics sections
     html_content += """
                 <h2 style="margin-top:0; color:#bc8cff;">Concept Similarity Map (UMAP)</h2>
-                <p style="color: #8b949e; margin-bottom: 20px;">Proximity indicates semantic similarity in T5 embedding space. Colored by concept category.</p>
-                <div style="background: #161b22; padding: 25px; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 40px;">
-                    <canvas id="umapChart" style="max-height: 500px;"></canvas>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+                    <p style="color: #8b949e; margin: 0;">Proximity indicates semantic similarity in T5 embedding space.</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #8b949e; font-size: 0.9rem;">Color by:</span>
+                        <select id="umapColorToggle" style="background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 10px; border-radius: 4px; outline: none; cursor: pointer;">
+                            <option value="category">Category</option>
+                            <option value="iou">IoU Gradient</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="background: #161b22; padding: 25px; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 40px; height: 850px;">
+                    <canvas id="umapChart"></canvas>
                 </div>
 
                 <h2 style="margin-top:0;">Top Performing Concepts per Metric</h2>
@@ -1418,6 +1440,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
         }
 
         // UMAP Rendering
+        let umapChartInstance = null;
         try {
             const umapDataRaw = """
         + json.dumps(umap_js_data)
@@ -1431,11 +1454,17 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                     'spatial': '#a371f7'
                 };
                 
+                function getIoUColor(iou) {
+                    const r = Math.round(255 * (1 - iou));
+                    const g = Math.round(255 * iou);
+                    return `rgb(${r}, ${g}, 50)`;
+                }
+                
                 const datasets = Object.keys(colors).map(cat => {
                     const points = umapDataRaw.filter(p => p.category === cat);
                     return {
                         label: cat.charAt(0).toUpperCase() + cat.slice(1),
-                        data: points.map(p => ({ x: p.x, y: p.y, label: p.label })),
+                        data: points.map(p => ({ x: p.x, y: p.y, label: p.label, iou: p.iou, category: p.category })),
                         backgroundColor: colors[cat],
                         borderColor: colors[cat],
                         pointRadius: 6,
@@ -1443,7 +1472,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                     };
                 });
                 
-                new Chart(document.getElementById('umapChart'), {
+                umapChartInstance = new Chart(document.getElementById('umapChart'), {
                     type: 'scatter',
                     data: { datasets: datasets },
                     options: {
@@ -1455,7 +1484,9 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                                 callbacks: {
                                     label: function(context) {
                                         let p = context.raw;
-                                        return p.label ? p.label : `(${p.x.toFixed(2)}, ${p.y.toFixed(2)})`;
+                                        let cat = p.category ? ` | ${p.category.charAt(0).toUpperCase() + p.category.slice(1)}` : '';
+                                        let iouText = p.iou !== undefined ? ` | IoU: ${p.iou.toFixed(3)}` : '';
+                                        return p.label ? `${p.label}${cat}${iouText}` : `(${p.x.toFixed(2)}, ${p.y.toFixed(2)})${cat}${iouText}`;
                                     }
                                 }
                             }
@@ -1465,6 +1496,23 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                             y: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } }
                         }
                     }
+                });
+                
+                document.getElementById('umapColorToggle').addEventListener('change', (e) => {
+                    const mode = e.target.value;
+                    if (!umapChartInstance) return;
+                    
+                    umapChartInstance.data.datasets.forEach(dataset => {
+                        if (mode === 'category') {
+                            const catColor = colors[dataset.label.toLowerCase()];
+                            dataset.backgroundColor = catColor;
+                            dataset.borderColor = catColor;
+                        } else if (mode === 'iou') {
+                            dataset.backgroundColor = dataset.data.map(p => getIoUColor(p.iou));
+                            dataset.borderColor = dataset.data.map(p => getIoUColor(p.iou));
+                        }
+                    });
+                    umapChartInstance.update();
                 });
             }
         } catch(e) {

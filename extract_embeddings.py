@@ -51,8 +51,8 @@ def main():
     embeddings = extract_embeddings(concepts)
     print(f"Running UMAP on {len(concepts)} concepts...")
     reducer = umap.UMAP(
-        n_neighbors=min(15, len(concepts) - 1),
-        min_dist=0.1,
+        n_neighbors=10,  # Reduced from 15 to focus on local structure
+        min_dist=0.01,  # Reduced from 0.1 to allow tighter packing
         n_components=2,
         random_state=42,
     )
