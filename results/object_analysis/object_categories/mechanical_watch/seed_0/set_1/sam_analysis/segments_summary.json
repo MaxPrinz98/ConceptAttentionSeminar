@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 45.426082611083984,
+    "concept_collisions": {
+        "movement_vs_brass": 0.09540203721618391,
+        "movement_vs_jewels": 0.1496803448321316,
+        "brass_vs_jewels": 0.0
+    }
 }

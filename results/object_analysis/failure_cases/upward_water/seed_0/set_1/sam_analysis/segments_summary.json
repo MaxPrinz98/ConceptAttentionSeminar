@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 78.03792953491211,
+    "concept_collisions": {
+        "gravity_vs_sky": 0.0,
+        "gravity_vs_logic": 0.987709412699013,
+        "sky_vs_logic": 0.0
+    }
 }

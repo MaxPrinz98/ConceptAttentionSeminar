@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 23.348045349121094,
+    "concept_collisions": {
+        "eye_vs_peering": 0.0,
+        "eye_vs_through": 0.0,
+        "eye_vs_keyhole": 0.0,
+        "peering_vs_through": 1.0,
+        "peering_vs_keyhole": 0.4595760376217944,
+        "through_vs_keyhole": 0.4595760376217944
+    }
 }

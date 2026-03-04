@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 23.348045349121094,
+    "concept_collisions": {
+        "brass_vs_room": 0.22638488371143117,
+        "brass_vs_occlusion": 0.8171039869314412,
+        "room_vs_occlusion": 0.39791415634779964
+    }
 }

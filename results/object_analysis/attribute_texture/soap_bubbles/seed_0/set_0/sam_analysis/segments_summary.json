@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.218318939208984,
+    "concept_collisions": {
+        "bubbles_vs_soap": 0.05237224338215966,
+        "bubbles_vs_irridescent": 0.10551071885993613,
+        "bubbles_vs_floats": 0.3803985752137086,
+        "soap_vs_irridescent": 0.0,
+        "soap_vs_floats": 0.0884542457103894,
+        "irridescent_vs_floats": 0.0
+    }
 }

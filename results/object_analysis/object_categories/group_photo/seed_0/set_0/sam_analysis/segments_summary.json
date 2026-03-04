@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 57.41071701049805,
+    "concept_collisions": {
+        "people_vs_faces": 0.0011724286650434113,
+        "people_vs_group": 0.07969994472430407,
+        "people_vs_ten": 0.0,
+        "faces_vs_group": 0.056253658752103204,
+        "faces_vs_ten": 0.0,
+        "group_vs_ten": 0.027847996922569656
+    }
 }

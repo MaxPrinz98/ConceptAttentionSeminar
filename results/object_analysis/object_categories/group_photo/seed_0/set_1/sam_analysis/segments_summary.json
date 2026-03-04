@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 57.41071701049805,
+    "concept_collisions": {
+        "friends_vs_park": 0.0,
+        "friends_vs_crowd": 0.13575857993477156,
+        "park_vs_crowd": 1.712397184819028e-05
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 83.94994735717773,
+    "concept_collisions": {
+        "kitten_vs_between": 0.0,
+        "kitten_vs_dogs": 0.4409835072253385,
+        "kitten_vs_middle": 0.0,
+        "between_vs_dogs": 0.0,
+        "between_vs_middle": 1.0,
+        "dogs_vs_middle": 0.0
+    }
 }

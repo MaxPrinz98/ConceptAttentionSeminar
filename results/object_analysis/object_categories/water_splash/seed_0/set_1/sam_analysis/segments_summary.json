@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 11.504268646240234,
+    "concept_collisions": {
+        "droplets_vs_liquid": 0.0,
+        "droplets_vs_impact": 0.0,
+        "liquid_vs_impact": 0.9694047805606512
+    }
 }

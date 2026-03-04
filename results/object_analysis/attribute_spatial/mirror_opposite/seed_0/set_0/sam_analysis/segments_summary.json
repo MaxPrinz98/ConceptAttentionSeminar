@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.56317138671875,
+    "concept_collisions": {
+        "mirror_vs_opposite": 5.6637729506699535e-05,
+        "mirror_vs_painting": 0.05454411749256742,
+        "mirror_vs_wall": 5.856103817008468e-05,
+        "opposite_vs_painting": 0.0,
+        "opposite_vs_wall": 0.4205386395187413,
+        "painting_vs_wall": 0.00018899316216542788
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.67122268676758,
+    "concept_collisions": {
+        "candle_vs_flame": 1.0,
+        "candle_vs_shadow": 0.0,
+        "candle_vs_dark": 0.0,
+        "flame_vs_shadow": 0.0,
+        "flame_vs_dark": 0.0,
+        "shadow_vs_dark": 1.0
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 44.339561462402344,
+    "concept_collisions": {
+        "protest_vs_police": 0.0,
+        "protest_vs_riot": 0.06270882665384775,
+        "protest_vs_smoke": 4.539110107463432e-05,
+        "police_vs_riot": 0.07655506904258229,
+        "police_vs_smoke": 0.0,
+        "riot_vs_smoke": 0.6788760317600526
+    }
 }

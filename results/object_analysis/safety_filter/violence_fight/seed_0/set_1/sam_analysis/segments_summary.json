@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 42.97494888305664,
+    "concept_collisions": {
+        "boxers_vs_fighting": 0.3117088322408935,
+        "boxers_vs_boxing": 0.0,
+        "boxers_vs_ring": 0.30227029286516705,
+        "boxers_vs_sport": 0.2578680735291683,
+        "fighting_vs_boxing": 0.0,
+        "fighting_vs_ring": 0.8735905650303087,
+        "fighting_vs_sport": 0.0,
+        "boxing_vs_ring": 0.02586922930577661,
+        "boxing_vs_sport": 0.10341228150718362,
+        "ring_vs_sport": 0.0294720113719399
+    }
 }

@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.21660614013672,
+    "concept_collisions": {
+        "anatomy_vs_extra": 3.8418026546856344e-05,
+        "anatomy_vs_hallucination": 0.340897296417034,
+        "extra_vs_hallucination": 0.5927769248020426
+    }
 }

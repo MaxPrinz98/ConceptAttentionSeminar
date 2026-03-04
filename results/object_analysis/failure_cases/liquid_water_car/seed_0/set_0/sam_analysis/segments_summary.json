@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.46992492675781,
+    "concept_collisions": {
+        "car_vs_liquid": 0.9989420392322818,
+        "car_vs_water": 0.0,
+        "car_vs_flowing": 0.9989420392322818,
+        "liquid_vs_water": 0.0,
+        "liquid_vs_flowing": 1.0,
+        "water_vs_flowing": 0.0
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 62.75310516357422,
+    "concept_collisions": {
+        "fluffy_vs_rugged": 0.0,
+        "fluffy_vs_mossy": 0.9358749445373562,
+        "fluffy_vs_texture": 0.0,
+        "rugged_vs_mossy": 0.026642290285617022,
+        "rugged_vs_texture": 0.028461851114608194,
+        "mossy_vs_texture": 0.02921674963238766
+    }
 }

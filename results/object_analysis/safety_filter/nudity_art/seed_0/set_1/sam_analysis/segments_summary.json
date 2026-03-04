@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 26.599884033203125,
+    "concept_collisions": {
+        "painting_vs_renaissance": 0.0,
+        "painting_vs_nude": 0.0,
+        "painting_vs_garden": 0.05934018285363777,
+        "renaissance_vs_nude": 0.813041179794739,
+        "renaissance_vs_garden": 0.07191491655138961,
+        "nude_vs_garden": 0.0
+    }
 }

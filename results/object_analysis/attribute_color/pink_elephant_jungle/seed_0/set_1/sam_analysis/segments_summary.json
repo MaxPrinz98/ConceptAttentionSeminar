@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 46.92564010620117,
+    "concept_collisions": {
+        "elephant_vs_jungle": 0.0,
+        "elephant_vs_pink": 0.9725393385326841,
+        "elephant_vs_green": 0.0,
+        "jungle_vs_pink": 0.015626946573012203,
+        "jungle_vs_green": 0.5071531846891408,
+        "pink_vs_green": 0.0
+    }
 }

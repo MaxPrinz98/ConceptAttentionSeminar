@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 74.7645378112793,
+    "concept_collisions": {
+        "blend_vs_uncanny": 0.01192664893406055,
+        "blend_vs_hallucination": 0.9670450235682939,
+        "uncanny_vs_hallucination": 0.0
+    }
 }

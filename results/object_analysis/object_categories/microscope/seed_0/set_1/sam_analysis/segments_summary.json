@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 57.45077133178711,
+    "concept_collisions": {
+        "objective_vs_stage": 0.0,
+        "objective_vs_instrument": 0.00017763672106297813,
+        "stage_vs_instrument": 0.0
+    }
 }

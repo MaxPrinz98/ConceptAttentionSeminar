@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.57378005981445,
+    "concept_collisions": {
+        "apple_vs_balanced": 0.0,
+        "apple_vs_on": 0.0,
+        "apple_vs_glass": 0.0005102344106049498,
+        "balanced_vs_on": 1.0,
+        "balanced_vs_glass": 0.0,
+        "on_vs_glass": 0.0
+    }
 }

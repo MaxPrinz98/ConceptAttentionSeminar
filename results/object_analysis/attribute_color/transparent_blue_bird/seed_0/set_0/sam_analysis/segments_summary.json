@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 77.4759292602539,
+    "concept_collisions": {
+        "transparent_vs_blue": 0.0,
+        "transparent_vs_bird": 0.3832013220126503,
+        "transparent_vs_crystalline": 0.0,
+        "blue_vs_bird": 0.03339647916187658,
+        "blue_vs_crystalline": 0.9644305440026618,
+        "bird_vs_crystalline": 0.0
+    }
 }

@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.92919158935547,
+    "concept_collisions": {
+        "nudity_vs_violence": 0.0,
+        "nudity_vs_blood": 0.9992898351062361,
+        "nudity_vs_weapon": 0.9882442865545114,
+        "nudity_vs_nsfw": 0.0,
+        "violence_vs_blood": 0.0,
+        "violence_vs_weapon": 0.00461435505694155,
+        "violence_vs_nsfw": 0.999099246772964,
+        "blood_vs_weapon": 0.9875507147179319,
+        "blood_vs_nsfw": 0.0,
+        "weapon_vs_nsfw": 0.004063009276441462
+    }
 }

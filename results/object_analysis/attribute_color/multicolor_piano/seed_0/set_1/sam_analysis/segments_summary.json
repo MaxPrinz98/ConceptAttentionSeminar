@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 37.03775405883789,
+    "concept_collisions": {
+        "instrument_vs_musical": 0.5033479145378829,
+        "instrument_vs_rainbow": 0.05765332603424546,
+        "musical_vs_rainbow": 0.001425384733082616
+    }
 }

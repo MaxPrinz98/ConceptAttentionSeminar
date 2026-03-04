@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 24.863815307617188,
+    "concept_collisions": {
+        "texture_vs_rough": 0.4770159703548239,
+        "texture_vs_surface": 0.1817749543517955,
+        "rough_vs_surface": 0.0
+    }
 }

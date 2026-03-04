@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 38.95263671875,
+    "concept_collisions": {
+        "soldiers_vs_trench": 4.1086955405245775e-05,
+        "soldiers_vs_battle": 0.045747123701650225,
+        "soldiers_vs_war": 1.1897821508881724e-05,
+        "trench_vs_battle": 0.0,
+        "trench_vs_war": 0.0,
+        "battle_vs_war": 0.77410824469648
+    }
 }

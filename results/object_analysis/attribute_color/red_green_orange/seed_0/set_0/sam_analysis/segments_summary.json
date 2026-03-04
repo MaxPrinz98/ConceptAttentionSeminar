@@ -3,5 +3,23 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 38.155364990234375,
+    "concept_collisions": {
+        "red_vs_hat": 0.0,
+        "red_vs_green": 1.0,
+        "red_vs_scarf": 0.0,
+        "red_vs_orange": 0.0,
+        "red_vs_gloves": 0.0,
+        "hat_vs_green": 0.0,
+        "hat_vs_scarf": 0.0,
+        "hat_vs_orange": 0.510574568943064,
+        "hat_vs_gloves": 0.004173355901176095,
+        "green_vs_scarf": 0.0,
+        "green_vs_orange": 0.0,
+        "green_vs_gloves": 0.0,
+        "scarf_vs_orange": 0.47135510546412307,
+        "scarf_vs_gloves": 0.991019176267069,
+        "orange_vs_gloves": 0.4754575844835005
+    }
 }

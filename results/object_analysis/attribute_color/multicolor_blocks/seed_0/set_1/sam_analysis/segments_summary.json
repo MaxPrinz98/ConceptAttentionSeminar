@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.03733825683594,
+    "concept_collisions": {
+        "top_vs_module": 0.3281856244634473,
+        "top_vs_middle": 0.0,
+        "top_vs_bottom": 0.0,
+        "module_vs_middle": 0.0,
+        "module_vs_bottom": 0.0,
+        "middle_vs_bottom": 1.0
+    }
 }

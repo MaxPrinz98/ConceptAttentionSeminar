@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 76.49049758911133,
+    "concept_collisions": {
+        "pedestal_vs_transparent": 0.953441776001678,
+        "pedestal_vs_position": 0.0,
+        "transparent_vs_position": 0.0
+    }
 }

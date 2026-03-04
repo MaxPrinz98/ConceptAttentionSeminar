@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 34.823036193847656,
+    "concept_collisions": {
+        "viscous_vs_slime": 1.0,
+        "viscous_vs_dripping": 0.805815265314591,
+        "viscous_vs_green": 2.8948838717334853e-06,
+        "slime_vs_dripping": 0.805815265314591,
+        "slime_vs_green": 2.8948838717334853e-06,
+        "dripping_vs_green": 0.11006830144654467
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 8.275222778320312,
+    "concept_collisions": {
+        "smoke_vs_swirls": 0.5863126109305489,
+        "smoke_vs_thick": 0.0,
+        "smoke_vs_white": 0.06395134860407649,
+        "swirls_vs_thick": 0.3655394924613762,
+        "swirls_vs_white": 0.0,
+        "thick_vs_white": 0.0
+    }
 }

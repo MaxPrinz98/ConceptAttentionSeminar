@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 13.041114807128906,
+    "concept_collisions": {
+        "stone_vs_water": 0.2692559058298269,
+        "stone_vs_span": 0.1403074687037694,
+        "water_vs_span": 0.0
+    }
 }

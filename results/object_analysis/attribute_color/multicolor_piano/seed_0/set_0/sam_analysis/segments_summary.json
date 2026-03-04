@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 37.03775405883789,
+    "concept_collisions": {
+        "keys_vs_colors": 0.0,
+        "keys_vs_piano": 0.18753976959391078,
+        "keys_vs_neon": 0.005740317863663158,
+        "colors_vs_piano": 0.058900904877510485,
+        "colors_vs_neon": 0.6838860170435231,
+        "piano_vs_neon": 0.017454551856068163
+    }
 }

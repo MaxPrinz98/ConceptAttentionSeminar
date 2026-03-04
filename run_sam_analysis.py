@@ -1,6 +1,7 @@
 import os
 import json
 import argparse
+import shutil
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -40,11 +41,11 @@ def calculate_recall(target_mask, reference_mask):
     return calculate_coverage(target_mask, reference_mask)
 
 
-def process_directory(set_path, model, results_dir, device="cpu"):
+def process_directory(set_path, model, device, force=False):
     """
     Processes a single 'set_*' directory:
     1. Runs SAM auto-segmentation.
-    2. Matches concept masks to SAM segments.
+    2. Matches concept masks to SAM segments greedily.
     3. Saves results in sam_analysis/ subdirectory.
     """
     set_path = Path(set_path)
@@ -56,6 +57,9 @@ def process_directory(set_path, model, results_dir, device="cpu"):
 
     # Create output directory
     output_dir = set_path / "sam_analysis"
+    if output_dir.exists() and force:
+        print(f"  Forcing re-analysis: Deleting {output_dir}")
+        shutil.rmtree(output_dir)
 
     # Check if already processed
     if (output_dir / "metrics.json").exists() and (
@@ -128,37 +132,118 @@ def process_directory(set_path, model, results_dir, device="cpu"):
         c_mask_img = Image.open(concept_mask_path).convert("L")
         c_mask_np = np.array(c_mask_img) > 127
 
-        best_iou = -1.0
-        best_idx = -1
+        # Load raw upscaled heatmap for sensitivity curve
+        heatmap_upscaled_path = set_path / f"upscaled_heatmap_{safe_concept}.png"
+        heatmap_np = None
+        if heatmap_upscaled_path.exists():
+            heatmap_np = (
+                np.array(Image.open(heatmap_upscaled_path).convert("L")) / 255.0
+            )
 
-        for i in range(num_segments):
-            s_mask = masks[i] > 0.5
-            iou = calculate_iou(c_mask_np, s_mask)
-            if iou > best_iou:
-                best_iou = iou
-                best_idx = i
+        # Greedy composition of segments to maximize IoU
+        current_composite_mask = np.zeros_like(c_mask_np, dtype=bool)
+        selected_indices = []
+        best_iou = 0.0
 
-        if best_idx != -1:
-            best_s_mask = masks[best_idx] > 0.5
+        # Pre-calculate boolean masks for all segments to speed up loop
+        segment_masks = [masks[i] > 0.5 for i in range(num_segments)]
 
-            # Save the best matching mask
-            best_mask_img = Image.fromarray((best_s_mask * 255).astype(np.uint8))
+        while True:
+            improved = False
+            best_temp_iou = best_iou
+            best_temp_idx = -1
+
+            for i in range(num_segments):
+                if i in selected_indices:
+                    continue
+
+                # Check if adding this segment improves IoU
+                temp_mask = np.logical_or(current_composite_mask, segment_masks[i])
+                temp_iou = calculate_iou(c_mask_np, temp_mask)
+
+                if temp_iou > best_temp_iou:
+                    best_temp_iou = temp_iou
+                    best_temp_idx = i
+
+            if best_temp_idx != -1:
+                current_composite_mask = np.logical_or(
+                    current_composite_mask, segment_masks[best_temp_idx]
+                )
+                selected_indices.append(best_temp_idx)
+                best_iou = best_temp_iou
+                improved = True
+
+            if not improved:
+                break
+
+        if selected_indices:
+            # Save the composite matching mask
+            best_mask_img = Image.fromarray(
+                (current_composite_mask * 255).astype(np.uint8)
+            )
             best_mask_img.save(output_dir / f"matched_mask_{safe_concept}.png")
 
-            # Save the best matching masked image
+            # Save the composite matching masked image
             matched_masked_np = img_np.copy()
-            matched_masked_np[best_s_mask == 0] = 0
+            matched_masked_np[current_composite_mask == 0] = 0
             Image.fromarray(matched_masked_np).save(
                 output_dir / f"matched_masked_image_{safe_concept}.png"
             )
 
             metrics[concept] = {
                 "iou": best_iou,
-                "coverage": calculate_coverage(c_mask_np, best_s_mask),
-                "precision": calculate_precision(c_mask_np, best_s_mask),
-                "recall": calculate_recall(c_mask_np, best_s_mask),
-                "segment_index": int(best_idx),
+                "coverage": calculate_coverage(c_mask_np, current_composite_mask),
+                "precision": calculate_precision(c_mask_np, current_composite_mask),
+                "recall": calculate_recall(c_mask_np, current_composite_mask),
+                "segment_indices": [int(idx) for idx in selected_indices],
+                "num_segments_used": len(selected_indices),
             }
+
+            # Calculate IoU sensitivity curve if heatmap is available
+            if heatmap_np is not None:
+                iou_curve = {}
+                thresholds = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+                for t in thresholds:
+                    t_mask = heatmap_np > t
+                    t_iou = calculate_iou(t_mask, current_composite_mask)
+                    iou_curve[str(t)] = float(t_iou)
+                metrics[concept]["iou_curve"] = iou_curve
+
+    # 3. Calculate Concept Collisions (Overlap between concepts)
+    collisions = {}
+    concept_list = list(metrics.keys())
+    for i in range(len(concept_list)):
+        for j in range(i + 1, len(concept_list)):
+            c1, c2 = concept_list[i], concept_list[j]
+
+            def get_safe(c):
+                return (
+                    c.replace(" ", "_")
+                    .replace("'", "")
+                    .replace('"', "")
+                    .replace("/", "-")
+                )
+
+            m1_path = output_dir / f"matched_mask_{get_safe(c1)}.png"
+            m2_path = output_dir / f"matched_mask_{get_safe(c2)}.png"
+
+            if m1_path.exists() and m2_path.exists():
+                m1 = np.array(Image.open(m1_path).convert("L")) > 127
+                m2 = np.array(Image.open(m2_path).convert("L")) > 127
+                overlap_iou = calculate_iou(m1, m2)
+                collisions[f"{c1}_vs_{c2}"] = float(overlap_iou)
+
+    # Calculate overall SAM coverage
+    all_masks_union = np.zeros(masks.shape[1:], dtype=bool)
+    for i in range(num_segments):
+        all_masks_union = np.logical_or(all_masks_union, masks[i] > 0.5)
+
+    overall_coverage_percent = (np.sum(all_masks_union) / all_masks_union.size) * 100
+
+    # Save coverage gap visualization
+    coverage_vis = img_np.copy()
+    coverage_vis[~all_masks_union] = [255, 0, 0]  # Red for gaps
+    Image.fromarray(coverage_vis).save(output_dir / "debug_coverage_gaps.png")
 
     # Save metrics
     with open(output_dir / "metrics.json", "w") as f:
@@ -166,7 +251,12 @@ def process_directory(set_path, model, results_dir, device="cpu"):
 
     with open(output_dir / "segments_summary.json", "w") as f:
         json.dump(
-            {"num_segments": int(num_segments), "image_size": list(masks.shape[1:])},
+            {
+                "num_segments": int(num_segments),
+                "image_size": list(masks.shape[1:]),
+                "overall_coverage_percent": float(overall_coverage_percent),
+                "concept_collisions": collisions,
+            },
             f,
             indent=4,
         )
@@ -189,6 +279,11 @@ def main():
         "--single-dir", type=str, help="Process only a specific directory."
     )
 
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Delete existing SAM analysis and regenerate everything.",
+    )
     args = parser.parse_args()
 
     print(f"Loading SAM model: {args.model}")
@@ -209,7 +304,8 @@ def main():
 
     if args.single_dir:
         print(f"Processing single directory: {args.single_dir}")
-        process_directory(args.single_dir, model, root_path, device=device)
+        process_directory(Path(args.single_dir), model, device, force=args.force)
+        return
     else:
         print(f"Scanning {root_path} for set_* directories...")
         set_dirs = []
@@ -218,8 +314,8 @@ def main():
                 set_dirs.append(root)
 
         print(f"Found {len(set_dirs)} directories. Starting analysis...")
-        for s_dir in tqdm(set_dirs):
-            process_directory(s_dir, model, root_path, device=device)
+        for s_dir in tqdm(sorted(set_dirs)):
+            process_directory(Path(s_dir), model, device, force=args.force)
 
 
 if __name__ == "__main__":

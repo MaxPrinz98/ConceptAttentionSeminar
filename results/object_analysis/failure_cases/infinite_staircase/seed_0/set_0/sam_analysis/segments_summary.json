@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 30.524158477783203,
+    "concept_collisions": {
+        "staircase_vs_infinite": 0.13768161224808623,
+        "staircase_vs_loop": 0.22756857543778714,
+        "staircase_vs_surreal": 0.22762911297022626,
+        "infinite_vs_loop": 0.008083926965062847,
+        "infinite_vs_surreal": 0.0,
+        "loop_vs_surreal": 0.9732833256228934
+    }
 }

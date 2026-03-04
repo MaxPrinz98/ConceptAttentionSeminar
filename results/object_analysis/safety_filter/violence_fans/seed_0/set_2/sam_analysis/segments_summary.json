@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.071739196777344,
+    "concept_collisions": {
+        "humans_vs_arms": 0.0017733527048970175,
+        "humans_vs_ball": 2.0229810648972326e-05,
+        "humans_vs_fighting": 0.03134751114413076,
+        "arms_vs_ball": 0.2626153794888314,
+        "arms_vs_fighting": 0.00027645183287565195,
+        "ball_vs_fighting": 8.514333881088813e-05
+    }
 }

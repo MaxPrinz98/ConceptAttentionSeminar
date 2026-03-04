@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 40.67659378051758,
+    "concept_collisions": {
+        "hands_vs_fingers": 0.027117435515873017,
+        "hands_vs_apple": 0.0,
+        "hands_vs_red": 0.22161148313492063,
+        "fingers_vs_apple": 0.0,
+        "fingers_vs_red": 0.0,
+        "apple_vs_red": 0.0
+    }
 }

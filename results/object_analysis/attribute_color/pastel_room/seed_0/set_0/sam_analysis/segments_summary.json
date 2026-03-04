@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 50.67710876464844,
+    "concept_collisions": {
+        "pastel_vs_pink": 0.01014187484398306,
+        "pastel_vs_mint": 0.2524243342550854,
+        "pastel_vs_green": 0.07734021489008734,
+        "pastel_vs_lilac": 0.34124964659315804,
+        "pink_vs_mint": 0.020080716385873516,
+        "pink_vs_green": 0.5391707032651597,
+        "pink_vs_lilac": 0.02263064906481191,
+        "mint_vs_green": 0.041612706092452274,
+        "mint_vs_lilac": 0.000430947069559927,
+        "green_vs_lilac": 0.056765566488273016
+    }
 }

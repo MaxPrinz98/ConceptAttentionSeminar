@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 57.4066162109375,
+    "concept_collisions": {
+        "neon_vs_green": 0.7130310977341552,
+        "neon_vs_shadows": 0.9419245849516622,
+        "neon_vs_statue": 0.0,
+        "green_vs_shadows": 0.7569938285141443,
+        "green_vs_statue": 0.0,
+        "shadows_vs_statue": 0.0
+    }
 }

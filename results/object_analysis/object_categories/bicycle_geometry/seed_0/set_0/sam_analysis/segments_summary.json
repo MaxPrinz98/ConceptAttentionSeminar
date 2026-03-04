@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 75.2685546875,
+    "concept_collisions": {
+        "bicycle_vs_wheels": 0.8122501563003239,
+        "bicycle_vs_spokes": 0.0001596707234857893,
+        "bicycle_vs_frame": 0.0001841413387075324,
+        "wheels_vs_spokes": 0.00016378440772438463,
+        "wheels_vs_frame": 0.0001896342316878801,
+        "spokes_vs_frame": 0.8466148103509809
+    }
 }

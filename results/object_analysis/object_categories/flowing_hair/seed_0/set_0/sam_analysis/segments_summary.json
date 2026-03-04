@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 20.395469665527344,
+    "concept_collisions": {
+        "hair_vs_flowing": 0.0,
+        "hair_vs_wind": 0.14970869065098055,
+        "hair_vs_strands": 0.0,
+        "flowing_vs_wind": 0.6520466469031432,
+        "flowing_vs_strands": 0.7668508894937996,
+        "wind_vs_strands": 0.8502913093490194
+    }
 }

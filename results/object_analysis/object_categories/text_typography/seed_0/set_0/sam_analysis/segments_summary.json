@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 18.33667755126953,
+    "concept_collisions": {
+        "neon_vs_sign": 0.22747725439701158,
+        "neon_vs_text": 0.0,
+        "neon_vs_CONCEPT": 0.30816488877387693,
+        "neon_vs_light": 0.0,
+        "sign_vs_text": 0.26775323428054915,
+        "sign_vs_CONCEPT": 0.27951898839655853,
+        "sign_vs_light": 0.11206591254713247,
+        "text_vs_CONCEPT": 0.0,
+        "text_vs_light": 0.0,
+        "CONCEPT_vs_light": 0.6918351112261231
+    }
 }

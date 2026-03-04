@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.19355010986328,
+    "concept_collisions": {
+        "fire_vs_ice": 0.9023454657257474,
+        "fire_vs_surreal": 0.0002768191632679425,
+        "fire_vs_blue": 0.0002768191632679425,
+        "fire_vs_orange": 0.9018074141313578,
+        "ice_vs_surreal": 0.0,
+        "ice_vs_blue": 0.0,
+        "ice_vs_orange": 0.9994039074475074,
+        "surreal_vs_blue": 1.0,
+        "surreal_vs_orange": 0.0,
+        "blue_vs_orange": 0.0
+    }
 }

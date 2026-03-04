@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 40.67659378051758,
+    "concept_collisions": {
+        "person_vs_holding": 0.7783836905773154,
+        "person_vs_fruit": 0.0,
+        "holding_vs_fruit": 0.0
+    }
 }

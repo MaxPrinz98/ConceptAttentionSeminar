@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 75.2685546875,
+    "concept_collisions": {
+        "gears_vs_chain": 0.23800359302854912,
+        "gears_vs_handlebar": 0.00016632186863898814,
+        "chain_vs_handlebar": 0.40757210301901026
+    }
 }

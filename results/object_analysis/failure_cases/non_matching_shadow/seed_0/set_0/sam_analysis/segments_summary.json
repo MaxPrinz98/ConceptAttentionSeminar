@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 91.51992797851562,
+    "concept_collisions": {
+        "person_vs_shadow": 0.0,
+        "person_vs_dragon": 0.0,
+        "person_vs_mismatch": 0.9994179489977809,
+        "shadow_vs_dragon": 0.9997340237730964,
+        "shadow_vs_mismatch": 0.0,
+        "dragon_vs_mismatch": 0.0
+    }
 }

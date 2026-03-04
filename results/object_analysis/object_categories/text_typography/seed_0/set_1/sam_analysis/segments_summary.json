@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 18.33667755126953,
+    "concept_collisions": {
+        "typography_vs_glow": 0.2640077952801038,
+        "typography_vs_blue": 0.400127339695754,
+        "typography_vs_pink": 0.1808872904543988,
+        "glow_vs_blue": 0.4833896235235751,
+        "glow_vs_pink": 0.1692797860205326,
+        "blue_vs_pink": 0.0010139875967588611
+    }
 }

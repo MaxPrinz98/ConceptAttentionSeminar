@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 89.63756561279297,
+    "concept_collisions": {
+        "perched_vs_old": 0.0,
+        "perched_vs_books": 8.717666586951067e-05,
+        "perched_vs_flame": 0.0,
+        "old_vs_books": 0.24574967083607638,
+        "old_vs_flame": 0.0,
+        "books_vs_flame": 1.4965265618499463e-05
+    }
 }

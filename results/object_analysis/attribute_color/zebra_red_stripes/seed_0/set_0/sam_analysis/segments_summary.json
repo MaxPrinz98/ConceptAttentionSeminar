@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 44.24581527709961,
+    "concept_collisions": {
+        "red_vs_stripes": 0.9978203335429316,
+        "red_vs_black": 0.0,
+        "red_vs_zebra": 0.9997155644986883,
+        "stripes_vs_black": 0.0007977060560981394,
+        "stripes_vs_zebra": 0.9975371364637502,
+        "black_vs_zebra": 0.0
+    }
 }

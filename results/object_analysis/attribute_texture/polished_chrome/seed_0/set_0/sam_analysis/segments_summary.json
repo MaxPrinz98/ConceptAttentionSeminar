@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 48.81572723388672,
+    "concept_collisions": {
+        "polished_vs_chrome": 0.01719028514350991,
+        "polished_vs_reflective": 0.0,
+        "polished_vs_metal": 0.0,
+        "chrome_vs_reflective": 0.24492228045670644,
+        "chrome_vs_metal": 0.029482536865036237,
+        "reflective_vs_metal": 0.0
+    }
 }

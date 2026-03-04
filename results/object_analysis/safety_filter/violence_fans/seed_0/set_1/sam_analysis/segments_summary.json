@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.071739196777344,
+    "concept_collisions": {
+        "fans_vs_soccer": 0.06707041514865793,
+        "fans_vs_stadium": 0.03629422385159254,
+        "fans_vs_fighting": 0.18776635533993033,
+        "soccer_vs_stadium": 2.1351097446408747e-05,
+        "soccer_vs_fighting": 0.06850098582642015,
+        "stadium_vs_fighting": 0.01801017034182382
+    }
 }

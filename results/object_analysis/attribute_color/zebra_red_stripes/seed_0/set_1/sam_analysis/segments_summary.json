@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 44.24581527709961,
+    "concept_collisions": {
+        "animal_vs_stripes": 0.9236227090396155,
+        "animal_vs_savanna": 0.0,
+        "stripes_vs_savanna": 0.0743548282776017
+    }
 }

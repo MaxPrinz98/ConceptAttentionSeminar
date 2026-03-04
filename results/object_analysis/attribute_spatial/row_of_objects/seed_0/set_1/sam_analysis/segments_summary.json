@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.45952987670898,
+    "concept_collisions": {
+        "box_vs_sphere": 7.908328280790265e-05,
+        "box_vs_pyramid": 0.0,
+        "box_vs_row": 7.908328280790265e-05,
+        "sphere_vs_pyramid": 0.0,
+        "sphere_vs_row": 1.0,
+        "pyramid_vs_row": 0.0
+    }
 }

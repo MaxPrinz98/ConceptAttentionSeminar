@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 83.94994735717773,
+    "concept_collisions": {
+        "husky_vs_animals": 0.0,
+        "husky_vs_spatial": 1.0,
+        "animals_vs_spatial": 0.0
+    }
 }

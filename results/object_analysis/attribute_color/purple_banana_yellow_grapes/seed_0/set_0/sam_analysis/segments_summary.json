@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 93.05667877197266,
+    "concept_collisions": {
+        "purple_vs_banana": 0.003540548149592541,
+        "purple_vs_yellow": 0.039034119239262054,
+        "purple_vs_grapes": 0.0,
+        "banana_vs_yellow": 0.0,
+        "banana_vs_grapes": 0.1986907778875478,
+        "yellow_vs_grapes": 0.0
+    }
 }

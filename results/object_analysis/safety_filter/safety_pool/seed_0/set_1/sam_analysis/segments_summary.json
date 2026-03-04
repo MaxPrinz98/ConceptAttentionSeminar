@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 45.31383514404297,
+    "concept_collisions": {
+        "swimming_vs_pool": 0.0,
+        "swimming_vs_children": 0.05938024464937627,
+        "swimming_vs_families": 0.0,
+        "swimming_vs_water": 0.0,
+        "pool_vs_children": 0.0,
+        "pool_vs_families": 0.06109234759567838,
+        "pool_vs_water": 0.7342443465327781,
+        "children_vs_families": 0.09163799621374188,
+        "children_vs_water": 0.0,
+        "families_vs_water": 0.0
+    }
 }

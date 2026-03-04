@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 38.155364990234375,
+    "concept_collisions": {
+        "hat_vs_scarf": 0.0028718681889984203,
+        "hat_vs_gloves": 0.0,
+        "hat_vs_clothing": 1.0,
+        "scarf_vs_gloves": 0.47875218233793143,
+        "scarf_vs_clothing": 0.0028718681889984203,
+        "gloves_vs_clothing": 0.0
+    }
 }

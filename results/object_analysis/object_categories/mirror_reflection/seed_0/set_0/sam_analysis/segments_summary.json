@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 19.88534927368164,
+    "concept_collisions": {
+        "mirror_vs_reflection": 0.0,
+        "mirror_vs_person": 0.01216561658404911,
+        "mirror_vs_camera": 0.17959453695563235,
+        "reflection_vs_person": 0.38055320084141786,
+        "reflection_vs_camera": 0.0,
+        "person_vs_camera": 0.0
+    }
 }

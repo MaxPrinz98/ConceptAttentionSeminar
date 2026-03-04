@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.88579559326172,
+    "concept_collisions": {
+        "centipede_vs_legs": 0.0003472144161427226,
+        "centipede_vs_eyes": 0.0,
+        "centipede_vs_leaf": 0.7512805133934132,
+        "legs_vs_eyes": 0.35937363691878216,
+        "legs_vs_leaf": 0.000311262026032824,
+        "eyes_vs_leaf": 0.0010292944554113317
+    }
 }

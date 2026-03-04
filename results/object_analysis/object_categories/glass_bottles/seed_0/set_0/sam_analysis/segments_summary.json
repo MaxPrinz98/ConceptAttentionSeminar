@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 85.68744659423828,
+    "concept_collisions": {
+        "glass_vs_bottles": 0.010127171622336202,
+        "glass_vs_translucent": 0.0,
+        "glass_vs_overlapping": 0.2368129007304265,
+        "bottles_vs_translucent": 0.0,
+        "bottles_vs_overlapping": 0.0,
+        "translucent_vs_overlapping": 0.7576561508737528
+    }
 }

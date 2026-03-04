@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 48.303890228271484,
+    "concept_collisions": {
+        "roots_vs_around": 0.0,
+        "roots_vs_statue": 0.002584257801159507,
+        "roots_vs_growing": 0.003812942309525453,
+        "around_vs_statue": 0.0,
+        "around_vs_growing": 0.0,
+        "statue_vs_growing": 0.0027554169715867513
+    }
 }

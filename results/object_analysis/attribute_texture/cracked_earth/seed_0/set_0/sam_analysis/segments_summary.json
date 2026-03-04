@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.82020950317383,
+    "concept_collisions": {
+        "cracked_vs_earth": 0.0,
+        "cracked_vs_dry": 1.0,
+        "cracked_vs_desert": 0.5016845122345481,
+        "earth_vs_dry": 0.0,
+        "earth_vs_desert": 0.4983106461621606,
+        "dry_vs_desert": 0.5016845122345481
+    }
 }

@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 76.54132843017578,
+    "concept_collisions": {
+        "glass_vs_water": 1.0,
+        "glass_vs_reflection": 0.0,
+        "glass_vs_table": 0.0,
+        "glass_vs_wood": 0.0,
+        "water_vs_reflection": 0.0,
+        "water_vs_table": 0.0,
+        "water_vs_wood": 0.0,
+        "reflection_vs_table": 6.313470104140689e-06,
+        "reflection_vs_wood": 0.6046262925342234,
+        "table_vs_wood": 0.3279532045595881
+    }
 }

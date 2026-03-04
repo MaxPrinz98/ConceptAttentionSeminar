@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 24.863815307617188,
+    "concept_collisions": {
+        "coarse_vs_sandpaper": 0.0,
+        "coarse_vs_gritty": 0.10871912654474401,
+        "coarse_vs_grains": 0.03396082966579931,
+        "sandpaper_vs_gritty": 0.3216357330124849,
+        "sandpaper_vs_grains": 0.17719836165095174,
+        "gritty_vs_grains": 0.09439934992454481
+    }
 }

@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 50.67710876464844,
+    "concept_collisions": {
+        "room_vs_furniture": 0.05249182888381106,
+        "room_vs_minimalist": 0.00294064381763028,
+        "furniture_vs_minimalist": 0.0
+    }
 }

@@ -3,5 +3,18 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 96.86870574951172,
+    "concept_collisions": {
+        "landscape_vs_inside": 0.0,
+        "landscape_vs_coffee": 2.9808569367521777e-06,
+        "landscape_vs_cup": 1.910739790678456e-05,
+        "landscape_vs_mountain": 0.0037028401957277593,
+        "inside_vs_coffee": 0.0,
+        "inside_vs_cup": 0.0,
+        "inside_vs_mountain": 0.8375286120853968,
+        "coffee_vs_cup": 0.0,
+        "coffee_vs_mountain": 0.0,
+        "cup_vs_mountain": 0.0
+    }
 }

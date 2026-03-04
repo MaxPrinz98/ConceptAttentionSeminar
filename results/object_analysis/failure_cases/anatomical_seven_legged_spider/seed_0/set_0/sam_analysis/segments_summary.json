@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 93.14680099487305,
+    "concept_collisions": {
+        "spider_vs_legs": 0.9466681828519445,
+        "spider_vs_seven": 0.0,
+        "spider_vs_web": 0.0,
+        "legs_vs_seven": 0.0,
+        "legs_vs_web": 0.0009603689127149567,
+        "seven_vs_web": 0.03140435265369384
+    }
 }

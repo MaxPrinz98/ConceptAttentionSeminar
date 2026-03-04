@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 48.303890228271484,
+    "concept_collisions": {
+        "tree_vs_stone": 0.0,
+        "tree_vs_entanglement": 0.0,
+        "stone_vs_entanglement": 0.0
+    }
 }

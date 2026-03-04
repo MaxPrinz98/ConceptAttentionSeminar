@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 31.17504119873047,
+    "concept_collisions": {
+        "texture_vs_weaving": 0.020315453939197415,
+        "texture_vs_colors": 0.0,
+        "weaving_vs_colors": 0.3279739962140082
+    }
 }

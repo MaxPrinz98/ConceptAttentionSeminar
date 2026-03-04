@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 48.81572723388672,
+    "concept_collisions": {
+        "shiny_vs_engine": 0.27471011480743596,
+        "shiny_vs_sky": 0.0,
+        "engine_vs_sky": 0.1822686562377222
+    }
 }

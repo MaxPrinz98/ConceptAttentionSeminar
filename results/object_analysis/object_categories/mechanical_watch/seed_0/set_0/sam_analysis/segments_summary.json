@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 45.426082611083984,
+    "concept_collisions": {
+        "gears_vs_springs": 0.22642542307292993,
+        "gears_vs_watch": 0.0,
+        "gears_vs_mechanical": 0.11697068229324853,
+        "springs_vs_watch": 0.05401553092554658,
+        "springs_vs_mechanical": 0.0,
+        "watch_vs_mechanical": 0.002300732710822771
+    }
 }

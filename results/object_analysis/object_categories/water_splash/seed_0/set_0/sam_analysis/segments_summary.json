@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 11.504268646240234,
+    "concept_collisions": {
+        "splash_vs_water": 0.0,
+        "splash_vs_milk": 0.8137188515709642,
+        "splash_vs_strawberry": 0.0,
+        "water_vs_milk": 0.025154989850222197,
+        "water_vs_strawberry": 0.0,
+        "milk_vs_strawberry": 0.0
+    }
 }

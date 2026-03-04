@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.88579559326172,
+    "concept_collisions": {
+        "insect_vs_segmented": 0.04531277314171627,
+        "insect_vs_arthropod": 0.0003724958122440502,
+        "segmented_vs_arthropod": 0.7582518958037996
+    }
 }

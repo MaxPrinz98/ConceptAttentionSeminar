@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.218318939208984,
+    "concept_collisions": {
+        "sphere_vs_thin": 0.7310710183947433,
+        "sphere_vs_surface": 0.17002105921717806,
+        "thin_vs_surface": 7.780511763161222e-06
+    }
 }

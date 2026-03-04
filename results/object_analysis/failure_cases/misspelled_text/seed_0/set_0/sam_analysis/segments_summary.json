@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 84.48371887207031,
+    "concept_collisions": {
+        "sign_vs_CONSEPT": 0.7700669261465061,
+        "sign_vs_letters": 0.0,
+        "sign_vs_text": 0.7665527575646743,
+        "CONSEPT_vs_letters": 0.0,
+        "CONSEPT_vs_text": 0.995436541341391,
+        "letters_vs_text": 0.0
+    }
 }

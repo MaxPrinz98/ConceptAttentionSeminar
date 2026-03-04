@@ -3,5 +3,29 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 51.3880729675293,
+    "concept_collisions": {
+        "dog_vs_fence": 5.053721054812658e-05,
+        "dog_vs_house": 0.0,
+        "dog_vs_behind": 0.0,
+        "dog_vs_in": 0.0,
+        "dog_vs_front": 0.0,
+        "dog_vs_of": 0.0,
+        "fence_vs_house": 0.0,
+        "fence_vs_behind": 0.0,
+        "fence_vs_in": 0.0,
+        "fence_vs_front": 0.0,
+        "fence_vs_of": 0.19398916060228588,
+        "house_vs_behind": 0.03344484463186318,
+        "house_vs_in": 0.03236957888120679,
+        "house_vs_front": 0.1531763630226825,
+        "house_vs_of": 0.25778498046962406,
+        "behind_vs_in": 0.5016983913349997,
+        "behind_vs_front": 0.0,
+        "behind_vs_of": 0.049098070699214735,
+        "in_vs_front": 0.0,
+        "in_vs_of": 0.097863719611631,
+        "front_vs_of": 0.0
+    }
 }

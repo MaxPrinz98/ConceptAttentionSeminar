@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 36.86361312866211,
+    "concept_collisions": {
+        "unusual_vs_reversal": 0.3049910461105812,
+        "unusual_vs_composition": 0.03234837997897563,
+        "reversal_vs_composition": 0.22388749640465136
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.57378005981445,
+    "concept_collisions": {
+        "rim_vs_wine": 0.001237603501959539,
+        "rim_vs_glass": 0.0,
+        "rim_vs_stability": 0.9986381257535945,
+        "wine_vs_glass": 0.0005102344106049498,
+        "wine_vs_stability": 0.0,
+        "glass_vs_stability": 0.0
+    }
 }

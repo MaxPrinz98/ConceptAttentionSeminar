@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 17.226028442382812,
+    "concept_collisions": {
+        "scaly_vs_skin": 0.02086075792538446,
+        "scaly_vs_python": 0.5876951331496786,
+        "scaly_vs_serpent": 0.0180868968266271,
+        "skin_vs_python": 0.0,
+        "skin_vs_serpent": 0.3468509865580087,
+        "python_vs_serpent": 0.010629581238789114
+    }
 }

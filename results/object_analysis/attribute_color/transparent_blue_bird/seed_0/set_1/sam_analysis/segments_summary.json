@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 77.4759292602539,
+    "concept_collisions": {
+        "glass_vs_wings": 0.326548521283264,
+        "glass_vs_beak": 0.0,
+        "wings_vs_beak": 0.0
+    }
 }

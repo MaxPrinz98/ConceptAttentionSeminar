@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 74.7645378112793,
+    "concept_collisions": {
+        "dog_vs_human": 0.0,
+        "dog_vs_face": 0.01050409878038463,
+        "dog_vs_sofa": 0.0,
+        "human_vs_face": 0.9723875035603226,
+        "human_vs_sofa": 0.6933447583225296,
+        "face_vs_sofa": 0.679957328735168
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 78.03792953491211,
+    "concept_collisions": {
+        "water_vs_falling": 0.06799346591334841,
+        "water_vs_upwards": 0.0,
+        "water_vs_fountain": 0.7611485842888186,
+        "falling_vs_upwards": 0.901284744945407,
+        "falling_vs_fountain": 0.0037163482640808236,
+        "upwards_vs_fountain": 0.0
+    }
 }

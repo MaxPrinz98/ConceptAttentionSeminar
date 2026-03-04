@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.21660614013672,
+    "concept_collisions": {
+        "person_vs_arms": 0.025363537569861313,
+        "person_vs_three": 9.403828943294912e-05,
+        "person_vs_tools": 3.0466317454965706e-06,
+        "arms_vs_three": 0.0,
+        "arms_vs_tools": 0.15878035125552076,
+        "three_vs_tools": 0.0
+    }
 }

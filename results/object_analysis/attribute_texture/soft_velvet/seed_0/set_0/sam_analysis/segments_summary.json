@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 99.22761917114258,
+    "concept_collisions": {
+        "velvet_vs_soft": 1.9224151686246465e-06,
+        "velvet_vs_curtain": 0.8994374695452182,
+        "velvet_vs_folds": 1.0,
+        "soft_vs_curtain": 0.10045008202968446,
+        "soft_vs_folds": 1.9224151686246465e-06,
+        "curtain_vs_folds": 0.8994374695452182
+    }
 }

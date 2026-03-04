@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 99.22761917114258,
+    "concept_collisions": {
+        "fabric_vs_cloth": 1.9224151686246465e-06,
+        "fabric_vs_texture": 1.9224151686246465e-06,
+        "cloth_vs_texture": 1.0
+    }
 }

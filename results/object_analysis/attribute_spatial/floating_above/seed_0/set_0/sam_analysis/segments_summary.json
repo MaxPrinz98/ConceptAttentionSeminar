@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.61812591552734,
+    "concept_collisions": {
+        "ring_vs_floating": 0.015753963896825377,
+        "ring_vs_above": 0.015753963896825377,
+        "ring_vs_pedestal": 9.329750709061053e-06,
+        "floating_vs_above": 1.0,
+        "floating_vs_pedestal": 0.0,
+        "above_vs_pedestal": 0.0
+    }
 }

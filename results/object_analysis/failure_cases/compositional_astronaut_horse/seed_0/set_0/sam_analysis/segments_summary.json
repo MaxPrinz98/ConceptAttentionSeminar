@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 36.86361312866211,
+    "concept_collisions": {
+        "horse_vs_astronaut": 0.19809673476514755,
+        "horse_vs_riding": 0.3403146185743435,
+        "horse_vs_space": 0.0,
+        "astronaut_vs_riding": 0.0,
+        "astronaut_vs_space": 0.0,
+        "riding_vs_space": 0.0
+    }
 }

@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 97.92919158935547,
+    "concept_collisions": {
+        "statue_vs_marble": 0.9991596705526599,
+        "statue_vs_sculpture": 0.9991596705526599,
+        "statue_vs_male": 0.0,
+        "marble_vs_sculpture": 1.0,
+        "marble_vs_male": 0.0,
+        "sculpture_vs_male": 0.0
+    }
 }

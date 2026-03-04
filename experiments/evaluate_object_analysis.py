@@ -499,7 +499,9 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                                         "iou": iou_val,
                                         "precision": prec_val,
                                         "recall": rec_val,
-                                        "iou_rank_label": f"#{data.get('segment_index')} SAM Seg",
+                                        "iou_rank_label": f"#{','.join(map(str, data.get('segment_indices', [])))} SAM Segs"
+                                        if "segment_indices" in data
+                                        else f"#{data.get('segment_index')} SAM Seg",
                                         "safe_concept": safe_concept,
                                     }
                                 )
@@ -546,6 +548,25 @@ def generate_gallery(results_dir, output_html, mode="relative"):
 
     single_token_averages = compute_averages(single_token_metrics)
     multi_token_averages = compute_averages(multi_token_metrics)
+
+    umap_path = results_dir / "concept_umap.json"
+    umap_js_data = []
+    if umap_path.exists():
+        try:
+            with open(umap_path, "r") as f:
+                umap_coords = json.load(f)
+            for concept, coords in umap_coords.items():
+                c_class = get_concept_class(concept)
+                umap_js_data.append(
+                    {
+                        "x": coords[0],
+                        "y": coords[1],
+                        "label": concept,
+                        "category": c_class,
+                    }
+                )
+        except Exception as e:
+            print(f"Warning: Could not load UMAP data: {e}")
 
     def get_image_src(path):
         if not Path(path).exists():
@@ -779,6 +800,17 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                 / "sam_analysis"
                 / f"matched_masked_image_{cand['safe_concept']}.png"
             )
+            coverage_img = case_path / "sam_analysis" / "debug_coverage_gaps.png"
+
+            coverage_percent = 0.0
+            summary_path = case_path / "sam_analysis" / "segments_summary.json"
+            if summary_path.exists():
+                try:
+                    with open(summary_path, "r") as f:
+                        summary_data = json.load(f)
+                    coverage_percent = summary_data.get("overall_coverage_percent", 0.0)
+                except Exception:
+                    pass
 
             # Fallback if masked image not present
             if not masked_img.exists():
@@ -807,7 +839,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                             </div>
                         </div>
                         
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
                             <div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d;">
                                 <img src="{get_image_src(orig_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
                                 <div style="color: #8b949e; font-size: 0.85rem;">Generated Image</div>
@@ -820,6 +852,10 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                                 <img src="{get_image_src(sam_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
                                 <div style="color: #8b949e; font-size: 0.85rem;">SAM Segment</div>
                             </div>
+                            <div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d;">
+                                <img src="{get_image_src(coverage_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
+                                <div style="color: #8b949e; font-size: 0.85rem;">SAM Coverage ({coverage_percent:.1f}%)</div>
+                            </div>
                         </div>
                     </div>
             """
@@ -831,6 +867,12 @@ def generate_gallery(results_dir, output_html, mode="relative"):
 
     # Render metrics sections
     html_content += """
+                <h2 style="margin-top:0; color:#bc8cff;">Concept Similarity Map (UMAP)</h2>
+                <p style="color: #8b949e; margin-bottom: 20px;">Proximity indicates semantic similarity in T5 embedding space. Colored by concept category.</p>
+                <div style="background: #161b22; padding: 25px; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 40px;">
+                    <canvas id="umapChart" style="max-height: 500px;"></canvas>
+                </div>
+
                 <h2 style="margin-top:0;">Top Performing Concepts per Metric</h2>
                 <p style="color: #8b949e; margin-bottom: 30px;">This section identifies the best localized concepts across the entire dataset, ranked by specific quantitative metrics. Expand a section below to explore the top 15 candidates.</p>
     """
@@ -975,7 +1017,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                 block += f"""
                     <div class="sam-results">
                         <div class="sam-header">
-                            <span>SAM Comparison (#{sam_data.get("segment_index")})</span>
+                            <span>SAM Comparison (#{",".join(map(str, sam_data.get("segment_indices", []))) if "segment_indices" in sam_data else sam_data.get("segment_index")})</span>
                             <span>IoU: <span class="metric-val {get_metric_class(iou)}">{iou:.3f}</span></span>
                         </div>
                         <div style="display: flex; gap: 10px; padding: 10px; background: #0d1117; align-items: center; border-bottom: 1px solid #30363d;">
@@ -1011,6 +1053,17 @@ def generate_gallery(results_dir, output_html, mode="relative"):
         seed = first_set_path.parent.name
         case = first_set_path.parent.parent.name
         image_path = first_set_path / "image.png"
+        coverage_img_path = first_set_path / "sam_analysis" / "debug_coverage_gaps.png"
+
+        coverage_percent = 0.0
+        summary_path = first_set_path / "sam_analysis" / "segments_summary.json"
+        if summary_path.exists():
+            try:
+                with open(summary_path, "r") as f:
+                    summary_data = json.load(f)
+                coverage_percent = summary_data.get("overall_coverage_percent", 0.0)
+            except Exception:
+                pass
 
         prompt = first_meta.get("prompt", "")
 
@@ -1047,9 +1100,14 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                     <button onclick="viewInGrids('{case.lower()}')" style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;">View Grid →</button>
                 </div>
                 
-                <div class="image-grid" style="grid-template-columns: 1fr;">
+                <div class="image-grid" style="display: flex; gap: 20px;">
                     <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
                         <img src="{get_image_src(image_path)}" alt="Generated Image" style="max-width: 400px; border-radius: 8px;" loading="lazy">
+                        <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">Generated Image</div>
+                    </div>
+                    <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
+                        <img src="{get_image_src(coverage_img_path)}" alt="SAM Coverage" style="max-width: 400px; border-radius: 8px;" loading="lazy">
+                        <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">SAM Coverage ({coverage_percent:.1f}%)</div>
                     </div>
                 </div>
                 
@@ -1357,6 +1415,60 @@ def generate_gallery(results_dir, output_html, mode="relative"):
             createCharts(multiData, 'multiMetricsChart', 'multiCountsChart', 'Multi-Token');
         } catch (e) {
             console.error('Error rendering charts:', e);
+        }
+
+        // UMAP Rendering
+        try {
+            const umapDataRaw = """
+        + json.dumps(umap_js_data)
+        + """;
+            if (umapDataRaw && umapDataRaw.length > 0) {
+                const colors = {
+                    'object': '#58a6ff',
+                    'color': '#3fb950',
+                    'texture': '#d29922',
+                    'abstract': '#f85149',
+                    'spatial': '#a371f7'
+                };
+                
+                const datasets = Object.keys(colors).map(cat => {
+                    const points = umapDataRaw.filter(p => p.category === cat);
+                    return {
+                        label: cat.charAt(0).toUpperCase() + cat.slice(1),
+                        data: points.map(p => ({ x: p.x, y: p.y, label: p.label })),
+                        backgroundColor: colors[cat],
+                        borderColor: colors[cat],
+                        pointRadius: 6,
+                        pointHoverRadius: 9
+                    };
+                });
+                
+                new Chart(document.getElementById('umapChart'), {
+                    type: 'scatter',
+                    data: { datasets: datasets },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'right', labels: { color: '#8b949e' } },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let p = context.raw;
+                                        return p.label ? p.label : `(${p.x.toFixed(2)}, ${p.y.toFixed(2)})`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } },
+                            y: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } }
+                        }
+                    }
+                });
+            }
+        } catch(e) {
+            console.error('Error rendering UMAP charts:', e);
         }
         function viewInGallery(searchTerm) {
             const galleryBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.includes('Gallery'));

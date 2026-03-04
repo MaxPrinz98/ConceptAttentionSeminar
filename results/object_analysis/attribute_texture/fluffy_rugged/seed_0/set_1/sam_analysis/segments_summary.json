@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 62.75310516357422,
+    "concept_collisions": {
+        "cat_vs_rock": 0.0,
+        "cat_vs_fur": 0.0,
+        "cat_vs_stone": 0.0,
+        "rock_vs_fur": 0.003297905554491527,
+        "rock_vs_stone": 0.02014650103562876,
+        "fur_vs_stone": 0.3180779834580543
+    }
 }

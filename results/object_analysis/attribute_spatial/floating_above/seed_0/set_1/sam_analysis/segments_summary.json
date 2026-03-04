@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 98.61812591552734,
+    "concept_collisions": {
+        "gold_vs_stone": 9.329750709061053e-06,
+        "gold_vs_gap": 0.015753963896825377,
+        "stone_vs_gap": 0.0
+    }
 }

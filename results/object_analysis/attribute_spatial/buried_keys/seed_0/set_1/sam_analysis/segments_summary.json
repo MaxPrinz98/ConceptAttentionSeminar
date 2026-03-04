@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 89.42155838012695,
+    "concept_collisions": {
+        "rusty_vs_beach": 0.9454855505932628,
+        "rusty_vs_depth": 0.0,
+        "beach_vs_depth": 0.03482098388209711
+    }
 }

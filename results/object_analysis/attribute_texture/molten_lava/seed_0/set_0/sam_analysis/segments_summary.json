@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 24.991416931152344,
+    "concept_collisions": {
+        "lava_vs_molten": 0.24404781678143136,
+        "lava_vs_glowing": 0.22460745998646653,
+        "lava_vs_orange": 0.15589304069607518,
+        "molten_vs_glowing": 0.14207017905408084,
+        "molten_vs_orange": 0.07199159847028752,
+        "glowing_vs_orange": 0.5665300131592267
+    }
 }

@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 85.68744659423828,
+    "concept_collisions": {
+        "refraction_vs_colors": 0.2949478334677696,
+        "refraction_vs_light": 0.0,
+        "colors_vs_light": 0.0
+    }
 }

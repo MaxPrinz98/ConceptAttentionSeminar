@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 24.991416931152344,
+    "concept_collisions": {
+        "liquid_vs_rock": 0.3874486509421226,
+        "liquid_vs_heat": 0.14750091049944752,
+        "rock_vs_heat": 0.24149311305499815
+    }
 }

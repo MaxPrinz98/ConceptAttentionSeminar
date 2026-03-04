@@ -3,5 +3,11 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 8.275222778320312,
+    "concept_collisions": {
+        "vapor_vs_gaseous": 0.5246969068363067,
+        "vapor_vs_texture": 0.34373594436563676,
+        "gaseous_vs_texture": 0.8180634305997326
+    }
 }

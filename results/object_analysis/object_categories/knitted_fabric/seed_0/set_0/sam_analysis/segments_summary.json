@@ -3,5 +3,14 @@
     "image_size": [
         1024,
         1024
-    ]
+    ],
+    "overall_coverage_percent": 31.17504119873047,
+    "concept_collisions": {
+        "knitted_vs_wool": 0.05492984059837329,
+        "knitted_vs_pattern": 0.00010151734593050799,
+        "knitted_vs_yarn": 0.4462533551805262,
+        "wool_vs_pattern": 0.323359712457042,
+        "wool_vs_yarn": 0.038055319237233626,
+        "pattern_vs_yarn": 0.0
+    }
 }
