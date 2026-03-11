@@ -44,7 +44,7 @@ def create_publication_figure(results_dir, output_dir, max_concepts=6):
         case_name = case_info["case_name"]
 
         # Sort sets numerically
-        sets = sorted(case_info["sets"], key=lambda x: int(x.name.split("_")[1]))
+        sets = sorted(case_info["sets"], key=lambda x: x.name)
 
         # Create a figure for the entire case (all sets combined as rows)
         set_data_list = []
