@@ -1,0 +1,16 @@
+{
+    "num_segments": 4,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "velvet_vs_soft": 1.907565117119729e-06,
+        "velvet_vs_curtain": 0.9002141952514648,
+        "velvet_vs_folds": 1.0,
+        "soft_vs_curtain": 0.09967422485351562,
+        "soft_vs_folds": 1.907565117119729e-06,
+        "curtain_vs_folds": 0.9002141952514648
+    }
+}

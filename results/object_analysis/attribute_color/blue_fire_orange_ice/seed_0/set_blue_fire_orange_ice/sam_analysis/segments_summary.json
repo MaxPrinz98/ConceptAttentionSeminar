@@ -1,0 +1,16 @@
+{
+    "num_segments": 12,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "blue_vs_fire": 0.0,
+        "blue_vs_orange": 0.0,
+        "blue_vs_ice": 0.0,
+        "fire_vs_orange": 0.9913749328735246,
+        "fire_vs_ice": 0.9913749328735246,
+        "orange_vs_ice": 1.0
+    }
+}

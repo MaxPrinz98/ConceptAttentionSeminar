@@ -1,0 +1,16 @@
+{
+    "num_segments": 4,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "hair_vs_flowing": 1.0,
+        "hair_vs_wind": 0.9516629024148597,
+        "hair_vs_strands": 0.0,
+        "flowing_vs_wind": 0.9516629024148597,
+        "flowing_vs_strands": 0.0,
+        "wind_vs_strands": 0.04170638398755016
+    }
+}

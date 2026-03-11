@@ -1,0 +1,16 @@
+{
+    "num_segments": 9,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "splash_vs_water": 0.0,
+        "splash_vs_milk": 0.9990627280677304,
+        "splash_vs_strawberry": 0.9755201417952106,
+        "water_vs_milk": 0.0,
+        "water_vs_strawberry": 0.0,
+        "milk_vs_strawberry": 0.9764244751933499
+    }
+}

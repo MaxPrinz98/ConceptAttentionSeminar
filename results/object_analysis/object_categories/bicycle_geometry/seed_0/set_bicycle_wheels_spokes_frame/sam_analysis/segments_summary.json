@@ -1,0 +1,16 @@
+{
+    "num_segments": 10,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "bicycle_vs_wheels": 0.9457259641990258,
+        "bicycle_vs_spokes": 0.0001201629638671875,
+        "bicycle_vs_frame": 0.00013351573419348548,
+        "wheels_vs_spokes": 0.00012247695051833995,
+        "wheels_vs_frame": 0.00013637869115421832,
+        "spokes_vs_frame": 0.8466148103509809
+    }
+}

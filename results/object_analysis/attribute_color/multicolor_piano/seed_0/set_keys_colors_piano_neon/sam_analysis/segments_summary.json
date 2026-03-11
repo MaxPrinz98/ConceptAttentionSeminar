@@ -1,0 +1,16 @@
+{
+    "num_segments": 15,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "keys_vs_colors": 0.0,
+        "keys_vs_piano": 0.0,
+        "keys_vs_neon": 0.0011734205618847732,
+        "colors_vs_piano": 0.021356732983220623,
+        "colors_vs_neon": 0.0,
+        "piano_vs_neon": 0.845941842201568
+    }
+}

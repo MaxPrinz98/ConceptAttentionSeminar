@@ -1,0 +1,13 @@
+{
+    "num_segments": 13,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "human_vs_dog": 0.0,
+        "human_vs_face": 0.0,
+        "dog_vs_face": 0.02392735930786047
+    }
+}

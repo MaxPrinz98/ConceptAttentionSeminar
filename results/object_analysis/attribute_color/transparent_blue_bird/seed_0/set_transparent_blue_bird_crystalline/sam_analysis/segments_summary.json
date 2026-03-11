@@ -1,0 +1,16 @@
+{
+    "num_segments": 10,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "transparent_vs_blue": 0.0,
+        "transparent_vs_bird": 0.1038011650773168,
+        "transparent_vs_crystalline": 0.0,
+        "blue_vs_bird": 0.843326080059479,
+        "blue_vs_crystalline": 0.0,
+        "bird_vs_crystalline": 0.0
+    }
+}

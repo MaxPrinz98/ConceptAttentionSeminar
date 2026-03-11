@@ -1,0 +1,16 @@
+{
+    "num_segments": 68,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "roots_vs_around": 0.0,
+        "roots_vs_statue": 0.0,
+        "roots_vs_growing": 0.0013866956119451873,
+        "around_vs_statue": 0.0,
+        "around_vs_growing": 0.0,
+        "statue_vs_growing": 0.0027554169715867513
+    }
+}

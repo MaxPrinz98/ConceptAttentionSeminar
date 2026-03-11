@@ -1,0 +1,13 @@
+{
+    "num_segments": 68,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "tree_vs_stone": 0.0,
+        "tree_vs_entanglement": 0.0,
+        "stone_vs_entanglement": 0.0
+    }
+}

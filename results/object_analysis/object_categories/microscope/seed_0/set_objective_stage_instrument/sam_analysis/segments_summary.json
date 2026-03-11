@@ -1,0 +1,13 @@
+{
+    "num_segments": 34,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "objective_vs_stage": 0.0,
+        "objective_vs_instrument": 0.00017781922502430197,
+        "stage_vs_instrument": 0.0
+    }
+}

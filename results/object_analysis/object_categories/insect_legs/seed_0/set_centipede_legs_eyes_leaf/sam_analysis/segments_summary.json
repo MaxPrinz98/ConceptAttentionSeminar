@@ -1,0 +1,16 @@
+{
+    "num_segments": 24,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "centipede_vs_legs": 0.00015480979556197069,
+        "centipede_vs_eyes": 0.0,
+        "centipede_vs_leaf": 0.0,
+        "legs_vs_eyes": 0.002411648718337631,
+        "legs_vs_leaf": 0.7936078977918021,
+        "eyes_vs_leaf": 0.0008530265687310925
+    }
+}

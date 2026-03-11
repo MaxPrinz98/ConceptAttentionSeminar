@@ -1,0 +1,16 @@
+{
+    "num_segments": 52,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "people_vs_faces": 0.003989341683351649,
+        "people_vs_group": 1.8252380224458646e-05,
+        "people_vs_ten": 0.0,
+        "faces_vs_group": 1.4354266159673986e-06,
+        "faces_vs_ten": 0.0,
+        "group_vs_ten": 0.87713434584085
+    }
+}

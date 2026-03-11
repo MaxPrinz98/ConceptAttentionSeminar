@@ -1,0 +1,13 @@
+{
+    "num_segments": 79,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "movement_vs_brass": 0.8023306869527481,
+        "movement_vs_jewels": 0.6683833295742175,
+        "brass_vs_jewels": 0.6262102444761404
+    }
+}

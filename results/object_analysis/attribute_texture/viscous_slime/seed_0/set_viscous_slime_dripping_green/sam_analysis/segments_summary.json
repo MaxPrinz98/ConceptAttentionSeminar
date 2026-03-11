@@ -1,0 +1,16 @@
+{
+    "num_segments": 15,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "viscous_vs_slime": 1.0,
+        "viscous_vs_dripping": 0.2505536442746076,
+        "viscous_vs_green": 9.60365707261325e-07,
+        "slime_vs_dripping": 0.2505536442746076,
+        "slime_vs_green": 9.60365707261325e-07,
+        "dripping_vs_green": 0.7020883560180664
+    }
+}

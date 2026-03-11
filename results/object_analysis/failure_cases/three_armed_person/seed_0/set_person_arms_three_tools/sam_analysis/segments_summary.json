@@ -1,0 +1,16 @@
+{
+    "num_segments": 19,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "person_vs_arms": 0.024583457420962712,
+        "person_vs_three": 9.117983634756114e-05,
+        "person_vs_tools": 2.9582035421529215e-06,
+        "arms_vs_three": 0.0,
+        "arms_vs_tools": 0.1595611677189473,
+        "three_vs_tools": 0.0
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "num_segments": 6,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "rim_vs_wine": 0.0012172358013308015,
+        "rim_vs_glass": 0.0,
+        "rim_vs_stability": 0.9805827303516005,
+        "wine_vs_glass": 0.0005106543316377626,
+        "wine_vs_stability": 0.0,
+        "glass_vs_stability": 0.0
+    }
+}

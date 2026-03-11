@@ -1,0 +1,20 @@
+{
+    "num_segments": 108,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "street_vs_neon": 0.0,
+        "street_vs_lights": 0.0,
+        "street_vs_pedestrians": 0.7081495735202158,
+        "street_vs_city": 0.7335647450158245,
+        "neon_vs_lights": 0.18446567565813157,
+        "neon_vs_pedestrians": 0.0,
+        "neon_vs_city": 0.009905160565334562,
+        "lights_vs_pedestrians": 0.0,
+        "lights_vs_city": 0.021688888670343152,
+        "pedestrians_vs_city": 0.8443873718147645
+    }
+}

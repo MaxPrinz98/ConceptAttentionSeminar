@@ -1,0 +1,16 @@
+{
+    "num_segments": 19,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "keys_vs_buried": 0.010031700134277344,
+        "keys_vs_sand": 0.010031700134277344,
+        "keys_vs_partially": 0.02733898162841797,
+        "buried_vs_sand": 1.0,
+        "buried_vs_partially": 0.9798664046976909,
+        "sand_vs_partially": 0.9798664046976909
+    }
+}

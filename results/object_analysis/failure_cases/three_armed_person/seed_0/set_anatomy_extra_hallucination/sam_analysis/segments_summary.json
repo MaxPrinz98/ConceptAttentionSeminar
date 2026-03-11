@@ -1,0 +1,13 @@
+{
+    "num_segments": 19,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "anatomy_vs_extra": 0.0,
+        "anatomy_vs_hallucination": 0.35246135373740284,
+        "extra_vs_hallucination": 0.5744959429876121
+    }
+}

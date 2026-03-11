@@ -1,0 +1,16 @@
+{
+    "num_segments": 5,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "square_vs_circle": 0.0,
+        "square_vs_pedestal": 0.0,
+        "square_vs_impossible": 0.871779272831377,
+        "circle_vs_pedestal": 0.386066347663158,
+        "circle_vs_impossible": 0.10376473854345693,
+        "pedestal_vs_impossible": 0.0
+    }
+}

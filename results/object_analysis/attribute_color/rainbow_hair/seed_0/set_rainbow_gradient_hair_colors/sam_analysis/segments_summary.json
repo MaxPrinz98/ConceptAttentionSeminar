@@ -1,0 +1,16 @@
+{
+    "num_segments": 9,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "rainbow_vs_gradient": 0.0,
+        "rainbow_vs_hair": 0.0,
+        "rainbow_vs_colors": 0.7804662869597935,
+        "gradient_vs_hair": 0.9992063810667844,
+        "gradient_vs_colors": 0.0,
+        "hair_vs_colors": 0.0
+    }
+}

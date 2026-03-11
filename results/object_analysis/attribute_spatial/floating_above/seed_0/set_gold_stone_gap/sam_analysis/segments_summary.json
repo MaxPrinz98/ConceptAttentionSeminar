@@ -1,0 +1,13 @@
+{
+    "num_segments": 8,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "gold_vs_stone": 0.0,
+        "gold_vs_gap": 0.015489800184219171,
+        "stone_vs_gap": 0.0
+    }
+}

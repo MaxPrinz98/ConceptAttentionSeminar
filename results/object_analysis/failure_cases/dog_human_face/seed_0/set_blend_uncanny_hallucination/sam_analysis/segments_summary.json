@@ -1,0 +1,13 @@
+{
+    "num_segments": 13,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "blend_vs_uncanny": 0.01192664893406055,
+        "blend_vs_hallucination": 0.16131679061085313,
+        "uncanny_vs_hallucination": 0.0
+    }
+}

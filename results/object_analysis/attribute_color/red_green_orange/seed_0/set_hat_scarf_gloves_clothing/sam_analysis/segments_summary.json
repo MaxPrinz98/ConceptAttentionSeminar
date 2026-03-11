@@ -1,0 +1,16 @@
+{
+    "num_segments": 7,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "hat_vs_scarf": 0.001099337431530605,
+        "hat_vs_gloves": 0.0,
+        "hat_vs_clothing": 0.8217967076833395,
+        "scarf_vs_gloves": 0.47875218233793143,
+        "scarf_vs_clothing": 0.0,
+        "gloves_vs_clothing": 0.0
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "num_segments": 14,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "human_vs_eyes": 0.0,
+        "human_vs_hands": 0.0,
+        "human_vs_fingers": 0.0,
+        "eyes_vs_hands": 0.0,
+        "eyes_vs_fingers": 0.0,
+        "hands_vs_fingers": 0.2750969900019583
+    }
+}

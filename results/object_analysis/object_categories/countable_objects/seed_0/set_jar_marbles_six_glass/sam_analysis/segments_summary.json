@@ -1,0 +1,16 @@
+{
+    "num_segments": 28,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "jar_vs_marbles": 2.9264838004489228e-06,
+        "jar_vs_six": 0.0,
+        "jar_vs_glass": 2.86102294921875e-06,
+        "marbles_vs_six": 0.04958777612813245,
+        "marbles_vs_glass": 0.9381276593499646,
+        "six_vs_glass": 0.046519664351454944
+    }
+}

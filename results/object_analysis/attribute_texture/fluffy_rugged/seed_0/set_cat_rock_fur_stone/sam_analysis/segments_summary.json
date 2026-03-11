@@ -1,0 +1,16 @@
+{
+    "num_segments": 42,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "cat_vs_rock": 0.0,
+        "cat_vs_fur": 0.0,
+        "cat_vs_stone": 0.0,
+        "rock_vs_fur": 0.001630656868023169,
+        "rock_vs_stone": 0.5135352705245095,
+        "fur_vs_stone": 0.01001346535831988
+    }
+}

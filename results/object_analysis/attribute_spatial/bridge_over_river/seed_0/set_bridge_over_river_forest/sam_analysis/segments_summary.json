@@ -1,0 +1,16 @@
+{
+    "num_segments": 78,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "bridge_vs_over": 0.0,
+        "bridge_vs_river": 0.9096657894579329,
+        "bridge_vs_forest": 0.9375186614504621,
+        "over_vs_river": 0.00259103870319381,
+        "over_vs_forest": 0.0,
+        "river_vs_forest": 0.8861347604225682
+    }
+}

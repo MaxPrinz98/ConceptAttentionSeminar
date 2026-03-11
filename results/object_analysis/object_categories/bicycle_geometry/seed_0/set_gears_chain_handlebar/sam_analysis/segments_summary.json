@@ -1,0 +1,13 @@
+{
+    "num_segments": 10,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "gears_vs_chain": 0.5828372728579304,
+        "gears_vs_handlebar": 0.00013458504546517825,
+        "chain_vs_handlebar": 4.170276562315921e-06
+    }
+}

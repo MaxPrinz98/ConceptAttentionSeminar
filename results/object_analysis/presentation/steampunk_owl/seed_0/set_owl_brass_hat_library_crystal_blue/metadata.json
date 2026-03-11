@@ -1,0 +1,33 @@
+{
+    "category": "presentation",
+    "case_name": "steampunk_owl",
+    "prompt": "A steampunk owl wearing a tiny brass top hat, perched on a glowing blue crystal, inside a dusty Victorian library",
+    "concepts": [
+        "owl",
+        "brass",
+        "hat",
+        "library",
+        "crystal",
+        "blue"
+    ],
+    "concept_set_index": 0,
+    "seed": 0,
+    "timestamp": "2026-03-07T15:12:22.812851",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

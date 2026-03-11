@@ -1,0 +1,13 @@
+{
+    "num_segments": 7,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "brass_vs_room": 0.0,
+        "brass_vs_occlusion": 0.0,
+        "room_vs_occlusion": 0.39791415634779964
+    }
+}

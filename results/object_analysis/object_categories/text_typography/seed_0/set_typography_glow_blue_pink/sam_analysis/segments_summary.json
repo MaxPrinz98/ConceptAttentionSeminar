@@ -1,0 +1,16 @@
+{
+    "num_segments": 13,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "typography_vs_glow": 0.8364843242376796,
+        "typography_vs_blue": 1.3796039354187689e-05,
+        "typography_vs_pink": 0.909580891751465,
+        "glow_vs_blue": 0.052710755632495776,
+        "glow_vs_pink": 0.9123486365320335,
+        "blue_vs_pink": 0.0
+    }
+}

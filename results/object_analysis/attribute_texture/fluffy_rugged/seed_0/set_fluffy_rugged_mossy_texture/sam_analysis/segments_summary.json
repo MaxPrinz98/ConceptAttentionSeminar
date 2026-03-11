@@ -1,0 +1,16 @@
+{
+    "num_segments": 42,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "fluffy_vs_rugged": 0.0,
+        "fluffy_vs_mossy": 0.0,
+        "fluffy_vs_texture": 0.0,
+        "rugged_vs_mossy": 0.5078915356145738,
+        "rugged_vs_texture": 0.5054573113250187,
+        "mossy_vs_texture": 0.9909283116594083
+    }
+}

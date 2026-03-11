@@ -1,0 +1,16 @@
+{
+    "num_segments": 79,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "gears_vs_springs": 0.07985159165069894,
+        "gears_vs_watch": 0.6221135698759216,
+        "gears_vs_mechanical": 0.7554342587790359,
+        "springs_vs_watch": 0.01603030849386757,
+        "springs_vs_mechanical": 0.004866073159071234,
+        "watch_vs_mechanical": 0.7732767319756089
+    }
+}

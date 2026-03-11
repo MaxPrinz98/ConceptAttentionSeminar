@@ -1,0 +1,20 @@
+{
+    "num_segments": 23,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "Student_vs_AI": 0.7795464352495565,
+        "Student_vs_classroom": 0.0,
+        "Student_vs_presentation": 0.7348789137948178,
+        "Student_vs_relieved": 0.0007201967965352031,
+        "AI_vs_classroom": 0.0,
+        "AI_vs_presentation": 0.9276685900776338,
+        "AI_vs_relieved": 0.0007867736249891098,
+        "classroom_vs_presentation": 0.019411886003148204,
+        "classroom_vs_relieved": 0.6820515327824769,
+        "presentation_vs_relieved": 0.0007672189684760574
+    }
+}

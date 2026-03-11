@@ -1,0 +1,13 @@
+{
+    "num_segments": 37,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "sphere_vs_thin": 0.7321638254226498,
+        "sphere_vs_surface": 0.0035076174808668908,
+        "thin_vs_surface": 0.0
+    }
+}

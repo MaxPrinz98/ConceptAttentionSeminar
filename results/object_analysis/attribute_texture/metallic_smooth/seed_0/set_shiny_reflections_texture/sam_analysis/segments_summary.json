@@ -1,0 +1,13 @@
+{
+    "num_segments": 8,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "shiny_vs_reflections": 0.9462196904428185,
+        "shiny_vs_texture": 0.011965751647949219,
+        "reflections_vs_texture": 0.0
+    }
+}

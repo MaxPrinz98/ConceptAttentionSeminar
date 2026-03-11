@@ -1,0 +1,16 @@
+{
+    "num_segments": 34,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "water_vs_falling": 0.0022114454879618743,
+        "water_vs_upwards": 0.0,
+        "water_vs_fountain": 0.43434532363442424,
+        "falling_vs_upwards": 0.003997754779670601,
+        "falling_vs_fountain": 0.48473322612422226,
+        "upwards_vs_fountain": 0.0
+    }
+}

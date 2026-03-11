@@ -1,0 +1,16 @@
+{
+    "num_segments": 5,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "box_vs_sphere": 0.0,
+        "box_vs_pyramid": 0.0,
+        "box_vs_row": 0.0,
+        "sphere_vs_pyramid": 0.0,
+        "sphere_vs_row": 1.0,
+        "pyramid_vs_row": 0.0
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "num_segments": 19,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "rusty_vs_beach": 0.012529714023285975,
+        "rusty_vs_depth": 0.0,
+        "beach_vs_depth": 0.6510016315408811
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "num_segments": 12,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "vapor_vs_gaseous": 0.9355304246133941,
+        "vapor_vs_texture": 0.9529158022592489,
+        "gaseous_vs_texture": 0.944127082824707
+    }
+}

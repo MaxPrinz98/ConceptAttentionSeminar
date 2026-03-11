@@ -1,0 +1,13 @@
+{
+    "num_segments": 44,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "soil_vs_ground": 0.0,
+        "soil_vs_texture": 0.0,
+        "ground_vs_texture": 0.9766018936370617
+    }
+}

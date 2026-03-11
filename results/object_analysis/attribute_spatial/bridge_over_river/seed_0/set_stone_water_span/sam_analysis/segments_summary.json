@@ -1,0 +1,13 @@
+{
+    "num_segments": 78,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "stone_vs_water": 0.8926997038522148,
+        "stone_vs_span": 0.9038161131281278,
+        "water_vs_span": 0.9370917618622853
+    }
+}

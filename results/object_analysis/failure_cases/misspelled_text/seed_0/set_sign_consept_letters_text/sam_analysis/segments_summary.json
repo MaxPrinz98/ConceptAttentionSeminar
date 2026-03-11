@@ -1,0 +1,16 @@
+{
+    "num_segments": 21,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "sign_vs_CONSEPT": 0.6297579360783391,
+        "sign_vs_letters": 0.0,
+        "sign_vs_text": 0.6268840617721146,
+        "CONSEPT_vs_letters": 0.0,
+        "CONSEPT_vs_text": 0.995436541341391,
+        "letters_vs_text": 0.0
+    }
+}

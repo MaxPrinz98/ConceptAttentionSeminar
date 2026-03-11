@@ -1,0 +1,16 @@
+{
+    "num_segments": 36,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "clock_vs_numbers": 1.0,
+        "clock_vs_jumbled": 0.0,
+        "clock_vs_wrong": 0.0,
+        "numbers_vs_jumbled": 0.0,
+        "numbers_vs_wrong": 0.0,
+        "jumbled_vs_wrong": 1.0
+    }
+}

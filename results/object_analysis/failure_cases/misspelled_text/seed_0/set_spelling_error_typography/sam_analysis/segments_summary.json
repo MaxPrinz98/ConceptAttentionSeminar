@@ -1,0 +1,13 @@
+{
+    "num_segments": 21,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "spelling_vs_error": 0.030976840536035614,
+        "spelling_vs_typography": 0.0,
+        "error_vs_typography": 0.6110586504904222
+    }
+}

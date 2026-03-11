@@ -1,0 +1,16 @@
+{
+    "num_segments": 30,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "polished_vs_chrome": 0.004338965863551712,
+        "polished_vs_reflective": 0.0,
+        "polished_vs_metal": 0.7363697843720122,
+        "chrome_vs_reflective": 0.24499919884633872,
+        "chrome_vs_metal": 0.008311401953687883,
+        "reflective_vs_metal": 0.0
+    }
+}

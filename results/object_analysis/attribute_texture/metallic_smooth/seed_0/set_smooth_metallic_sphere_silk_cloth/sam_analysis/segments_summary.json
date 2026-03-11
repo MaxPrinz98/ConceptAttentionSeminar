@@ -1,0 +1,20 @@
+{
+    "num_segments": 8,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "smooth_vs_metallic": 0.0,
+        "smooth_vs_sphere": 0.0,
+        "smooth_vs_silk": 0.05440216953521467,
+        "smooth_vs_cloth": 0.8387890150298011,
+        "metallic_vs_sphere": 1.0,
+        "metallic_vs_silk": 0.0,
+        "metallic_vs_cloth": 0.0,
+        "sphere_vs_silk": 0.0,
+        "sphere_vs_cloth": 0.0,
+        "silk_vs_cloth": 0.01204365189618058
+    }
+}

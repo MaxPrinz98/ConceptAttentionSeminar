@@ -1,0 +1,16 @@
+{
+    "num_segments": 22,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "park_vs_dogs": 0.0,
+        "park_vs_benches": 0.0,
+        "park_vs_people": 0.0,
+        "dogs_vs_benches": 0.0,
+        "dogs_vs_people": 0.004188545531576177,
+        "benches_vs_people": 0.0
+    }
+}

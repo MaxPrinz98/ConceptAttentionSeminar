@@ -1,0 +1,13 @@
+{
+    "num_segments": 6,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "pedestal_vs_transparent": 0.7114340109493523,
+        "pedestal_vs_position": 0.0,
+        "transparent_vs_position": 0.0
+    }
+}

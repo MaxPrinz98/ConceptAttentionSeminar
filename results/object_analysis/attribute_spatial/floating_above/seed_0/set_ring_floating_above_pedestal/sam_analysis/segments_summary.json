@@ -1,0 +1,16 @@
+{
+    "num_segments": 8,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "ring_vs_floating": 0.015489800184219171,
+        "ring_vs_above": 0.015489800184219171,
+        "ring_vs_pedestal": 0.0,
+        "floating_vs_above": 1.0,
+        "floating_vs_pedestal": 0.0,
+        "above_vs_pedestal": 0.0
+    }
+}

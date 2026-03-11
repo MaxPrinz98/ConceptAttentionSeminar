@@ -1,0 +1,13 @@
+{
+    "num_segments": 4,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "face_vs_person": 0.0,
+        "face_vs_movement": 0.8211171215836955,
+        "person_vs_movement": 0.0
+    }
+}

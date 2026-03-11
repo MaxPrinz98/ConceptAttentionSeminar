@@ -1,0 +1,13 @@
+{
+    "num_segments": 15,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "liquid_vs_sticky": 0.05901343708028829,
+        "liquid_vs_texture": 0.0016326904296875,
+        "sticky_vs_texture": 0.0
+    }
+}

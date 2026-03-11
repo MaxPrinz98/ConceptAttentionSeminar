@@ -1,0 +1,20 @@
+{
+    "num_segments": 54,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "banana_vs_grapes": 0.09058081814334652,
+        "banana_vs_purple": 0.0035822430693793587,
+        "banana_vs_yellow": 0.0,
+        "banana_vs_fruit": 0.01246373569763028,
+        "grapes_vs_purple": 0.0,
+        "grapes_vs_yellow": 0.0,
+        "grapes_vs_fruit": 0.3816863780992976,
+        "purple_vs_yellow": 0.039034119239262054,
+        "purple_vs_fruit": 0.0,
+        "yellow_vs_fruit": 0.0
+    }
+}

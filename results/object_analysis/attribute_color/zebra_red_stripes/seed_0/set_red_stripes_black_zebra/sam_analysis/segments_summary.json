@@ -1,0 +1,16 @@
+{
+    "num_segments": 23,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "red_vs_stripes": 0.9978203335429316,
+        "red_vs_black": 0.0,
+        "red_vs_zebra": 0.9997155644986883,
+        "stripes_vs_black": 0.0,
+        "stripes_vs_zebra": 0.9975371364637502,
+        "black_vs_zebra": 0.0
+    }
+}

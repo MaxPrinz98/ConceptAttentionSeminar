@@ -1,0 +1,13 @@
+{
+    "num_segments": 104,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "scales_vs_animal": 0.8748682911345996,
+        "scales_vs_texture": 0.0,
+        "animal_vs_texture": 0.0
+    }
+}

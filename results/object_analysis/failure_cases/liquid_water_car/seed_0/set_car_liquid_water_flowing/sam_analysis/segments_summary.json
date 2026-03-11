@@ -1,0 +1,16 @@
+{
+    "num_segments": 25,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "car_vs_liquid": 0.9142884133956828,
+        "car_vs_water": 0.01710987091064453,
+        "car_vs_flowing": 0.9142884133956828,
+        "liquid_vs_water": 0.0,
+        "liquid_vs_flowing": 1.0,
+        "water_vs_flowing": 0.0
+    }
+}

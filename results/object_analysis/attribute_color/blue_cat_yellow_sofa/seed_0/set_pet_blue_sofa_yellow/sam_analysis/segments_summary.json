@@ -1,0 +1,16 @@
+{
+    "num_segments": 14,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "pet_vs_blue": 0.0,
+        "pet_vs_sofa": 0.0,
+        "pet_vs_yellow": 0.0,
+        "blue_vs_sofa": 0.163054647558557,
+        "blue_vs_yellow": 1.0,
+        "sofa_vs_yellow": 0.163054647558557
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "num_segments": 54,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "white_vs_picket": 0.0,
+        "white_vs_fence": 0.2692100749300352,
+        "white_vs_red": 0.0,
+        "white_vs_brick": 0.0,
+        "white_vs_house": 0.0,
+        "white_vs_distance": 0.0,
+        "picket_vs_fence": 0.0,
+        "picket_vs_red": 0.0,
+        "picket_vs_brick": 0.0,
+        "picket_vs_house": 0.0,
+        "picket_vs_distance": 1.0,
+        "fence_vs_red": 0.0,
+        "fence_vs_brick": 0.0,
+        "fence_vs_house": 0.0,
+        "fence_vs_distance": 0.0,
+        "red_vs_brick": 0.29905256723716384,
+        "red_vs_house": 0.03428861857841609,
+        "red_vs_distance": 0.0,
+        "brick_vs_house": 0.010254099412891243,
+        "brick_vs_distance": 0.0,
+        "house_vs_distance": 0.0
+    }
+}

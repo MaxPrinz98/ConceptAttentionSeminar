@@ -1,0 +1,16 @@
+{
+    "num_segments": 26,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "neon_vs_green": 0.9634293067246409,
+        "neon_vs_shadows": 0.3872761288365273,
+        "neon_vs_statue": 0.0,
+        "green_vs_shadows": 0.4000146235480906,
+        "green_vs_statue": 0.0,
+        "shadows_vs_statue": 0.0
+    }
+}

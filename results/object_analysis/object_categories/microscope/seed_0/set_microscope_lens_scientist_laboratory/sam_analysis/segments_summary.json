@@ -1,0 +1,16 @@
+{
+    "num_segments": 34,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "microscope_vs_lens": 4.043743191979235e-05,
+        "microscope_vs_scientist": 0.0,
+        "microscope_vs_laboratory": 0.0,
+        "lens_vs_scientist": 0.0001108661106936523,
+        "lens_vs_laboratory": 0.0,
+        "scientist_vs_laboratory": 0.06395966477243985
+    }
+}

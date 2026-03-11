@@ -1,0 +1,13 @@
+{
+    "num_segments": 146,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "texture_vs_rough": 0.8590536590585226,
+        "texture_vs_surface": 0.8317713029670987,
+        "rough_vs_surface": 0.8027833264715898
+    }
+}

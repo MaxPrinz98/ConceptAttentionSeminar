@@ -1,0 +1,13 @@
+{
+    "num_segments": 52,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "friends_vs_park": 0.47572435434167715,
+        "friends_vs_crowd": 0.06810224303712852,
+        "park_vs_crowd": 0.0
+    }
+}

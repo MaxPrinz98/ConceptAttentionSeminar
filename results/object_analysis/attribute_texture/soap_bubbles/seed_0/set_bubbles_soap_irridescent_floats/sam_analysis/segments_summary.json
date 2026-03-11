@@ -1,0 +1,16 @@
+{
+    "num_segments": 37,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "bubbles_vs_soap": 0.018062591552734375,
+        "bubbles_vs_irridescent": 0.0,
+        "bubbles_vs_floats": 0.3817010588635438,
+        "soap_vs_irridescent": 0.9644261796271323,
+        "soap_vs_floats": 0.026389010802217568,
+        "irridescent_vs_floats": 0.0
+    }
+}

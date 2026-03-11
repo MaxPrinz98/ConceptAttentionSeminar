@@ -1,0 +1,16 @@
+{
+    "num_segments": 28,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "beach_vs_sunbathing": 0.9993840753499325,
+        "beach_vs_sand": 0.0,
+        "beach_vs_people": 0.0,
+        "sunbathing_vs_sand": 0.0,
+        "sunbathing_vs_people": 0.0,
+        "sand_vs_people": 0.9737606988582532
+    }
+}

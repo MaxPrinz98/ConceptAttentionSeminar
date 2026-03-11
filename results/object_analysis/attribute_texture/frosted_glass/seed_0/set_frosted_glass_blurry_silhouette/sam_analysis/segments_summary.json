@@ -1,0 +1,16 @@
+{
+    "num_segments": 3,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "frosted_vs_glass": 0.0,
+        "frosted_vs_blurry": 1.0,
+        "frosted_vs_silhouette": 0.0,
+        "glass_vs_blurry": 0.0,
+        "glass_vs_silhouette": 0.25728581206798484,
+        "blurry_vs_silhouette": 0.0
+    }
+}
