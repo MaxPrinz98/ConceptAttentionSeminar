@@ -59,6 +59,8 @@ def render_top_candidates(
         tokens = concept_to_tokens.get(cand["concept"], [])
         tokens_json = json.dumps(tokens)
 
+        case_name = Path(cand["case_path"]).parent.parent.name
+
         section_html += f"""
                     <div class="case-block" style="border-left: 4px solid {color_hex}; margin-bottom: 0;">
                         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
@@ -70,10 +72,16 @@ def render_top_candidates(
                                 <div style="color: #8b949e; font-family: monospace; margin-top: 8px;">{cand["seed"]} | "{cand["prompt"]}"</div>
                                 <div style="color: #8b949e; font-family: monospace; font-size: 0.8rem; margin-top: 4px;">Tokens: {tokens_json}</div>
                             </div>
-                            <div style="display: flex; gap: 10px;">
-                                <div class="metric-item" title="IoU"><span class="metric-label">IoU</span><br><span class="metric-val {get_metric_class(cand["iou"])}">{cand["iou"]:.2%}</span></div>
-                                <div class="metric-item" title="Precision"><span class="metric-label">Prec</span><br><span class="metric-val {get_metric_class(cand["precision"])}">{cand["precision"]:.2%}</span></div>
-                                <div class="metric-item" title="Recall"><span class="metric-label">Rec</span><br><span class="metric-val {get_metric_class(cand["recall"])}">{cand["recall"]:.2%}</span></div>
+                            <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
+                                <div style="display: flex; gap: 10px;">
+                                    <div class="metric-item" title="IoU"><span class="metric-label">IoU</span><br><span class="metric-val {get_metric_class(cand["iou"])}">{cand["iou"]:.2%}</span></div>
+                                    <div class="metric-item" title="Precision"><span class="metric-label">Prec</span><br><span class="metric-val {get_metric_class(cand["precision"])}">{cand["precision"]:.2%}</span></div>
+                                    <div class="metric-item" title="Recall"><span class="metric-label">Rec</span><br><span class="metric-val {get_metric_class(cand["recall"])}">{cand["recall"]:.2%}</span></div>
+                                </div>
+                                <div style="display: flex; gap: 6px;">
+                                    <button onclick="viewInGallery('{case_name.lower()}')" style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: background 0.2s;">Gallery →</button>
+                                    <button onclick="viewInGrids('{case_name.lower()}')" style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: background 0.2s;">Grid →</button>
+                                </div>
                             </div>
                         </div>
                         
@@ -163,18 +171,28 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
             iou = sam_data.get("iou", 0)
             precision = sam_data.get("precision", 0)
             recall = sam_data.get("recall", 0)
+            
+            diagnostic_path = sam_analysis_dir / f"overlap_diagnostic_{safe_c}.png"
 
             block += f"""
                     <div class="viz-item">
                         <img src="{get_image_src(sam_masked_path)}" alt="SAM {concept}" loading="lazy">
                         <div class="viz-label">SAM Segment</div>
                     </div>
-                    <div style="display: flex; gap: 4px; justify-content: center;">
+                    <div style="display: flex; gap: 4px; justify-content: center; margin-bottom: 8px;">
                         <div class="metric-item" style="flex:1;"><div class="metric-label">IoU</div><div class="metric-val {get_metric_class(iou)}">{iou:.2%}</div></div>
                         <div class="metric-item" style="flex:1;"><div class="metric-label">Prec</div><div class="metric-val {get_metric_class(precision)}">{precision:.2%}</div></div>
                         <div class="metric-item" style="flex:1;"><div class="metric-label">Rec</div><div class="metric-val {get_metric_class(recall)}">{recall:.2%}</div></div>
                     </div>
             """
+            
+            if diagnostic_path.exists():
+                block += f"""
+                    <div class="viz-item" style="margin-top: 5px;">
+                        <img src="{get_image_src(diagnostic_path)}" alt="Diagnostic {concept}" loading="lazy" style="border: 2px solid #58a6ff;">
+                        <div class="viz-label" style="color: #c9d1d9;">Overlap Diagnostic</div>
+                    </div>
+                """
 
         block += "</div>"
     block += "</div>"

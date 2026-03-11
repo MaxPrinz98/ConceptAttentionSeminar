@@ -219,6 +219,24 @@ def process_directory(set_path, model, device, force=False):
                 output_dir / f"matched_masked_image_{safe_concept}.png"
             )
 
+            # --- Create color-coded overlap diagnostic ---
+            overlap_vis = (img_np.copy() * 0.4).astype(np.uint8)  # Darken background
+
+            tp_mask = c_mask_np & current_composite_mask
+            fp_mask = c_mask_np & ~current_composite_mask
+            fn_mask = ~c_mask_np & current_composite_mask
+
+            # Green (True Positive)
+            overlap_vis[tp_mask] = [63, 185, 80]
+            # Blue (False Positive - Leaked attention)
+            overlap_vis[fp_mask] = [88, 166, 255]
+            # Red (False Negative - Missed by attention)
+            overlap_vis[fn_mask] = [248, 81, 73]
+
+            Image.fromarray(overlap_vis).save(
+                output_dir / f"overlap_diagnostic_{safe_concept}.png"
+            )
+
             metrics[concept] = {
                 "iou": best_iou,
                 "coverage": calculate_coverage(c_mask_np, current_composite_mask),

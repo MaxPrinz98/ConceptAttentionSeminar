@@ -7,6 +7,7 @@ dashboard (charts, search, filtering, tab switching).
 """
 
 import json
+from pathlib import Path
 
 
 def get_css():
@@ -26,13 +27,9 @@ def get_css():
 
         .main-container { display: flex; flex: 1; overflow: hidden; }
         
-        /* Table of Contents / Sidebar */
-        .sidebar { width: 250px; background: #0d1117; border-right: 1px solid #30363d; overflow-y: auto; padding: 20px; display: none; }
-        .sidebar h3 { color: #8b949e; margin-top: 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .toc-list { list-style: none; padding: 0; margin: 0; }
-        .toc-item { margin-bottom: 10px; }
-        .toc-link { color: #c9d1d9; text-decoration: none; font-size: 0.95rem; display: block; padding: 8px; border-radius: 6px; transition: background 0.2s; }
-        .toc-link:hover { background: #21262d; color: #58a6ff; }
+        /* Gallery navigator dropdown */
+        .gallery-nav-select { background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; min-width: 200px; max-width: 400px; }
+        .gallery-nav-select:focus { outline: none; border-color: #58a6ff; }
         
         .content-area { flex: 1; overflow-y: auto; padding: 30px; }
         
@@ -117,16 +114,7 @@ def get_css():
         .concept-tab-panel { display: none; padding: 20px 0; }
         .concept-tab-panel.active { display: block; }
 
-        /* Hierarchical ToC */
-        .toc-group { margin-bottom: 4px; }
-        .toc-group-toggle { display: flex; align-items: center; gap: 6px; color: #c9d1d9; font-size: 0.95rem; font-weight: 600; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.15s; user-select: none; }
-        .toc-group-toggle:hover { background: #21262d; }
-        .toc-group-toggle .arrow { font-size: 0.7rem; transition: transform 0.2s; display: inline-block; width: 10px; }
-        .toc-group-toggle.open .arrow { transform: rotate(90deg); }
-        .toc-cases { list-style: none; padding: 0 0 0 22px; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
-        .toc-cases.open { max-height: 2000px; }
-        .toc-case-link { color: #8b949e; text-decoration: none; font-size: 0.82rem; display: block; padding: 4px 10px; border-radius: 4px; transition: all 0.15s; }
-        .toc-case-link:hover { background: #21262d; color: #58a6ff; }
+
     """
 
 
@@ -145,12 +133,292 @@ def get_html_head(css):
 </head>"""
 
 
+def get_implementation_details_html():
+    """Return the HTML for the Implementation Details tab."""
+    return """
+        <!-- IMPLEMENTATION DETAILS TAB -->
+        <div id="implementation" class="tab-content">
+            <h2 style="margin-top:0; font-size: 2.5rem;">Pipeline Implementation Details</h2>
+            <p style="color: #8b949e; margin-bottom: 20px; font-size: 1.3rem; line-height: 1.6;">This section outlines the core programs in the <code>seminar_project</code> directory, their purpose in the evaluation pipeline, and highlights key algorithmic implementations.</p>
+            
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; margin-bottom: 40px;">
+                <h3 style="margin-top: 0; color: #c9d1d9; font-size: 1.6rem; border-bottom: 1px solid #30363d; padding-bottom: 10px;">Pipeline Summary: What this project does</h3>
+                <ul style="color: #8b949e; font-size: 1.25rem; line-height: 1.7; padding-left: 25px; margin-top: 15px;">
+                    <li><strong style="color: #c9d1d9;">Image & Attention Generation:</strong> We hook into the <code>Flux1.schnell</code> transformer during image generation to extract the raw cross-attention probability heatmaps for specific concept tokens.</li>
+                    <li><strong style="color: #c9d1d9;">Mask Processing:</strong> We upscale the low-resolution heatmaps and apply adaptive thresholding (Otsu's method) to binarize them into crisp "Concept masks."</li>
+                    <li><strong style="color: #c9d1d9;">Automated Ground Truth:</strong> We use the Segment Anything Model (SAM) to break the generated images into generic pieces, then apply a greedy algorithm to compose the pieces that best match the concept mask into a "ground truth" shape.</li>
+                    <li><strong style="color: #c9d1d9;">Evaluation:</strong> We score the Concept masks against the automated SAM ground truth to calculate Intersection over Union (IoU), Precision, and Recall.</li>
+                    <li><strong style="color: #c9d1d9;">Reporting:</strong> We aggregate all generated artifacts, metrics, and text embeddings into this interactive HTML dashboard.</li>
+                </ul>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 40px;">
+                
+                <!-- Final Directory Structure Overview -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">Final Expected Output Structure</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem; margin-bottom: 20px;">By the end of the full pipeline execution, each evaluated concept set generates a comprehensive set of artifacts arranged in the following hierarchical structure:</p>
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; font-family: monospace; font-size: 1.15rem; color: #c9d1d9; overflow-x: auto;">
+<pre style="margin: 0; color: #c9d1d9; font-size: 1.15rem;">results/object_analysis/
+└── {group_name}/                    <span style="color: #8b949e;"># e.g., attribute_color</span>
+    └── {case_name}/                 <span style="color: #8b949e;"># e.g., blue_cat_yellow_sofa</span>
+        └── seed_{N}/                <span style="color: #8b949e;"># e.g., seed_0</span>
+            └── set_{concepts}/      <span style="color: #8b949e;"># e.g., set_animal_blue_sofa_yellow</span>
+                │
+                ├── image.png                     <span style="color: #8b949e;"># Original 1024x1024 generated image</span>
+                ├── metadata.json                 <span style="color: #8b949e;"># Details about tokens and evaluation params</span>
+                │
+                ├── heatmap_*.png                 <span style="color: #8b949e;"># Low-res raw attention arrays</span>
+                ├── upscaled_heatmap_*.png        <span style="color: #8b949e;"># High-res colorized attention visualization</span>
+                ├── mask_*.png                    <span style="color: #8b949e;"># Binarized attention threshold mask</span>
+                ├── masked_image_*.png            <span style="color: #8b949e;"># Binary mask overlaid on original image</span>
+                │
+                └── sam_analysis/                 <span style="color: #8b949e;"># Final SAM Evaluation Artifacts</span>
+                    ├── metrics.json              <span style="color: #8b949e;"># Contains IoU, Precision, and Recall scores</span>
+                    ├── segments_summary.json     <span style="color: #8b949e;"># SAM internal metadata</span>
+                    ├── debug_coverage_gaps.png   <span style="color: #8b949e;"># Diagnostic visualization of SAM failures</span>
+                    ├── matched_mask_*.png        <span style="color: #8b949e;"># Composed SAM "ground truth" mask</span>
+                    ├── matched_masked_image_*.png<span style="color: #8b949e;"># Overlay visualizing the IoU overlap</span>
+                    └── all_segments/             <span style="color: #8b949e;"># Raw individual segments parsed by SAM</span></pre>
+                    </div>
+                </div>
+
+                <!-- Pipeline Overview -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">1. pipeline.py</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">The central orchestrator of the entire evaluation process. It runs the scripts in a sequential cascade to ensure all data is generated, processed, evaluated, and finally rendered into this HTML dashboard. It allows running specific steps or resuming from failures.</p>
+                </div>
+
+                <!-- Run Object Analysis -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">2. run_object_analysis.py</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem; margin-bottom: 20px;">This script handles the image generation and raw concept attention extraction. It loads the <code>Flux1.schnell</code> model, parses the <code>experiments.json</code> configurations, and hooks into the transformer's double stream attention blocks (layers 16-18) to extract the cross-attention probabilities for specific concept tokens.</p>
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; font-family: monospace; font-size: 1.15rem; color: #c9d1d9;">
+                        <span style="color: #8b949e; display: block; margin-bottom: 15px; font-size: 1.25rem; text-transform: uppercase;">Generated File Tree</span>
+<pre style="margin: 0; color: #c9d1d9; font-size: 1.15rem;">results/object_analysis/
+└── {group_name}/                    <span style="color: #8b949e;"># e.g., attribute_color</span>
+    └── {case_name}/                 <span style="color: #8b949e;"># e.g., blue_cat_yellow_sofa</span>
+        └── seed_{N}/                <span style="color: #8b949e;"># e.g., seed_0</span>
+            └── set_{concepts}/      <span style="color: #8b949e;"># e.g., set_animal_blue_sofa_yellow</span>
+                ├── image.png        <span style="color: #8b949e;"># The 1024x1024 generated image</span>
+                ├── metadata.json    <span style="color: #8b949e;"># Run parameters & tokenizer mapping</span>
+                └── heatmap_*.png    <span style="color: #8b949e;"># Raw low-res attention arrays</span></pre>
+                    </div>
+                </div>
+
+                <!-- Process Heatmaps -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">3. process_heatmaps.py</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">Converts the raw, low-resolution attention heatmaps into usable formats. It upscales them to 1024x1024, applies the 'inferno' colormap, and generates a binary mask used for quantitative evaluation.</p>
+                    
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; overflow-x: auto;">
+                        <span style="color: #8b949e; font-size: 1.25rem; display: block; margin-bottom: 12px;">Dynamic Mask Thresholding snippet:</span>
+<pre style="margin: 0; color: #c9d1d9; font-family: monospace; font-size: 1.15rem;"><code># 1. Normalize heatmap
+heatmap_np = np.array(upscaled_heatmap).astype(float) / 255.0
+
+# 2. Dynamic thresholding: Otsu's method on the non-zero attention values
+nonzero_vals = heatmap_np[heatmap_np > 0.05]
+if len(nonzero_vals) > 0:
+    threshold = threshold_otsu(nonzero_vals)
+else:
+    threshold = 0.5  # Fallback
+
+# 3. Create binary mask
+mask = heatmap_np > threshold
+mask_img = Image.fromarray((mask * 255).astype(np.uint8))</code></pre>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #30363d;">
+                            <p style="color: #8b949e; font-size: 1.2rem; line-height: 1.6; margin: 0;"><strong>How it works:</strong><br>
+                            Unlike a static threshold (like fixing it at 0.5), this code adapts to each heatmap. <br>
+                            • Line 5 ignores all background pixels with &lt;5% attention. If we included the massive background of zeros, the thresholding algorithm would skew heavily and fail.<br>
+                            • Line 7 uses <em>Otsu's Method</em>, an algorithm that analyzes the variance in pixel intensities to mathematically find the optimal dividing line between "foreground object" and "background".<br>
+                            • Line 12 essentially says "Any pixel brighter than Otsu's threshold is part of the concept mask (True), everything else is background (False)".
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; font-family: monospace; font-size: 1.15rem; color: #c9d1d9;">
+                        <span style="color: #8b949e; display: block; margin-bottom: 15px; font-size: 1.25rem; text-transform: uppercase;">Generated File Tree (Appended)</span>
+<pre style="margin: 0; color: #c9d1d9; font-size: 1.15rem;">results/object_analysis/
+└── {group_name}/
+    └── {case_name}/
+        └── seed_{N}/
+            └── set_{concepts}/
+                ├── mask_*.png                 <span style="color: #8b949e;"># Binary threshold mask</span>
+                ├── masked_image_*.png         <span style="color: #8b949e;"># Mask overlaid on original image</span>
+                └── upscaled_heatmap_*.png     <span style="color: #8b949e;"># Colorized attention visualization</span></pre>
+                    </div>
+                </div>
+
+                <!-- Run SAM Analysis -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">4. run_sam_analysis.py</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem; margin-bottom: 20px;">Evaluates the concept attention masks against an automated "ground truth" generated by the Segment Anything Model (SAM). Since SAM doesn't know <em>what</em> an object is, we use a greedy algorithm to compose the optimal combination of generic SAM segments that align with the Concept Attention mask.</p>
+                    
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; overflow-x: auto;">
+                        <span style="color: #8b949e; font-size: 1.25rem; display: block; margin-bottom: 12px;">Greedy SAM Segment Composition snippet:</span>
+<pre style="margin: 0; color: #c9d1d9; font-family: monospace; font-size: 1.15rem;"><code>current_composite_mask = np.zeros_like(concept_mask)
+selected_indices = []
+best_iou = 0.0
+
+while True:
+    improved = False
+    best_temp_iou = best_iou
+    best_temp_idx = -1
+
+    # 1. Try adding each unused SAM segment
+    for i in range(num_segments):
+        if i in selected_indices: continue
+        
+        temp_mask = np.logical_or(current_composite_mask, sam_segment_masks[i])
+        temp_iou = calculate_iou(concept_mask, temp_mask)
+
+        if temp_iou > best_temp_iou:
+            best_temp_iou = temp_iou
+            best_temp_idx = i
+
+    # 2. If IoU improved, permanently add the segment to the composite
+    if best_temp_idx != -1:
+        current_composite_mask = np.logical_or(
+            current_composite_mask, sam_segment_masks[best_temp_idx]
+        )
+        selected_indices.append(best_temp_idx)
+        best_iou = best_temp_iou
+        improved = True
+
+    # 3. Stop if no segment improved the IoU
+    if not improved:
+        break</code></pre>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #30363d;">
+                            <p style="color: #8b949e; font-size: 1.2rem; line-height: 1.6; margin: 0;"><strong>How it works:</strong><br>
+                            SAM breaks the image into many tiny generic pieces (e.g., a car might be split into wheels, doors, windows). The concept attention mask highlights the whole car, but isn't a perfect bounding shape.<br>
+                            • The `while` loop continuously tries to build a better "ground truth" shape.<br>
+                            • Block 1 tests <em>every single remaining SAM piece</em> by overlaying it onto our running composite mask, and calculates the new Intersection-over-Union (IoU) overlap score with the Concept mask.<br>
+                            • Block 2 locks in the single SAM piece that provided the biggest boost to the overall IoU score.<br>
+                            • Block 3 breaks the loop when adding another piece actually hurts the IoU score (meaning the piece doesn't belong to the concept we're looking for).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; font-family: monospace; font-size: 1.15rem; color: #c9d1d9;">
+                        <span style="color: #8b949e; display: block; margin-bottom: 15px; font-size: 1.25rem; text-transform: uppercase;">Generated File Tree (Appended)</span>
+<pre style="margin: 0; color: #c9d1d9; font-size: 1.15rem;">results/object_analysis/
+└── {group_name}/
+    └── {case_name}/
+        └── seed_{N}/
+            └── set_{concepts}/
+                └── sam_analysis/
+                    ├── all_segments/                 <span style="color: #8b949e;"># Raw SAM segments (segment_X and masked_segment_X)</span>
+                    ├── debug_coverage_gaps.png       <span style="color: #8b949e;"># Visualizes areas missed by SAM</span>
+                    ├── matched_mask_*.png            <span style="color: #8b949e;"># Composed SAM mask matching concept</span>
+                    ├── matched_masked_image_*.png    <span style="color: #8b949e;"># Green/Red visual of IoU</span>
+                    ├── metrics.json                  <span style="color: #8b949e;"># Crucial numerical scores (IoU, Precision, Recall)</span>
+                    └── segments_summary.json         <span style="color: #8b949e;"># Metadata about the extracted segments</span></pre>
+                    </div>
+                </div>
+
+                <!-- Evaluate / Render HTML -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">5. evaluate_object_analysis_html.py & render_html/</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">The final step dynamically crawls the entire <code>results/</code> directory structure, reading every <code>metadata.json</code> and `sam_analysis/metrics.json` file it finds. It computes aggregate statistics (averages, top performers, failures) across all experimental runs, handles tokenization introspection via the T5 encoder, and finally injects all the gathered data into a comprehensive interactive HTML dashboard (like this one).</p>
+                </div>
+
+                <!-- Extract Embeddings (Bonus) -->
+                <div class="case-block">
+                    <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">6. extract_embeddings.py</h3>
+                    <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">An auxiliary script handling the semantic clustering visualization in the Findings tab. It extracts the raw 4096-dimensional text embeddings from the T5 encoder for every concept, projects them down to 2 dimensions using UMAP (Uniform Manifold Approximation and Projection), and saves a <code>results_umap/concept_embeddings.json</code> file which is ingested by the dashboard's Chart.js visualization engine.</p>
+                </div>
+
+            </div>
+        </div>
+    """
+
+
+def get_metrics_tab_html(get_image_src):
+    """Return the HTML for the Metrics explanation tab."""
+    base_path = Path("results/object_analysis/attribute_color/blue_cat_yellow_sofa/seed_0/set_animal_blue_sofa_yellow")
+    # If paths don't exist (e.g., partial runs), fallback to empty placeholders, but we assume they exist for the main report.
+    concept_mask_src = get_image_src(base_path / "masked_image_animal.png") if (base_path / "masked_image_animal.png").exists() else ""
+    sam_mask_src = get_image_src(base_path / "sam_analysis" / "matched_masked_image_animal.png") if (base_path / "sam_analysis" / "matched_masked_image_animal.png").exists() else ""
+    overlap_vis_src = get_image_src(base_path / "sam_analysis" / "overlap_diagnostic_animal.png") if (base_path / "sam_analysis" / "overlap_diagnostic_animal.png").exists() else ""
+
+    return f"""
+        <!-- METRICS TAB -->
+        <div id="metrics" class="tab-content">
+            <h2 style="margin-top:0; font-size: 2.5rem;">Understanding the Evaluation Metrics</h2>
+            <p style="color: #8b949e; margin-bottom: 30px; font-size: 1.3rem; line-height: 1.6;">To evaluate the concept attention mathematically, we compare the thresholded attention mask (our "Prediction") against a composite Segment Anything (SAM) mask composed of generic segments (our "Ground Truth").</p>
+            
+            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                <!-- Left Column: Metrics Definitions -->
+                <div style="flex: 1; min-width: 400px; display: flex; flex-direction: column; gap: 30px;">
+                    <div class="case-block" style="border-left: 4px solid #58a6ff;">
+                        <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem;">Intersection over Union (IoU)</h3>
+                        <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">The primary metric of success. It measures the overall overlap between the Concept Mask and the SAM Ground Truth.<br>
+                        <strong>Score in example:</strong> 0.92</p>
+                        <div style="background: #0d1117; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 1.15rem; color: #8b949e;">
+                            IoU = (Area of Overlap) / (Area of Union)
+                        </div>
+                    </div>
+
+                    <div class="case-block" style="border-left: 4px solid #3fb950;">
+                        <h3 style="margin-top: 0; color: #3fb950; font-size: 1.8rem;">Precision</h3>
+                        <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">Measures how "clean" the attention mask is. Of all the pixels the Concept Mask highlighted, what percentage actually belong to the ground truth object? A low score means the attention "leaked" into the background (False Positives).<br>
+                        <strong>Score in example:</strong> 0.98</p>
+                        <div style="background: #0d1117; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 1.15rem; color: #8b949e;">
+                            Precision = (Area of Overlap) / (Area of Concept Mask)
+                        </div>
+                    </div>
+
+                    <div class="case-block" style="border-left: 4px solid #d29922;">
+                        <h3 style="margin-top: 0; color: #d29922; font-size: 1.8rem;">Recall (Coverage)</h3>
+                        <p style="color: #c9d1d9; line-height: 1.6; font-size: 1.25rem;">Measures how completely the attention mask covers the object. Of all the pixels in the ground truth object, what percentage did the Concept Mask successfully find? A low score means the attention missed parts of the object (False Negatives).<br>
+                        <strong>Score in example:</strong> 0.94</p>
+                        <div style="background: #0d1117; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 1.15rem; color: #8b949e;">
+                            Recall = (Area of Overlap) / (Area of SAM Ground Truth Mask)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visual Example -->
+                <div style="flex: 1.5; min-width: 500px;">
+                    <h3 style="margin-top: 0; color: #c9d1d9; font-size: 1.8rem; border-bottom: 1px solid #30363d; padding-bottom: 10px;">Visual Calculation Example <span style="color: #8b949e; font-size: 1.1rem; font-weight: normal;">(Prompt: Blue cat, yellow sofa | Concept: "animal")</span></h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px;">
+                        <div>
+                            <span style="display: block; color: #8b949e; margin-bottom: 8px; font-size: 1.15rem;">1. Concept Mask (Pred)</span>
+                            <img src="{concept_mask_src}" style="width: 100%; border-radius: 8px; border: 1px solid #30363d;" alt="Concept Mask">
+                        </div>
+                        <div>
+                            <span style="display: block; color: #8b949e; margin-bottom: 8px; font-size: 1.15rem;">2. SAM Mask (Truth)</span>
+                            <img src="{sam_mask_src}" style="width: 100%; border-radius: 8px; border: 1px solid #30363d;" alt="SAM Mask">
+                        </div>
+                        <div>
+                            <span style="display: block; color: #8b949e; margin-bottom: 8px; font-size: 1.15rem;">3. Overlap Diagnostic</span>
+                            <img src="{overlap_vis_src}" style="width: 100%; border-radius: 8px; border: 1px solid #30363d;" alt="Overlap Diagnostic">
+                        </div>
+                    </div>
+                    
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px;">
+                        <span style="color: #c9d1d9; font-size: 1.25rem; font-weight: bold; display: block; margin-bottom: 15px;">Visualizing the Overlap</span>
+                        <ul style="color: #8b949e; font-size: 1.15rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+                            <li><strong style="color: #3fb950;">Green pixels (True Positives):</strong> Concept Mask AND SAM Mask overlap perfectly.</li>
+                            <li><strong style="color: #58a6ff;">Blue pixels (False Positives):</strong> The Concept Mask highlighted this, but SAM says it isn't part of the object. (Hurts Precision).</li>
+                            <li><strong style="color: #f85149;">Red pixels (False Negatives):</strong> SAM says this is part of the object, but the Concept Mask completely missed it. (Hurts Recall/Coverage).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    """
+
+
 def get_html_header_nav():
     """Return the top navigation bar with tab buttons."""
     return """
     <div class="header-nav">
         <h1>Concept Attention Analysis</h1>
         <div class="tabs">
+            <button class="tab-btn" onclick="switchTab('metrics')">Metrics</button>
+            <button class="tab-btn" onclick="switchTab('implementation')">Implementation</button>
             <button class="tab-btn active" onclick="switchTab('findings')">Findings</button>
             <button class="tab-btn" onclick="switchTab('gallery')">Gallery</button>
             <button class="tab-btn" onclick="switchTab('failure')">Failure Analysis</button>
@@ -160,36 +428,17 @@ def get_html_header_nav():
     </div>"""
 
 
-def get_sidebar_toc(toc_data):
-    """Return the gallery sidebar table-of-contents HTML.
-
-    Parameters
-    ----------
-    toc_data : list[dict]
-        Each dict has ``group_name``, ``group_idx``, and ``cases``
-        (list of ``{case_name, case_id}``).
-    """
-    items = ""
+def get_gallery_navigator(toc_data):
+    """Return a ``<select>`` dropdown for jumping to gallery groups/cases."""
+    options = '<option value="">Jump to case…</option>'
     for group in toc_data:
-        gidx = group["group_idx"]
         gname = group["group_name"]
-        cases_html = ""
+        options += f'<optgroup label="{gname}">'
         for case in group["cases"]:
-            cases_html += f'<li><a href="#{case["case_id"]}" class="toc-case-link">{case["case_name"]}</a></li>'
-        items += f"""
-            <div class="toc-group">
-                <div class="toc-group-toggle" onclick="toggleTocGroup(this)">
-                    <span class="arrow">▸</span>
-                    <a href="#group-{gidx}" style="color: inherit; text-decoration: none;">{gname}</a>
-                </div>
-                <ul class="toc-cases">{cases_html}</ul>
-            </div>"""
-
-    return f"""
-        <div class="sidebar" id="gallery-sidebar">
-            <h3>Table of Contents</h3>
-            {items}
-        </div>"""
+            cname = case["case_name"]
+            options += f'<option value="{cname.lower()}">{cname}</option>'
+        options += "</optgroup>"
+    return f'<select id="gallery-nav" class="gallery-nav-select" onchange="jumpToGallerySection(this.value)">{options}</select>'
 
 
 def get_explanation_block():
@@ -515,11 +764,22 @@ def get_javascript(single_token_averages, multi_token_averages, umap_js_data):
             contentArea.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // ── Hierarchical ToC toggle ──
-        function toggleTocGroup(el) {
-            el.classList.toggle('open');
-            const casesList = el.nextElementSibling;
-            casesList.classList.toggle('open');
+        // ── Gallery navigator dropdown ──
+        function jumpToGallerySection(val) {
+            if (!val) return;
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.value = val;
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            // Reset dropdown to placeholder
+            document.getElementById('gallery-nav').selectedIndex = 0;
+            
+            // Scroll to top of content area to see the result
+            const container = document.querySelector('.content-area');
+            if (container) {
+                container.scrollTo({top: 0, behavior: 'smooth'});
+            }
         }
 
         // ── Concept-set tabs ──
@@ -542,9 +802,6 @@ def get_javascript(single_token_averages, multi_token_averages, umap_js_data):
             // Update content visibility
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            
-            // Toggle sidebar visibility only for gallery
-            document.getElementById('gallery-sidebar').style.display = (tabId === 'gallery') ? 'block' : 'none';
         }
         
         // Search and Category filtering for Gallery

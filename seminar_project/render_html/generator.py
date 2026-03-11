@@ -28,8 +28,10 @@ from render_html.html_templates import (
     get_css,
     get_html_head,
     get_html_header_nav,
-    get_sidebar_toc,
+    get_gallery_navigator,
     get_explanation_block,
+    get_implementation_details_html,
+    get_metrics_tab_html,
     get_statistics_section_html,
     get_umap_section_html,
     get_failure_tab_header,
@@ -108,8 +110,6 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     html_content += "\n<body>"
     html_content += get_html_header_nav()
     html_content += '\n    <div class="main-container">'
-    html_content += "\n        <!-- Sidebar ONLY visible for Gallery -->"
-    html_content += get_sidebar_toc(toc_data)
     html_content += '\n        <div class="content-area">'
 
     # --- FINDINGS TAB ---
@@ -192,10 +192,16 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                         <button class="cat-btn" data-category="abstract">Abstract</button>
                         <button class="cat-btn" data-category="spatial">Spatial</button>
                     </div>
-                    <div class="size-slider-container">
-                        <label>Image size:</label>
-                        <input type="range" id="img-size-slider" class="size-slider" min="120" max="500" value="250" step="10">
-                        <span id="img-size-val" class="size-slider-val">250px</span>
+                    <div style="display: flex; gap: 20px; align-items: center; margin-top: 12px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label style="color: #8b949e; font-size: 0.85rem; white-space: nowrap;">Jump to:</label>
+                            """ + get_gallery_navigator(toc_data) + """
+                        </div>
+                        <div class="size-slider-container" style="margin-top: 0;">
+                            <label>Image size:</label>
+                            <input type="range" id="img-size-slider" class="size-slider" min="120" max="500" value="250" step="10">
+                            <span id="img-size-val" class="size-slider-val">250px</span>
+                        </div>
                     </div>
                 </div>
                 <h2 style="margin-top:0;">Complete Gallery</h2>
@@ -245,6 +251,12 @@ def generate_gallery(results_dir, output_html, mode="relative"):
             </div>
             </div>
     """
+
+    # --- METRICS TAB ---
+    html_content += get_metrics_tab_html(get_image_src)
+
+    # --- IMPLEMENTATION TAB ---
+    html_content += get_implementation_details_html()
 
     # --- TOKENIZATION TAB ---
     html_content += """

@@ -127,7 +127,7 @@
                         "gears",
                         "springs",
                         "watch",
-                        "mechanical"
+                        "metal"
                     ],
                     [
                         "movement",
@@ -307,6 +307,16 @@
                         "module",
                         "middle",
                         "bottom"
+                    ],
+                    [
+                        "top",
+                        "middle",
+                        "bottom",
+                        "white"
+                    ],
+                    [
+                        "foreground",
+                        "background"
                     ]
                 ]
             },
@@ -417,6 +427,12 @@
                         "glass",
                         "wings",
                         "beak"
+                    ],
+                    [
+                        "glass",
+                        "wings",
+                        "white",
+                        "branch"
                     ]
                 ]
             },
@@ -457,23 +473,6 @@
                 ]
             },
             {
-                "name": "neon_green_shadows",
-                "prompt": "A white statue in a dark alley with neon green shadows",
-                "concept_sets": [
-                    [
-                        "neon",
-                        "green",
-                        "shadows",
-                        "statue"
-                    ],
-                    [
-                        "lighting",
-                        "darkness",
-                        "green"
-                    ]
-                ]
-            },
-            {
                 "name": "multicolor_piano",
                 "prompt": "A piano where each key is a different vibrant neon color",
                 "concept_sets": [
@@ -485,7 +484,7 @@
                     ],
                     [
                         "instrument",
-                        "musical",
+                        "colorful",
                         "rainbow"
                     ]
                 ]
@@ -737,13 +736,8 @@
                     [
                         "bird",
                         "stack",
-                        "of",
                         "books",
-                        "candle",
-                        "on",
-                        "top",
-                        "next",
-                        "to"
+                        "candle"
                     ],
                     [
                         "perched",
@@ -937,7 +931,9 @@
                         "horse",
                         "astronaut",
                         "riding",
-                        "space"
+                        "space",
+                        "planet",
+                        "clouds"
                     ],
                     [
                         "unusual",
@@ -951,15 +947,16 @@
                 "prompt": "A detailed photo of a seven-legged spider on a web",
                 "concept_sets": [
                     [
-                        "spider",
+                        "torso",
+                        "head",
                         "legs",
-                        "seven",
+                        "nature",
                         "web"
                     ],
                     [
-                        "count",
-                        "anatomy",
-                        "error"
+                        "web",
+                        "spider",
+                        "grass"
                     ]
                 ]
             },
@@ -971,12 +968,12 @@
                         "square",
                         "circle",
                         "pedestal",
-                        "impossible"
+                        "background"
                     ],
                     [
                         "geometry",
                         "shape",
-                        "logic"
+                        "background"
                     ]
                 ]
             },
@@ -1039,12 +1036,8 @@
                         "dog",
                         "human",
                         "face",
-                        "sofa"
-                    ],
-                    [
-                        "blend",
-                        "uncanny",
-                        "hallucination"
+                        "sofa",
+                        "wall"
                     ],
                     [
                         "dog",
@@ -1053,11 +1046,6 @@
                     ],
                     [
                         "human",
-                        "face"
-                    ],
-                    [
-                        "human",
-                        "dog",
                         "face"
                     ]
                 ]
