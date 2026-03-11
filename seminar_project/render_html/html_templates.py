@@ -12,6 +12,7 @@ import json
 def get_css():
     """Return the full CSS stylesheet as a string."""
     return """
+        :root { --gallery-img-size: 250px; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f1115; color: #e1e4e8; margin: 0; padding: 0; line-height: 1.6; display: flex; flex-direction: column; height: 100vh; }
         
@@ -35,7 +36,7 @@ def get_css():
         
         .content-area { flex: 1; overflow-y: auto; padding: 30px; }
         
-        .tab-content { display: none; max-width: 1200px; margin: 0 auto; }
+        .tab-content { display: none; max-width: 1800px; margin: 0 auto; }
         .tab-content.active { display: block; }
 
         /* Finding and Gallery Cards */
@@ -48,14 +49,21 @@ def get_css():
         .main-image-container { text-align: center; }
         .main-image-container img { width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); border: 1px solid #30363d; }
         
-        .heatmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-        .concept-block { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
-        .concept-label { font-size: 1.1rem; font-weight: bold; color: #58a6ff; margin-bottom: 5px; border-bottom: 1px solid #30363d; padding-bottom: 5px; }
+        .heatmap-grid { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+        .concept-block { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 10px; min-width: var(--gallery-img-size); max-width: calc(var(--gallery-img-size) + 40px); flex: 0 0 auto; }
+        .concept-label { font-size: 1.1rem; font-weight: bold; color: #58a6ff; margin-bottom: 5px; border-bottom: 1px solid #30363d; padding-bottom: 5px; text-align: center; }
         
         .viz-grid { display: flex; flex-direction: column; gap: 10px; }
-        .viz-item { text-align: center; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 10px; }
-        .viz-item img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #21262d; transition: transform 0.2s; }
+        .viz-item { text-align: center; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 8px; }
+        .viz-item img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #21262d; transition: transform 0.2s; }
         .viz-item img:hover { transform: scale(1.02); border-color: #58a6ff; }
+
+        /* Image size slider */
+        .size-slider-container { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+        .size-slider-container label { color: #8b949e; font-size: 0.85rem; white-space: nowrap; }
+        .size-slider { -webkit-appearance: none; appearance: none; width: 200px; height: 6px; border-radius: 3px; background: #30363d; outline: none; }
+        .size-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #58a6ff; cursor: pointer; }
+        .size-slider-val { color: #58a6ff; font-family: monospace; font-size: 0.85rem; min-width: 45px; }
         .viz-label { font-size: 0.8rem; color: #8b949e; margin-top: 5px; }
         
         .sam-results { margin-top: 15px; border: 1px solid #30363d; border-radius: 6px; overflow: hidden; font-size: 0.8rem; }
@@ -100,6 +108,25 @@ def get_css():
         
         .set-block { border-top: 1px solid #30363d; padding: 20px; background: #0d1117; }
         .set-title { color: #8b949e; font-size: 0.9rem; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Concept-set tabs */
+        .concept-tabs { display: flex; gap: 0; border-bottom: 2px solid #30363d; margin-top: 20px; overflow-x: auto; }
+        .concept-tab-btn { background: transparent; border: none; border-bottom: 3px solid transparent; color: #8b949e; font-size: 0.85rem; font-family: monospace; padding: 10px 16px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .concept-tab-btn:hover { color: #c9d1d9; background: #161b22; }
+        .concept-tab-btn.active { color: #58a6ff; border-bottom-color: #58a6ff; background: #0d1117; }
+        .concept-tab-panel { display: none; padding: 20px 0; }
+        .concept-tab-panel.active { display: block; }
+
+        /* Hierarchical ToC */
+        .toc-group { margin-bottom: 4px; }
+        .toc-group-toggle { display: flex; align-items: center; gap: 6px; color: #c9d1d9; font-size: 0.95rem; font-weight: 600; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.15s; user-select: none; }
+        .toc-group-toggle:hover { background: #21262d; }
+        .toc-group-toggle .arrow { font-size: 0.7rem; transition: transform 0.2s; display: inline-block; width: 10px; }
+        .toc-group-toggle.open .arrow { transform: rotate(90deg); }
+        .toc-cases { list-style: none; padding: 0 0 0 22px; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+        .toc-cases.open { max-height: 2000px; }
+        .toc-case-link { color: #8b949e; text-decoration: none; font-size: 0.82rem; display: block; padding: 4px 10px; border-radius: 4px; transition: all 0.15s; }
+        .toc-case-link:hover { background: #21262d; color: #58a6ff; }
     """
 
 
@@ -133,18 +160,35 @@ def get_html_header_nav():
     </div>"""
 
 
-def get_sidebar_toc(sorted_group_names):
-    """Return the gallery sidebar table-of-contents HTML."""
-    toc_items = ""
-    for idx, group_name in enumerate(sorted_group_names):
-        toc_items += f'<li class="toc-item"><a href="#group-{idx}" class="toc-link">{group_name}</a></li>'
+def get_sidebar_toc(toc_data):
+    """Return the gallery sidebar table-of-contents HTML.
+
+    Parameters
+    ----------
+    toc_data : list[dict]
+        Each dict has ``group_name``, ``group_idx``, and ``cases``
+        (list of ``{case_name, case_id}``).
+    """
+    items = ""
+    for group in toc_data:
+        gidx = group["group_idx"]
+        gname = group["group_name"]
+        cases_html = ""
+        for case in group["cases"]:
+            cases_html += f'<li><a href="#{case["case_id"]}" class="toc-case-link">{case["case_name"]}</a></li>'
+        items += f"""
+            <div class="toc-group">
+                <div class="toc-group-toggle" onclick="toggleTocGroup(this)">
+                    <span class="arrow">▸</span>
+                    <a href="#group-{gidx}" style="color: inherit; text-decoration: none;">{gname}</a>
+                </div>
+                <ul class="toc-cases">{cases_html}</ul>
+            </div>"""
 
     return f"""
         <div class="sidebar" id="gallery-sidebar">
             <h3>Table of Contents</h3>
-            <ul class="toc-list">
-    {toc_items}
-            </ul>
+            {items}
         </div>"""
 
 
@@ -471,6 +515,25 @@ def get_javascript(single_token_averages, multi_token_averages, umap_js_data):
             contentArea.scrollTo({top: 0, behavior: 'smooth'});
         }
 
+        // ── Hierarchical ToC toggle ──
+        function toggleTocGroup(el) {
+            el.classList.toggle('open');
+            const casesList = el.nextElementSibling;
+            casesList.classList.toggle('open');
+        }
+
+        // ── Concept-set tabs ──
+        function switchConceptTab(caseId, idx) {
+            const container = document.getElementById(caseId + '-tabs');
+            if (!container) return;
+            container.querySelectorAll('.concept-tab-btn').forEach(b => b.classList.remove('active'));
+            container.querySelectorAll('.concept-tab-btn')[idx].classList.add('active');
+
+            const parent = container.parentElement;
+            parent.querySelectorAll('.concept-tab-panel').forEach(p => p.classList.remove('active'));
+            parent.querySelectorAll('.concept-tab-panel')[idx].classList.add('active');
+        }
+
         function switchTab(tabId) {
             // Update buttons
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -541,6 +604,17 @@ def get_javascript(single_token_averages, multi_token_averages, umap_js_data):
         }
 
         searchInput.addEventListener('input', updateGalleryFilter);
+
+        // ── Image size slider ──
+        const imgSlider = document.getElementById('img-size-slider');
+        const imgSliderVal = document.getElementById('img-size-val');
+        if (imgSlider) {
+            imgSlider.addEventListener('input', (e) => {
+                const px = e.target.value;
+                document.documentElement.style.setProperty('--gallery-img-size', px + 'px');
+                imgSliderVal.textContent = px + 'px';
+            });
+        }
 
         categoryButtons.forEach(btn => {
             btn.addEventListener('click', () => {

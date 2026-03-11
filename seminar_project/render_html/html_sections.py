@@ -11,7 +11,6 @@ from pathlib import Path
 
 from render_html.concept_classes import get_concept_class
 from render_html.image_utils import get_metric_class, safe_concept_name
-from render_html.data_loading import load_sam_coverage
 
 
 # ---------------------------------------------------------------------------
@@ -50,9 +49,6 @@ def render_top_candidates(
             / "sam_analysis"
             / f"matched_masked_image_{cand['safe_concept']}.png"
         )
-        coverage_img = case_path / "sam_analysis" / "debug_coverage_gaps.png"
-
-        coverage_percent = load_sam_coverage(case_path)
 
         # Fallback if masked image not present
         if not masked_img.exists():
@@ -81,7 +77,7 @@ def render_top_candidates(
                             </div>
                         </div>
                         
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                             <div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d;">
                                 <img src="{get_image_src(orig_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
                                 <div style="color: #8b949e; font-size: 0.85rem;">Generated Image</div>
@@ -93,10 +89,6 @@ def render_top_candidates(
                             <div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d;">
                                 <img src="{get_image_src(sam_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
                                 <div style="color: #8b949e; font-size: 0.85rem;">SAM Segment</div>
-                            </div>
-                            <div style="text-align: center; background: #161b22; padding: 10px; border-radius: 6px; border: 1px solid #30363d;">
-                                <img src="{get_image_src(coverage_img)}" style="width: 100%; border-radius: 4px; margin-bottom: 8px;" loading="lazy">
-                                <div style="color: #8b949e; font-size: 0.85rem;">SAM Coverage ({coverage_percent:.1f}%)</div>
                             </div>
                         </div>
                     </div>
@@ -113,8 +105,7 @@ def render_top_candidates(
 # ---------------------------------------------------------------------------
 
 def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
-    """Render the heatmap grid for all concepts in a single set."""
-    block = '<div class="heatmap-grid">'
+    """Render the heatmap grid: original image + one column per concept, side by side."""
     sam_analysis_dir = set_path / "sam_analysis"
     sam_metrics_path = sam_analysis_dir / "metrics.json"
 
@@ -126,21 +117,31 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
         except Exception:
             pass
 
+    # Original image as first column
+    image_path = set_path / "image.png"
+    block = '<div class="heatmap-grid">'
+    block += f"""
+                <div class="concept-block" style="min-width: 250px;">
+                    <div class="concept-label">Original</div>
+                    <div class="viz-item">
+                        <img src="{get_image_src(image_path)}" alt="Generated Image" loading="lazy">
+                        <div class="viz-label">Generated Image</div>
+                    </div>
+                </div>
+    """
+
     concepts = meta.get("concepts", [])
     for concept in concepts:
         tokens = concept_to_tokens.get(concept, [])
-        tokens_html = f'<div style="color: #8b949e; font-size: 0.8rem; font-family: monospace; margin-top: 2px;">Tokens: {json.dumps(tokens)}</div>'
+        tokens_html = f'<div style="color: #8b949e; font-size: 0.75rem; font-family: monospace; margin-top: 2px; text-align: center;">Tokens: {json.dumps(tokens)}</div>'
         safe_c = safe_concept_name(concept)
         masked_path = set_path / f"masked_image_{safe_c}.png"
         upscaled_path = set_path / f"upscaled_heatmap_{safe_c}.png"
         orig_heatmap_path = set_path / f"heatmap_{safe_c}.png"
         sam_masked_path = sam_analysis_dir / f"matched_masked_image_{safe_c}.png"
 
-        primary_display = (
-            masked_path
-            if masked_path.exists()
-            else (upscaled_path if upscaled_path.exists() else orig_heatmap_path)
-        )
+        upscaled_display = upscaled_path if upscaled_path.exists() else orig_heatmap_path
+        masked_display = masked_path if masked_path.exists() else upscaled_display
 
         sam_data = all_sam_metrics.get(concept)
 
@@ -148,59 +149,33 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
                 <div class="concept-block">
                     <div class="concept-label">{concept}</div>
                     {tokens_html}
-                    <div class="viz-grid">
-                        <div class="viz-item">
-                            <img src="{get_image_src(primary_display)}" alt="{concept}" loading="lazy">
-                            <div class="viz-label">Primary View</div>
-                        </div>
-                        <details class="viz-item">
-                            <summary>View Alternate Heatmaps</summary>
-                            <div class="heatmap-toggles">
-                                <div>
-                                    <img src="{get_image_src(upscaled_path)}" alt="Upscaled {concept}" loading="lazy">
-                                    <div class="viz-label">Raw Attention (1024x1024)</div>
-                                </div>
-                            </div>
-                        </details>
+                    <div class="viz-item">
+                        <img src="{get_image_src(upscaled_display)}" alt="Heatmap {concept}" loading="lazy">
+                        <div class="viz-label">Upscaled Heatmap</div>
                     </div>
-            """
+                    <div class="viz-item">
+                        <img src="{get_image_src(masked_display)}" alt="Masked {concept}" loading="lazy">
+                        <div class="viz-label">Masked Image</div>
+                    </div>
+        """
 
         if sam_data:
             iou = sam_data.get("iou", 0)
             precision = sam_data.get("precision", 0)
             recall = sam_data.get("recall", 0)
 
-            sam_viz = (
-                f'<img src="{get_image_src(sam_masked_path)}" alt="SAM Match {concept}" style="max-width: 100px; border-radius: 4px; border: 1px solid #30363d;" loading="lazy">'
-                if sam_masked_path.exists()
-                else ""
-            )
-
             block += f"""
-                    <div class="sam-results">
-                        <div class="sam-header">
-                            <span>SAM Comparison (#{",".join(map(str, sam_data.get("segment_indices", []))) if "segment_indices" in sam_data else sam_data.get("segment_index")})</span>
-                            <span>IoU: <span class="metric-val {get_metric_class(iou)}">{iou:.3f}</span></span>
-                        </div>
-                        <div style="display: flex; gap: 10px; padding: 10px; background: #0d1117; align-items: center; border-bottom: 1px solid #30363d;">
-                            {sam_viz}
-                            <div class="sam-metrics" style="flex: 1; padding: 0;">
-                            <div class="metric-item">
-                                <div class="metric-label">IoU</div>
-                                <div class="metric-val {get_metric_class(iou)}">{iou:.2%}</div>
-                            </div>
-                            <div class="metric-item">
-                                <div class="metric-label">Precision</div>
-                                <div class="metric-val {get_metric_class(precision)}">{precision:.2%}</div>
-                            </div>
-                            <div class="metric-item">
-                                <div class="metric-label">Recall</div>
-                                <div class="metric-val {get_metric_class(recall)}">{recall:.2%}</div>
-                            </div>
-                        </div>
+                    <div class="viz-item">
+                        <img src="{get_image_src(sam_masked_path)}" alt="SAM {concept}" loading="lazy">
+                        <div class="viz-label">SAM Segment</div>
                     </div>
-                </div>
-                """
+                    <div style="display: flex; gap: 4px; justify-content: center;">
+                        <div class="metric-item" style="flex:1;"><div class="metric-label">IoU</div><div class="metric-val {get_metric_class(iou)}">{iou:.2%}</div></div>
+                        <div class="metric-item" style="flex:1;"><div class="metric-label">Prec</div><div class="metric-val {get_metric_class(precision)}">{precision:.2%}</div></div>
+                        <div class="metric-item" style="flex:1;"><div class="metric-label">Rec</div><div class="metric-val {get_metric_class(recall)}">{recall:.2%}</div></div>
+                    </div>
+            """
+
         block += "</div>"
     block += "</div>"
     return block
@@ -210,8 +185,8 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
 # Aggregated Case Block (used in Gallery and Findings)
 # ---------------------------------------------------------------------------
 
-def render_aggregated_case_block(sets_for_case, get_image_src, concept_to_tokens):
-    """Render a single case with the prompt/image at the top and all sets nested inside."""
+def render_aggregated_case_block(case_id_slug, sets_for_case, get_image_src, concept_to_tokens):
+    """Render a single case with the prompt at the top and tabbed concept sets."""
     if not sets_for_case:
         return ""
 
@@ -219,10 +194,6 @@ def render_aggregated_case_block(sets_for_case, get_image_src, concept_to_tokens
     first_set_path = Path(first_set_str)
     seed = first_set_path.parent.name
     case = first_set_path.parent.parent.name
-    image_path = first_set_path / "image.png"
-    coverage_img_path = first_set_path / "sam_analysis" / "debug_coverage_gaps.png"
-
-    coverage_percent = load_sam_coverage(first_set_path)
 
     prompt = first_meta.get("prompt", "")
 
@@ -250,7 +221,7 @@ def render_aggregated_case_block(sets_for_case, get_image_src, concept_to_tokens
     categories_str = " ".join(all_categories).lower()
 
     block = f"""
-            <div class="case-block" data-search-text="{prompt.lower()} {case.lower()} {concepts_search_str}" data-categories="{categories_str}">
+            <div class="case-block" id="{case_id_slug}" data-search-text="{prompt.lower()} {case.lower()} {concepts_search_str}" data-categories="{categories_str}">
                 <div class="case-info" style="display: flex; justify-content: space-between; align-items: start;">
                     <div>
                         <div class="case-title">{case} | {seed}</div>
@@ -258,39 +229,45 @@ def render_aggregated_case_block(sets_for_case, get_image_src, concept_to_tokens
                     </div>
                     <button onclick="viewInGrids('{case.lower()}')" style="background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;">View Grid →</button>
                 </div>
-                
-                <div class="image-grid" style="display: flex; gap: 20px;">
-                    <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
-                        <img src="{get_image_src(image_path)}" alt="Generated Image" style="max-width: 400px; border-radius: 8px;" loading="lazy">
-                        <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">Generated Image</div>
-                    </div>
-                    <div class="main-image-container" style="text-align: left; margin-bottom: 20px;">
-                        <img src="{get_image_src(coverage_img_path)}" alt="SAM Coverage" style="max-width: 400px; border-radius: 8px;" loading="lazy">
-                        <div style="color: #8b949e; font-size: 0.85rem; margin-top: 8px;">SAM Coverage ({coverage_percent:.1f}%)</div>
-                    </div>
-                </div>
-                
-                <details class="sets-details" open>
-                    <summary class="sets-summary">Concept Sets ({len(sets_for_case)})</summary>
-                    <div class="sets-container">
     """
 
-    for set_path_str, meta in sets_for_case:
+    # Build concept-set view
+    if len(sets_for_case) == 1:
+        # Single set — no tabs needed
+        set_path_str, meta = sets_for_case[0]
         set_path = Path(set_path_str)
-        set_idx = set_path.name
         concepts = meta.get("concepts", [])
         concepts_str = ", ".join(f"'{c}'" for c in concepts)
-
         block += f"""
-                        <div class="set-block">
-                            <div class="set-title">{set_idx}: [{concepts_str}]</div>
-                            {render_heatmaps(set_path, meta, get_image_src, concept_to_tokens)}
-                        </div>
+                <div style="margin-top: 10px;">
+                    <div class="set-title">[{concepts_str}]</div>
+                    {render_heatmaps(set_path, meta, get_image_src, concept_to_tokens)}
+                </div>
+        """
+    else:
+        # Multiple sets — render as tabs
+        tab_buttons = ""
+        tab_panels = ""
+        for i, (set_path_str, meta) in enumerate(sets_for_case):
+            set_path = Path(set_path_str)
+            concepts = meta.get("concepts", [])
+            concepts_str = ", ".join(f"'{c}'" for c in concepts)
+            active_cls = " active" if i == 0 else ""
+            tab_buttons += f'<button class="concept-tab-btn{active_cls}" onclick="switchConceptTab(\'{case_id_slug}\', {i})">[{concepts_str}]</button>'
+            tab_panels += f"""
+                <div class="concept-tab-panel{active_cls}">
+                    {render_heatmaps(set_path, meta, get_image_src, concept_to_tokens)}
+                </div>
             """
 
+        block += f"""
+                <div class="concept-tabs" id="{case_id_slug}-tabs">
+                    {tab_buttons}
+                </div>
+                {tab_panels}
+        """
+
     block += f"""
-                    </div>
-                </details>
                 {comments_html}
             </div>
     """
@@ -317,9 +294,6 @@ def render_failure_cards(candidates, color_hex, get_image_src):
         sam_img = (
             cp / "sam_analysis" / f"matched_masked_image_{cand['safe_concept']}.png"
         )
-        coverage_img = cp / "sam_analysis" / "debug_coverage_gaps.png"
-
-        coverage_percent = load_sam_coverage(cp)
 
         iou_cls = get_metric_class(cand["iou"])
         prec_cls = get_metric_class(cand["precision"])
@@ -336,10 +310,9 @@ def render_failure_cards(candidates, color_hex, get_image_src):
                         <div class="metric-item"><div class="metric-label">IoU</div><div class="metric-val {iou_cls}">{cand["iou"]:.2%}</div></div>
                         <div class="metric-item"><div class="metric-label">Prec</div><div class="metric-val {prec_cls}">{cand["precision"]:.2%}</div></div>
                         <div class="metric-item"><div class="metric-label">Rec</div><div class="metric-val {rec_cls}">{cand["recall"]:.2%}</div></div>
-                        <div class="metric-item"><div class="metric-label">Coverage</div><div class="metric-val" style="color: #8b949e;">{coverage_percent:.1f}%</div></div>
                     </div>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
                     <div style="text-align: center;">
                         <img src="{get_image_src(orig_img)}" style="width: 100%; border-radius: 6px; border: 1px solid #30363d;" loading="lazy">
                         <div style="color: #8b949e; font-size: 0.75rem; margin-top: 5px;">Original</div>
@@ -351,10 +324,6 @@ def render_failure_cards(candidates, color_hex, get_image_src):
                     <div style="text-align: center;">
                         <img src="{get_image_src(sam_img)}" style="width: 100%; border-radius: 6px; border: 1px solid #30363d;" loading="lazy">
                         <div style="color: #8b949e; font-size: 0.75rem; margin-top: 5px;">SAM Ground Truth</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="{get_image_src(coverage_img)}" style="width: 100%; border-radius: 6px; border: 1px solid #30363d;" loading="lazy">
-                        <div style="color: #8b949e; font-size: 0.75rem; margin-top: 5px;">SAM Coverage ({coverage_percent:.1f}%)</div>
                     </div>
                 </div>
             </div>
@@ -415,8 +384,15 @@ def render_findings_grid_highlights(findings_grids_dir, highlighted_keys, get_im
 # ---------------------------------------------------------------------------
 
 def render_gallery_sections(groups, sorted_group_names, get_image_src, concept_to_tokens):
-    """Render the complete gallery content grouped by section."""
+    """Render the complete gallery content grouped by section.
+
+    Returns
+    -------
+    tuple[str, list[dict]]
+        The HTML string, and a ``toc_data`` list for the hierarchical sidebar.
+    """
     html = ""
+    toc_data = []
     from tqdm import tqdm
 
     for idx, group_name in enumerate(
@@ -446,13 +422,20 @@ def render_gallery_sections(groups, sorted_group_names, get_image_src, concept_t
                     cases_in_group[case_id] = []
                 cases_in_group[case_id].append((set_path_str, meta))
 
+        group_toc = {"group_name": group_name, "group_idx": idx, "cases": []}
+
         for case_id, sets_for_case in cases_in_group.items():
+            case_slug = f"case-{idx}-{case_id}"
+            case_display_name = Path(sets_for_case[0][0]).parent.parent.name
+            group_toc["cases"].append({"case_name": case_display_name, "case_id": case_slug})
             html += render_aggregated_case_block(
-                sets_for_case, get_image_src, concept_to_tokens
+                case_slug, sets_for_case, get_image_src, concept_to_tokens
             )
 
+        toc_data.append(group_toc)
         html += "</div>"
-    return html
+
+    return html, toc_data
 
 
 # ---------------------------------------------------------------------------

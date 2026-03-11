@@ -94,8 +94,11 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     # --- Tokenization list ---
     concept_tokens_list = build_concept_tokens_list(concept_to_tokens)
 
-    # --- Sort groups ---
+    # --- Sort groups & render gallery first (to get ToC data) ---
     sorted_group_names = sorted(groups.keys())
+    gallery_html, toc_data = render_gallery_sections(
+        groups, sorted_group_names, get_image_src, concept_to_tokens
+    )
 
     # =====================================================================
     # Assemble HTML
@@ -106,7 +109,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     html_content += get_html_header_nav()
     html_content += '\n    <div class="main-container">'
     html_content += "\n        <!-- Sidebar ONLY visible for Gallery -->"
-    html_content += get_sidebar_toc(sorted_group_names)
+    html_content += get_sidebar_toc(toc_data)
     html_content += '\n        <div class="content-area">'
 
     # --- FINDINGS TAB ---
@@ -189,14 +192,17 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                         <button class="cat-btn" data-category="abstract">Abstract</button>
                         <button class="cat-btn" data-category="spatial">Spatial</button>
                     </div>
+                    <div class="size-slider-container">
+                        <label>Image size:</label>
+                        <input type="range" id="img-size-slider" class="size-slider" min="120" max="500" value="250" step="10">
+                        <span id="img-size-val" class="size-slider-val">250px</span>
+                    </div>
                 </div>
                 <h2 style="margin-top:0;">Complete Gallery</h2>
     """
 
-    # Gallery sections
-    html_content += render_gallery_sections(
-        groups, sorted_group_names, get_image_src, concept_to_tokens
-    )
+    # Gallery sections (already rendered above)
+    html_content += gallery_html
 
     # --- FAILURE ANALYSIS TAB ---
     hallucination_candidates.sort(key=lambda x: x["iou"])

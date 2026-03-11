@@ -158,13 +158,16 @@ def process_directory(set_path, model, device, force=False):
         c_mask_img = Image.open(concept_mask_path).convert("L")
         c_mask_np = np.array(c_mask_img) > 127
 
-        # Load raw upscaled heatmap for sensitivity curve
-        heatmap_upscaled_path = set_path / f"upscaled_heatmap_{safe_concept}.png"
+        # Load raw heatmap for sensitivity curve (use original grayscale, not the colorized upscaled version)
+        heatmap_raw_path = set_path / f"heatmap_{safe_concept}.png"
         heatmap_np = None
-        if heatmap_upscaled_path.exists():
-            heatmap_np = (
-                np.array(Image.open(heatmap_upscaled_path).convert("L")) / 255.0
+        if heatmap_raw_path.exists():
+            raw_hm = Image.open(heatmap_raw_path).convert("L")
+            # Resize to match image dimensions for pixel-level comparison
+            raw_hm = raw_hm.resize(
+                (masks.shape[2], masks.shape[1]), resample=Image.BICUBIC
             )
+            heatmap_np = np.array(raw_hm) / 255.0
 
         # Greedy composition of segments to maximize IoU
         current_composite_mask = np.zeros_like(c_mask_np, dtype=bool)
