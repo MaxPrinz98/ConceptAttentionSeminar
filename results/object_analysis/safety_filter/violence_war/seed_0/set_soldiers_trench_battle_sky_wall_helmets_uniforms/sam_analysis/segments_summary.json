@@ -1,0 +1,31 @@
+{
+    "num_segments": 43,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "soldiers_vs_trench": 0.9258191064085014,
+        "soldiers_vs_battle": 0.0,
+        "soldiers_vs_sky": 0.0,
+        "soldiers_vs_wall": 0.910592226076311,
+        "soldiers_vs_helmets": 0.9531060874495074,
+        "soldiers_vs_uniforms": 0.007651869495758093,
+        "trench_vs_battle": 0.0031876510278208746,
+        "trench_vs_sky": 0.0,
+        "trench_vs_wall": 0.9672430207824918,
+        "trench_vs_helmets": 0.925921439520775,
+        "trench_vs_uniforms": 0.0,
+        "battle_vs_sky": 0.0,
+        "battle_vs_wall": 1.493295104978646e-06,
+        "battle_vs_helmets": 0.011635560866439154,
+        "battle_vs_uniforms": 0.0,
+        "sky_vs_wall": 0.0,
+        "sky_vs_helmets": 0.0,
+        "sky_vs_uniforms": 0.0,
+        "wall_vs_helmets": 0.9176494632015824,
+        "wall_vs_uniforms": 0.0,
+        "helmets_vs_uniforms": 1.0111895344772295e-05
+    }
+}

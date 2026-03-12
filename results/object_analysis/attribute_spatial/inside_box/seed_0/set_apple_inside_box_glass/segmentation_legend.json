@@ -1,0 +1,8 @@
+{
+    "Background": "#000000",
+    "inside": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "apple": "#2ca02c",
+    "glass": "#d62728",
+    "box": "#9467bd"
+}

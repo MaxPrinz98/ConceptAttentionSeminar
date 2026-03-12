@@ -1,16 +1,16 @@
 {
-    "num_segments": 46,
+    "num_segments": 42,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "staircase_vs_infinite": 0.04461539550035528,
-        "staircase_vs_loop": 4.046035795278681e-06,
+        "staircase_vs_infinite": 0.03108472692365988,
+        "staircase_vs_loop": 0.0,
         "staircase_vs_surreal": 0.0,
-        "infinite_vs_loop": 0.008080194410692588,
+        "infinite_vs_loop": 0.008811740153046014,
         "infinite_vs_surreal": 0.0,
-        "loop_vs_surreal": 0.9732833256228934
+        "loop_vs_surreal": 0.9779205471720039
     }
 }

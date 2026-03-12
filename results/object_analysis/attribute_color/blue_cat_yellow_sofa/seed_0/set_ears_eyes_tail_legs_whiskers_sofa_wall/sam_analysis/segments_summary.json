@@ -1,0 +1,31 @@
+{
+    "num_segments": 13,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "ears_vs_eyes": 0.0,
+        "ears_vs_tail": 0.04192244775909379,
+        "ears_vs_legs": 0.0,
+        "ears_vs_whiskers": 0.9987394558939071,
+        "ears_vs_sofa": 0.0,
+        "ears_vs_wall": 0.8102218922477796,
+        "eyes_vs_tail": 0.9467044629391722,
+        "eyes_vs_legs": 1.0,
+        "eyes_vs_whiskers": 0.0,
+        "eyes_vs_sofa": 0.0,
+        "eyes_vs_wall": 0.0,
+        "tail_vs_legs": 0.9467044629391722,
+        "tail_vs_whiskers": 0.04160143882361218,
+        "tail_vs_sofa": 0.0,
+        "tail_vs_wall": 0.03927433499735348,
+        "legs_vs_whiskers": 0.0,
+        "legs_vs_sofa": 0.0,
+        "legs_vs_wall": 0.0,
+        "whiskers_vs_sofa": 0.0,
+        "whiskers_vs_wall": 0.8110512809726137,
+        "sofa_vs_wall": 0.0
+    }
+}

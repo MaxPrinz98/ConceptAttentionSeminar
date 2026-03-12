@@ -1,0 +1,10 @@
+{
+    "Background": "#000000",
+    "trench": "#1f77b4",
+    "uniforms": "#ff7f0e",
+    "wall": "#2ca02c",
+    "battle": "#d62728",
+    "sky": "#9467bd",
+    "weapon": "#8c564b",
+    "helmets": "#e377c2"
+}

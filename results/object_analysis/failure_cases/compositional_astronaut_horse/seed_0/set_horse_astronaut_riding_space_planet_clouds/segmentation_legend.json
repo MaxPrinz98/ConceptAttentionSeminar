@@ -1,0 +1,10 @@
+{
+    "Background": "#000000",
+    "space": "#1f77b4",
+    "clouds": "#ff7f0e",
+    "horse": "#2ca02c",
+    "planet": "#d62728",
+    "segmentation": "#9467bd",
+    "astronaut": "#8c564b",
+    "riding": "#e377c2"
+}

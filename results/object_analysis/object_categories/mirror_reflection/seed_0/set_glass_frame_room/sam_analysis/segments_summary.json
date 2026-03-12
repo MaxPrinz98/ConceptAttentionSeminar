@@ -1,13 +1,13 @@
 {
-    "num_segments": 39,
+    "num_segments": 36,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "glass_vs_frame": 0.892065736220836,
-        "glass_vs_room": 0.8896046561176075,
-        "frame_vs_room": 0.8025233755519228
+        "glass_vs_frame": 0.8980431112364741,
+        "glass_vs_room": 0.9269956286521609,
+        "frame_vs_room": 0.8390830061265335
     }
 }

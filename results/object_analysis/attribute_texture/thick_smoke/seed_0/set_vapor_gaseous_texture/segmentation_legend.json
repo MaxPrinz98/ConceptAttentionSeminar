@@ -1,0 +1,7 @@
+{
+    "Background": "#000000",
+    "texture": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "gaseous": "#2ca02c",
+    "vapor": "#d62728"
+}

@@ -1,0 +1,16 @@
+{
+    "num_segments": 10,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "glass_vs_wings": 0.7943211086732697,
+        "glass_vs_white": 0.0,
+        "glass_vs_branch": 0.7298804977664721,
+        "wings_vs_white": 0.0,
+        "wings_vs_branch": 0.9044682478959449,
+        "white_vs_branch": 0.0
+    }
+}

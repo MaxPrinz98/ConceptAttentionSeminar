@@ -173,6 +173,10 @@ def process_directory(set_path, model, device, force=False):
         current_composite_mask = np.zeros_like(c_mask_np, dtype=bool)
         selected_indices = []
         best_iou = 0.0
+        
+        # Track the absolute best single segment
+        single_best_idx = -1
+        single_best_iou = 0.0
 
         # Pre-calculate boolean masks for all segments to speed up loop
         segment_masks = [masks[i] > 0.5 for i in range(num_segments)]
@@ -195,6 +199,11 @@ def process_directory(set_path, model, device, force=False):
                     best_temp_idx = i
 
             if best_temp_idx != -1:
+                # If this is the very first segment chosen, record it as the single best
+                if not selected_indices:
+                    single_best_idx = best_temp_idx
+                    single_best_iou = best_temp_iou
+                    
                 current_composite_mask = np.logical_or(
                     current_composite_mask, segment_masks[best_temp_idx]
                 )
@@ -206,6 +215,34 @@ def process_directory(set_path, model, device, force=False):
                 break
 
         if selected_indices:
+            # --- 1. Save single best segment diagnostic ---
+            single_mask = segment_masks[single_best_idx]
+            
+            # Save the single matching masked image
+            single_matched_masked_np = img_np.copy()
+            single_matched_masked_np[single_mask == 0] = 0
+            Image.fromarray(single_matched_masked_np).save(
+                output_dir / f"single_matched_masked_image_{safe_concept}.png"
+            )
+
+            # Single overlap diagnostic
+            single_overlap_vis = (img_np.copy() * 0.4).astype(np.uint8)
+            single_tp_mask = c_mask_np & single_mask
+            single_fp_mask = c_mask_np & ~single_mask
+            single_fn_mask = ~c_mask_np & single_mask
+
+            single_overlap_vis[single_tp_mask] = [63, 185, 80]
+            single_overlap_vis[single_fp_mask] = [88, 166, 255]
+            single_overlap_vis[single_fn_mask] = [248, 81, 73]
+            Image.fromarray(single_overlap_vis).save(
+                output_dir / f"single_overlap_diagnostic_{safe_concept}.png"
+            )
+            
+            # Calculate single segment metrics
+            single_precision = calculate_precision(c_mask_np, single_mask)
+            single_recall = calculate_recall(c_mask_np, single_mask)
+
+            # --- 2. Save full composite diagnostic ---
             # Save the composite matching mask
             best_mask_img = Image.fromarray(
                 (current_composite_mask * 255).astype(np.uint8)
@@ -244,6 +281,12 @@ def process_directory(set_path, model, device, force=False):
                 "recall": calculate_recall(c_mask_np, current_composite_mask),
                 "segment_indices": [int(idx) for idx in selected_indices],
                 "num_segments_used": len(selected_indices),
+                "single_best_segment": {
+                    "index": int(single_best_idx),
+                    "iou": single_best_iou,
+                    "precision": single_precision,
+                    "recall": single_recall
+                }
             }
 
             # Calculate IoU sensitivity curve if heatmap is available

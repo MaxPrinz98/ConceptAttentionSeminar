@@ -127,6 +127,38 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
 
     # Original image as first column
     image_path = set_path / "image.png"
+    
+    # Check for Argmax Segmentation Heatmap
+    seg_heatmap_path = set_path / "heatmap_segmentation.png"
+    seg_legend_path = set_path / "segmentation_legend.json"
+    
+    seg_html = ""
+    if seg_heatmap_path.exists() and seg_legend_path.exists():
+        try:
+            with open(seg_legend_path, "r") as f:
+                legend_data = json.load(f)
+                
+            legend_items_html = ""
+            for name, color in legend_data.items():
+                legend_items_html += f"""
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                        <span style="display: inline-block; width: 12px; height: 12px; background-color: {color}; border: 1px solid #30363d;"></span>
+                        <span style="color: #c9d1d9; font-size: 0.8rem;">{name}</span>
+                    </div>
+                """
+                
+            seg_html = f"""
+                <div class="viz-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #30363d;">
+                    <img src="{get_image_src(seg_heatmap_path)}" alt="Argmax Segmentation" loading="lazy" style="border: 1px solid #30363d;">
+                    <div class="viz-label" style="color: #c9d1d9;">Attention Segmentation</div>
+                    <div style="margin-top: 10px; text-align: left; padding: 0 10px;">
+                        {legend_items_html}
+                    </div>
+                </div>
+            """
+        except Exception:
+            pass
+            
     block = '<div class="heatmap-grid">'
     block += f"""
                 <div class="concept-block" style="min-width: 250px;">
@@ -135,6 +167,7 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
                         <img src="{get_image_src(image_path)}" alt="Generated Image" loading="lazy">
                         <div class="viz-label">Generated Image</div>
                     </div>
+                    {seg_html}
                 </div>
     """
 
@@ -171,13 +204,16 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
             iou = sam_data.get("iou", 0)
             precision = sam_data.get("precision", 0)
             recall = sam_data.get("recall", 0)
+            segment_indices = sam_data.get("segment_indices", [])
+            segments_str = ", ".join(map(str, segment_indices)) if segment_indices else "None"
             
             diagnostic_path = sam_analysis_dir / f"overlap_diagnostic_{safe_c}.png"
 
             block += f"""
                     <div class="viz-item">
                         <img src="{get_image_src(sam_masked_path)}" alt="SAM {concept}" loading="lazy">
-                        <div class="viz-label">SAM Segment</div>
+                        <div class="viz-label">Composite SAM Segment</div>
+                        <div style="color: #8b949e; font-size: 0.75rem; text-align: center; margin-top: 2px;">Ids: [{segments_str}]</div>
                     </div>
                     <div style="display: flex; gap: 4px; justify-content: center; margin-bottom: 8px;">
                         <div class="metric-item" style="flex:1;"><div class="metric-label">IoU</div><div class="metric-val {get_metric_class(iou)}">{iou:.2%}</div></div>
@@ -190,9 +226,40 @@ def render_heatmaps(set_path, meta, get_image_src, concept_to_tokens):
                 block += f"""
                     <div class="viz-item" style="margin-top: 5px;">
                         <img src="{get_image_src(diagnostic_path)}" alt="Diagnostic {concept}" loading="lazy" style="border: 2px solid #58a6ff;">
-                        <div class="viz-label" style="color: #c9d1d9;">Overlap Diagnostic</div>
+                        <div class="viz-label" style="color: #c9d1d9;">Composite Diagnostic</div>
                     </div>
                 """
+                
+            # SINGLE BEST SEGMENT BLOCK
+            single_data = sam_data.get("single_best_segment")
+            if single_data:
+                single_iou = single_data.get("iou", 0)
+                single_prec = single_data.get("precision", 0)
+                single_rec = single_data.get("recall", 0)
+                single_idx = single_data.get("index", "Unknown")
+                
+                single_masked_path = sam_analysis_dir / f"single_matched_masked_image_{safe_c}.png"
+                single_diag_path = sam_analysis_dir / f"single_overlap_diagnostic_{safe_c}.png"
+                
+                if single_masked_path.exists() and single_diag_path.exists():
+                    block += f"""
+                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #30363d;">
+                        <div class="viz-item">
+                            <img src="{get_image_src(single_masked_path)}" alt="Single SAM {concept}" loading="lazy">
+                            <div class="viz-label" style="color: #8b949e;">Best Single Segment</div>
+                            <div style="color: #8b949e; font-size: 0.75rem; text-align: center; margin-top: 2px;">Id: [{single_idx}]</div>
+                        </div>
+                        <div style="display: flex; gap: 4px; justify-content: center; margin-bottom: 8px;">
+                            <div class="metric-item" style="flex:1; padding: 4px;"><div class="metric-label" style="font-size:0.7rem;">IoU</div><div class="metric-val {get_metric_class(single_iou)}" style="font-size:0.9rem;">{single_iou:.2%}</div></div>
+                            <div class="metric-item" style="flex:1; padding: 4px;"><div class="metric-label" style="font-size:0.7rem;">Prec</div><div class="metric-val {get_metric_class(single_prec)}" style="font-size:0.9rem;">{single_prec:.2%}</div></div>
+                            <div class="metric-item" style="flex:1; padding: 4px;"><div class="metric-label" style="font-size:0.7rem;">Rec</div><div class="metric-val {get_metric_class(single_rec)}" style="font-size:0.9rem;">{single_rec:.2%}</div></div>
+                        </div>
+                        <div class="viz-item" style="margin-top: 5px;">
+                            <img src="{get_image_src(single_diag_path)}" alt="Single Diagnostic {concept}" loading="lazy" style="border: 1px solid #7a5ea6;">
+                            <div class="viz-label" style="color: #8b949e; font-size: 0.8rem;">Single Diagnostic</div>
+                        </div>
+                    </div>
+                    """
 
         block += "</div>"
     block += "</div>"

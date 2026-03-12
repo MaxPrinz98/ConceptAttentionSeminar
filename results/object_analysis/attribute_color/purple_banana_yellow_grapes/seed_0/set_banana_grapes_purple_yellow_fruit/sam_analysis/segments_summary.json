@@ -1,20 +1,20 @@
 {
-    "num_segments": 54,
+    "num_segments": 52,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "banana_vs_grapes": 0.09058081814334652,
-        "banana_vs_purple": 0.0035822430693793587,
+        "banana_vs_grapes": 0.06936471163710231,
+        "banana_vs_purple": 0.0032890050352713225,
         "banana_vs_yellow": 0.0,
-        "banana_vs_fruit": 0.01246373569763028,
-        "grapes_vs_purple": 0.0,
+        "banana_vs_fruit": 0.40499808049511593,
+        "grapes_vs_purple": 0.7438268152748901,
         "grapes_vs_yellow": 0.0,
-        "grapes_vs_fruit": 0.3816863780992976,
-        "purple_vs_yellow": 0.039034119239262054,
-        "purple_vs_fruit": 0.0,
+        "grapes_vs_fruit": 0.0023361437318076884,
+        "purple_vs_yellow": 0.035325689812569235,
+        "purple_vs_fruit": 0.004754696218751333,
         "yellow_vs_fruit": 0.0
     }
 }

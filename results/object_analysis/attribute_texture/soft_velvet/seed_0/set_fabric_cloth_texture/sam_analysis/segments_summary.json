@@ -1,13 +1,13 @@
 {
-    "num_segments": 4,
+    "num_segments": 3,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "fabric_vs_cloth": 1.907565117119729e-06,
-        "fabric_vs_texture": 1.907565117119729e-06,
+        "fabric_vs_cloth": 1.9073486328125e-06,
+        "fabric_vs_texture": 1.9073486328125e-06,
         "cloth_vs_texture": 1.0
     }
 }

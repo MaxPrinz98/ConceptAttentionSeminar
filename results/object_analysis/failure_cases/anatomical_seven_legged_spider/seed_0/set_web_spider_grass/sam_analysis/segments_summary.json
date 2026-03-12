@@ -1,0 +1,13 @@
+{
+    "num_segments": 19,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "web_vs_spider": 0.0,
+        "web_vs_grass": 0.9995777273599306,
+        "spider_vs_grass": 0.0
+    }
+}

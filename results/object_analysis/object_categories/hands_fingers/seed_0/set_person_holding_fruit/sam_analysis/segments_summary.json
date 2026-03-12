@@ -1,12 +1,12 @@
 {
-    "num_segments": 12,
+    "num_segments": 11,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "person_vs_holding": 0.0,
+        "person_vs_holding": 0.9075579099588932,
         "person_vs_fruit": 0.0,
         "holding_vs_fruit": 0.0
     }

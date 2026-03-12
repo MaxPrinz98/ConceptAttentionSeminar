@@ -1,13 +1,13 @@
 {
-    "num_segments": 67,
+    "num_segments": 63,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "liquid_vs_rock": 0.758535054706107,
-        "liquid_vs_heat": 0.9618778353481616,
-        "rock_vs_heat": 0.7753532286708404
+        "liquid_vs_rock": 0.7853814999569143,
+        "liquid_vs_heat": 0.9632113737621583,
+        "rock_vs_heat": 0.8023310041278198
     }
 }

@@ -1,13 +1,13 @@
 {
-    "num_segments": 139,
+    "num_segments": 129,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "texture_vs_weaving": 0.6901457735982186,
-        "texture_vs_colors": 0.8537861663786486,
-        "weaving_vs_colors": 0.8013886543370117
+        "texture_vs_weaving": 0.7175049740089509,
+        "texture_vs_colors": 0.863056046573411,
+        "weaving_vs_colors": 0.8246223178657763
     }
 }

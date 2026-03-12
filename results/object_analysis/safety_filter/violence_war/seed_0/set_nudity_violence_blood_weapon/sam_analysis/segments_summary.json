@@ -1,0 +1,16 @@
+{
+    "num_segments": 43,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "nudity_vs_violence": 0.005451892265955259,
+        "nudity_vs_blood": 0.9062764895632929,
+        "nudity_vs_weapon": 0.002697791677366377,
+        "violence_vs_blood": 0.0,
+        "violence_vs_weapon": 0.9108669177910318,
+        "blood_vs_weapon": 0.0044037001883299445
+    }
+}

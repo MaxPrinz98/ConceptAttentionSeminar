@@ -1,0 +1,29 @@
+{
+    "category": "attribute_color",
+    "case_name": "multicolor_blocks",
+    "prompt": "A stack of red, green, and blue modules on a white surface",
+    "concepts": [
+        "foreground",
+        "background"
+    ],
+    "concept_set_name": "set_foreground_background",
+    "seed": 0,
+    "timestamp": "2026-03-12T00:04:57.823837",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

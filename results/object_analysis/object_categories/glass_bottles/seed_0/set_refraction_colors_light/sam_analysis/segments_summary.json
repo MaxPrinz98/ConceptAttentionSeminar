@@ -1,5 +1,5 @@
 {
-    "num_segments": 37,
+    "num_segments": 36,
     "image_size": [
         1024,
         1024
@@ -7,7 +7,7 @@
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
         "refraction_vs_colors": 0.20997790628315274,
-        "refraction_vs_light": 0.2621565305067772,
+        "refraction_vs_light": 0.0,
         "colors_vs_light": 0.0
     }
 }

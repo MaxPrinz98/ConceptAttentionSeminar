@@ -293,7 +293,7 @@ while True:
                             SAM breaks the image into many tiny generic pieces (e.g., a car might be split into wheels, doors, windows). The concept attention mask highlights the whole car, but isn't a perfect bounding shape.<br>
                             • The `while` loop continuously tries to build a better "ground truth" shape.<br>
                             • Block 1 tests <em>every single remaining SAM piece</em> by overlaying it onto our running composite mask, and calculates the new Intersection-over-Union (IoU) overlap score with the Concept mask.<br>
-                            • Block 2 locks in the single SAM piece that provided the biggest boost to the overall IoU score.<br>
+                            • Block 2 locks in the single SAM piece that provided the biggest boost to the overall IoU score. The very first piece chosen is also recorded as the <strong>"Single Best Segment"</strong> to diagnose how a single standalone SAM piece compares to the merged composite mask.<br>
                             • Block 3 breaks the loop when adding another piece actually hurts the IoU score (meaning the piece doesn't belong to the concept we're looking for).
                             </p>
                         </div>

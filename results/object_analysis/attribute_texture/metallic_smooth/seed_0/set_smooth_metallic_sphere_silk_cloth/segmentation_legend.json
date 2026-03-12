@@ -1,0 +1,9 @@
+{
+    "Background": "#000000",
+    "cloth": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "sphere": "#2ca02c",
+    "metallic": "#d62728",
+    "silk": "#9467bd",
+    "smooth": "#8c564b"
+}

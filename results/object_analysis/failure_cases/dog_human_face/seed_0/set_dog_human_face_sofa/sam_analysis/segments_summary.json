@@ -1,5 +1,5 @@
 {
-    "num_segments": 13,
+    "num_segments": 12,
     "image_size": [
         1024,
         1024
@@ -7,10 +7,10 @@
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
         "dog_vs_human": 0.0,
-        "dog_vs_face": 0.01050409878038463,
+        "dog_vs_face": 0.016670710478025614,
         "dog_vs_sofa": 0.0,
-        "human_vs_face": 0.9723875035603226,
-        "human_vs_sofa": 0.39935326627770773,
-        "face_vs_sofa": 0.3948752725244638
+        "human_vs_face": 0.0,
+        "human_vs_sofa": 0.8429058790915602,
+        "face_vs_sofa": 0.0
     }
 }

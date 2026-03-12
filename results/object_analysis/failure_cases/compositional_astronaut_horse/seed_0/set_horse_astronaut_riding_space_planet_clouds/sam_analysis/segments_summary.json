@@ -1,0 +1,25 @@
+{
+    "num_segments": 31,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "horse_vs_astronaut": 0.005731831588072729,
+        "horse_vs_riding": 0.037054204310431285,
+        "horse_vs_space": 0.9025458076839731,
+        "horse_vs_planet": 0.0,
+        "horse_vs_clouds": 0.6997471594326747,
+        "astronaut_vs_riding": 0.0,
+        "astronaut_vs_space": 0.0,
+        "astronaut_vs_planet": 0.0,
+        "astronaut_vs_clouds": 0.0,
+        "riding_vs_space": 0.0,
+        "riding_vs_planet": 0.0,
+        "riding_vs_clouds": 0.0,
+        "space_vs_planet": 0.0,
+        "space_vs_clouds": 0.7594714497182589,
+        "planet_vs_clouds": 0.0
+    }
+}

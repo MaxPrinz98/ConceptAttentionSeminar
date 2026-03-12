@@ -1,16 +1,16 @@
 {
-    "num_segments": 85,
+    "num_segments": 82,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "fans_vs_soccer": 0.06706611212925073,
-        "fans_vs_stadium": 0.0,
-        "fans_vs_fighting": 0.1879101323545768,
-        "soccer_vs_stadium": 6.319227133244696e-06,
-        "soccer_vs_fighting": 0.06843670150987224,
-        "stadium_vs_fighting": 0.005783599312474083
+        "fans_vs_soccer": 0.07240210072393066,
+        "fans_vs_stadium": 1.5111007787980936e-05,
+        "fans_vs_fighting": 0.03246496409353421,
+        "soccer_vs_stadium": 0.0,
+        "soccer_vs_fighting": 0.019649481318253302,
+        "stadium_vs_fighting": 0.7842371155479795
     }
 }

@@ -1,16 +1,16 @@
 {
-    "num_segments": 69,
+    "num_segments": 67,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "pink_vs_elephant": 0.9725393385326841,
+        "pink_vs_elephant": 0.9722688881353843,
         "pink_vs_green": 0.0,
         "pink_vs_jungle": 0.004186433148929727,
         "elephant_vs_green": 0.0,
         "elephant_vs_jungle": 0.0,
-        "green_vs_jungle": 0.13994927745132527
+        "green_vs_jungle": 0.13949646635281787
     }
 }

@@ -1,0 +1,8 @@
+{
+    "Background": "#000000",
+    "person": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "camera": "#2ca02c",
+    "reflection": "#d62728",
+    "mirror": "#9467bd"
+}

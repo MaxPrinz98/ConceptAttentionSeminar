@@ -1,0 +1,33 @@
+{
+    "category": "failure_cases",
+    "case_name": "compositional_astronaut_horse",
+    "prompt": "A horse riding an astronaut in space",
+    "concepts": [
+        "horse",
+        "astronaut",
+        "riding",
+        "space",
+        "planet",
+        "clouds"
+    ],
+    "concept_set_name": "set_horse_astronaut_riding_space_planet_clouds",
+    "seed": 0,
+    "timestamp": "2026-03-12T00:34:49.326968",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

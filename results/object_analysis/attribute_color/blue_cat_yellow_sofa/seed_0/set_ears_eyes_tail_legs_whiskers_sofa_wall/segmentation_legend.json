@@ -1,0 +1,11 @@
+{
+    "Background": "#000000",
+    "eyes": "#1f77b4",
+    "legs": "#ff7f0e",
+    "sofa": "#2ca02c",
+    "segmentation": "#d62728",
+    "tail": "#9467bd",
+    "wall": "#8c564b",
+    "ears": "#e377c2",
+    "whiskers": "#7f7f7f"
+}

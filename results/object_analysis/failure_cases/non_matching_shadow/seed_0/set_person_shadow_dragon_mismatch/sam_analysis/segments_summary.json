@@ -1,5 +1,5 @@
 {
-    "num_segments": 13,
+    "num_segments": 12,
     "image_size": [
         1024,
         1024
@@ -8,8 +8,8 @@
     "concept_collisions": {
         "person_vs_shadow": 0.0,
         "person_vs_dragon": 0.0,
-        "person_vs_mismatch": 0.5525654176471771,
-        "shadow_vs_dragon": 0.9997340237730964,
+        "person_vs_mismatch": 0.551940974681192,
+        "shadow_vs_dragon": 0.9999988228023191,
         "shadow_vs_mismatch": 0.0,
         "dragon_vs_mismatch": 0.0
     }

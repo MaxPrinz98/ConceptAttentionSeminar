@@ -6,10 +6,10 @@
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "rim_vs_wine": 0.0012172358013308015,
+        "rim_vs_wine": 0.0012167251424340941,
         "rim_vs_glass": 0.0,
-        "rim_vs_stability": 0.9805827303516005,
-        "wine_vs_glass": 0.0005106543316377626,
+        "rim_vs_stability": 0.9801308110924223,
+        "wine_vs_glass": 0.00044210202125070165,
         "wine_vs_stability": 0.0,
         "glass_vs_stability": 0.0
     }

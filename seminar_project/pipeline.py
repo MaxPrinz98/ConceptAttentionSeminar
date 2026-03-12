@@ -112,7 +112,7 @@ def run_step(step, force=False):
     """Execute a single pipeline step as a subprocess."""
     script = step["script"]
     args = ["uv", "run", script] + step["extra_args"]
-    if force and step["num"] == 3:
+    if force and step["num"] in [2, 3]:
         args.append("--force")
 
     header = f"Step {step['num']}: {step['name']}"
@@ -126,11 +126,11 @@ def run_step(step, force=False):
     elapsed = time.time() - t0
 
     if result.returncode != 0:
-        print(f"\n❌  {header}  FAILED  (exit code {result.returncode})")
+        print(f"\n{header}  FAILED  (exit code {result.returncode})")
         sys.exit(result.returncode)
 
     mins, secs = divmod(int(elapsed), 60)
-    print(f"\n✅  {header}  completed in {mins}m {secs}s")
+    print(f"\n{header}  completed in {mins}m {secs}s")
     return elapsed
 
 
@@ -207,7 +207,7 @@ def main():
         return
 
     step_nums = ", ".join(str(s["num"]) for s in steps_to_run)
-    print(f"\n🚀  Running pipeline steps: [{step_nums}]")
+    print(f"\n Running pipeline steps: [{step_nums}]")
     if args.force:
         print("   --force is set")
 

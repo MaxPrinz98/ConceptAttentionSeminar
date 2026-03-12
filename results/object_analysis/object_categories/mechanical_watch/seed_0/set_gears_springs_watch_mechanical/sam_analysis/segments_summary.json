@@ -1,16 +1,16 @@
 {
-    "num_segments": 79,
+    "num_segments": 76,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "gears_vs_springs": 0.07985159165069894,
-        "gears_vs_watch": 0.6221135698759216,
-        "gears_vs_mechanical": 0.7554342587790359,
-        "springs_vs_watch": 0.01603030849386757,
-        "springs_vs_mechanical": 0.004866073159071234,
-        "watch_vs_mechanical": 0.7732767319756089
+        "gears_vs_springs": 0.0787195736870774,
+        "gears_vs_watch": 0.6593223955238464,
+        "gears_vs_mechanical": 0.7604307984714892,
+        "springs_vs_watch": 0.00027877522456893093,
+        "springs_vs_mechanical": 0.0047698599566077,
+        "watch_vs_mechanical": 0.8173358743835215
     }
 }

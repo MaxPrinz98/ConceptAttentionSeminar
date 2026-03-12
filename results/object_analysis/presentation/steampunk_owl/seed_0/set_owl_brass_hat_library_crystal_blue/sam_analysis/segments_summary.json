@@ -1,5 +1,5 @@
 {
-    "num_segments": 42,
+    "num_segments": 41,
     "image_size": [
         1024,
         1024
@@ -7,19 +7,19 @@
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
         "owl_vs_brass": 0.0,
-        "owl_vs_hat": 0.0,
-        "owl_vs_library": 0.02440757451948698,
+        "owl_vs_hat": 0.005258169480884049,
+        "owl_vs_library": 0.024167315046269473,
         "owl_vs_crystal": 0.0,
         "owl_vs_blue": 0.5265861803236579,
-        "brass_vs_hat": 0.0,
-        "brass_vs_library": 0.8023880506513325,
+        "brass_vs_hat": 0.9577855470088724,
+        "brass_vs_library": 0.8042699674882685,
         "brass_vs_crystal": 0.0,
         "brass_vs_blue": 0.0,
-        "hat_vs_library": 0.0,
-        "hat_vs_crystal": 0.16226613340563992,
+        "hat_vs_library": 0.8332361178932502,
+        "hat_vs_crystal": 0.0,
         "hat_vs_blue": 0.0,
         "library_vs_crystal": 0.0,
-        "library_vs_blue": 0.012852691437181686,
+        "library_vs_blue": 0.012726174118893506,
         "crystal_vs_blue": 0.0
     }
 }

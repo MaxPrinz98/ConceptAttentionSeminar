@@ -1,0 +1,32 @@
+{
+    "category": "attribute_color",
+    "case_name": "blue_fire_orange_ice",
+    "prompt": "A surreal scene of vibrant blue fire burning inside a block of orange ice",
+    "concepts": [
+        "fire",
+        "ice",
+        "blue",
+        "orange",
+        "snow"
+    ],
+    "concept_set_name": "set_fire_ice_blue_orange_snow",
+    "seed": 0,
+    "timestamp": "2026-03-12T00:09:40.057931",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

@@ -150,70 +150,66 @@ def main():
     # 2. Load experiment config
     experiments = load_experiments(args.config)
 
-    # 3. Initialize Model
-    pipeline = ConceptAttentionFluxPipeline(model_name="flux-schnell", device=device)
-
-    # 4. Run Experiments
     base_output_dir = args.output
     seeds = args.seeds
 
-    print(f"Starting experiments. Results will be saved to {base_output_dir}")
-
+    # 3. Pre-flight check: count how many tasks need generation
+    tasks_to_run = []
+    total_skipped = 0
     for group in experiments:
         group_name = group["group"]
-
         for case in group["cases"]:
             case_name = case["name"]
             prompt = case["prompt"]
-            concept_sets = case["concept_sets"]
+            for concepts in case["concept_sets"]:
+                set_dir_name = concepts_to_dir_name(concepts)
+                for seed in seeds:
+                    run_dir = os.path.join(
+                        base_output_dir, group_name, case_name, f"seed_{seed}", set_dir_name
+                    )
+                    if os.path.exists(run_dir):
+                        total_skipped += 1
+                    else:
+                        tasks_to_run.append((group_name, case_name, prompt, concepts, set_dir_name, seed))
 
-            print(f"\nGroup: {group_name} | Case: {case_name}")
-            print(f"Prompt: {prompt}")
+    if not tasks_to_run:
+        print(f"All {total_skipped} concept sets already exist. Nothing to generate.")
+        return
 
-            for concepts in concept_sets:
-                print(f"  Concept Set: {concepts}")
+    print(f"Found {len(tasks_to_run)} new concept sets to generate (skipped {total_skipped} existing).")
 
-                for seed in tqdm(seeds, desc="    Processing seeds"):
-                    try:
-                        # Check if already computed
-                        set_dir_name = concepts_to_dir_name(concepts)
-                        run_dir = os.path.join(
-                            base_output_dir,
-                            group_name,
-                            case_name,
-                            f"seed_{seed}",
-                            set_dir_name,
-                        )
-                        if os.path.exists(run_dir):
-                            print(
-                                f"    Skipping {case_name} seed {seed} {set_dir_name} (already exists)"
-                            )
-                            continue
+    # 4. Initialize Model
+    pipeline = ConceptAttentionFluxPipeline(model_name="flux-schnell", device=device)
 
-                        # Flux generation with concept attention tracking
-                        pipeline_output = pipeline.generate_image(
-                            prompt=prompt,
-                            concepts=concepts,
-                            width=1024,
-                            height=1024,
-                            layer_indices=[16, 17, 18],
-                            num_inference_steps=4,
-                            timesteps=list(range(0, 4)),
-                            seed=seed,
-                        )
+    print(f"Starting experiments. Results will be saved to {base_output_dir}")
 
-                        save_experiment_results(
-                            output_dir=base_output_dir,
-                            group_name=group_name,
-                            case_name=case_name,
-                            prompt=prompt,
-                            seed=seed,
-                            pipeline_output=pipeline_output,
-                            concepts=concepts,
-                        )
+    for task in tqdm(tasks_to_run, desc="Generating new concepts"):
+        group_name, case_name, prompt, concepts, set_dir_name, seed = task
+        try:
+            # Flux generation with concept attention tracking
+            pipeline_output = pipeline.generate_image(
+                prompt=prompt,
+                concepts=concepts,
+                width=1024,
+                height=1024,
+                layer_indices=[16, 17, 18],
+                num_inference_steps=4,
+                timesteps=list(range(0, 4)),
+                seed=seed,
+            )
 
-                    except Exception as e:
-                        print(f"    Error processing {case_name} seed {seed}: {e}")
+            save_experiment_results(
+                output_dir=base_output_dir,
+                group_name=group_name,
+                case_name=case_name,
+                prompt=prompt,
+                seed=seed,
+                pipeline_output=pipeline_output,
+                concepts=concepts,
+            )
+
+        except Exception as e:
+            print(f"    Error processing {case_name} seed {seed}: {e}")
 
     print("\nAll experiments completed.")
 

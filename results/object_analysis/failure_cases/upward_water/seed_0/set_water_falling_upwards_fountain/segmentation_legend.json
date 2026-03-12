@@ -1,0 +1,8 @@
+{
+    "Background": "#000000",
+    "segmentation": "#1f77b4",
+    "falling": "#ff7f0e",
+    "water": "#2ca02c",
+    "fountain": "#d62728",
+    "upwards": "#9467bd"
+}

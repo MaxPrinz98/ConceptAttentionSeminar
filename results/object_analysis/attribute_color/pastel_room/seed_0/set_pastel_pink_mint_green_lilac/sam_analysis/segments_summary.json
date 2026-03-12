@@ -1,20 +1,20 @@
 {
-    "num_segments": 35,
+    "num_segments": 32,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "pastel_vs_pink": 0.5281361924990317,
-        "pastel_vs_mint": 0.041276956008289754,
-        "pastel_vs_green": 0.029509769130386967,
-        "pastel_vs_lilac": 0.8569090770766667,
-        "pink_vs_mint": 0.004572534513940604,
-        "pink_vs_green": 0.24611420709761161,
-        "pink_vs_lilac": 0.555740558149726,
+        "pastel_vs_pink": 0.57949142736161,
+        "pastel_vs_mint": 0.03879573836346171,
+        "pastel_vs_green": 0.028184975958152666,
+        "pastel_vs_lilac": 0.8824092957766924,
+        "pink_vs_mint": 0.004518602084015673,
+        "pink_vs_green": 0.2432093145585498,
+        "pink_vs_lilac": 0.6102773426250636,
         "mint_vs_green": 0.042302802053659085,
         "mint_vs_lilac": 0.0,
-        "green_vs_lilac": 0.00388386566115198
+        "green_vs_lilac": 0.0036264642250466174
     }
 }

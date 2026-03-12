@@ -83,6 +83,68 @@ def process_directory(directory_path, threshold=0.5, force=False):
         except Exception as e:
             print(f"    Error processing {heatmap_file.name}: {e}")
 
+    # --- 4. Argmax Segmentation over all concepts ---
+    # Only run argmax if we have concepts and force is True or segmentation doesn't exist
+    seg_output_path = dir_path / "heatmap_segmentation.png"
+    legend_output_path = dir_path / "segmentation_legend.json"
+
+    if len(heatmap_files) > 0 and (force or not seg_output_path.exists()):
+        print(f"  Generating Argmax Segmentation for {dir_path.name}")
+        concept_names = [hf.stem.replace("heatmap_", "") for hf in heatmap_files]
+        heatmaps = []
+
+        try:
+            for c_name in concept_names:
+                upscaled_path = dir_path / f"upscaled_heatmap_{c_name}.png"
+                if upscaled_path.exists():
+                    img = Image.open(upscaled_path).convert("L")
+                else:
+                    # Fallback if upscaled doesn't exist for some reason
+                    orig_path = dir_path / f"heatmap_{c_name}.png"
+                    img = (
+                        Image.open(orig_path)
+                        .convert("L")
+                        .resize(img_size, resample=Image.BICUBIC)
+                    )
+
+                heatmaps.append(np.array(img) / 255.0)
+
+            # Add background layer (threshold: 0.1)
+            bg_layer = np.full(img_size[::-1], 0.1)  # shape (H, W)
+            stacked = np.stack([bg_layer] + heatmaps, axis=0)
+
+            # Argmax segmentation
+            segmentation_idx = np.argmax(stacked, axis=0)
+
+            # Define colors (Background = Black)
+            cmap = cm.get_cmap("tab10")
+            colors = [(0, 0, 0)]  # Index 0 is background
+            for i in range(len(concept_names)):
+                r, g, b, _ = cmap((i % 10) / 10.0)
+                colors.append((int(r * 255), int(g * 255), int(b * 255)))
+
+            # Map indices to RGB colors
+            seg_rgb = np.zeros((*img_size[::-1], 3), dtype=np.uint8)
+            for i, color in enumerate(colors):
+                seg_rgb[segmentation_idx == i] = color
+
+            # Save segmentation image
+            Image.fromarray(seg_rgb).save(seg_output_path)
+
+            # Save Legend JSON
+            legend_data = {"Background": "#000000"}
+            for i, c_name in enumerate(concept_names):
+                hex_color = "#{:02x}{:02x}{:02x}".format(*colors[i + 1])
+                legend_data[c_name] = hex_color
+
+            import json
+
+            with open(legend_output_path, "w") as f:
+                json.dump(legend_data, f, indent=4)
+
+        except Exception as e:
+            print(f"    Error generating segmentation for {dir_path.name}: {e}")
+
 
 def main():
     parser = argparse.ArgumentParser(description="Upscale heatmaps and generate masks.")

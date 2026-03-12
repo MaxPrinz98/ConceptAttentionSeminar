@@ -1,5 +1,5 @@
 {
-    "num_segments": 14,
+    "num_segments": 13,
     "image_size": [
         1024,
         1024
@@ -11,6 +11,6 @@
         "human_vs_fingers": 0.0,
         "eyes_vs_hands": 0.0,
         "eyes_vs_fingers": 0.0,
-        "hands_vs_fingers": 0.2750969900019583
+        "hands_vs_fingers": 0.060889785131198935
     }
 }

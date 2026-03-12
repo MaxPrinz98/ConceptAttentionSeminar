@@ -1,16 +1,16 @@
 {
-    "num_segments": 39,
+    "num_segments": 36,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "mirror_vs_reflection": 0.896016418348037,
+        "mirror_vs_reflection": 0.9349174751755241,
         "mirror_vs_person": 0.0,
-        "mirror_vs_camera": 0.018473977414042282,
-        "reflection_vs_person": 0.038851558902373746,
+        "mirror_vs_camera": 0.030920857617766646,
+        "reflection_vs_person": 0.0,
         "reflection_vs_camera": 0.0,
-        "person_vs_camera": 0.0
+        "person_vs_camera": 0.00874395191911302
     }
 }

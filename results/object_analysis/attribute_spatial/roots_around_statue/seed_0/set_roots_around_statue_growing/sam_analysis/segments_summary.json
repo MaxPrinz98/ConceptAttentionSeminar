@@ -1,5 +1,5 @@
 {
-    "num_segments": 68,
+    "num_segments": 65,
     "image_size": [
         1024,
         1024
@@ -8,7 +8,7 @@
     "concept_collisions": {
         "roots_vs_around": 0.0,
         "roots_vs_statue": 0.0,
-        "roots_vs_growing": 0.0013866956119451873,
+        "roots_vs_growing": 0.0013828538049341654,
         "around_vs_statue": 0.0,
         "around_vs_growing": 0.0,
         "statue_vs_growing": 0.0027554169715867513

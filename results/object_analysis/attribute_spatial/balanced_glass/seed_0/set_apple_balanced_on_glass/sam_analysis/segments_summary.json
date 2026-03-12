@@ -8,8 +8,8 @@
     "concept_collisions": {
         "apple_vs_balanced": 0.0,
         "apple_vs_on": 0.0,
-        "apple_vs_glass": 0.0005106543316377626,
-        "balanced_vs_on": 0.9818957719802474,
+        "apple_vs_glass": 0.00044210202125070165,
+        "balanced_vs_on": 0.9814426419125067,
         "balanced_vs_glass": 0.0,
         "on_vs_glass": 0.0
     }

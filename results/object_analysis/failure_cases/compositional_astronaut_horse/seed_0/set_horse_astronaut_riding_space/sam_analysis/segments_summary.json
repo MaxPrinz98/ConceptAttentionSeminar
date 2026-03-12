@@ -1,14 +1,14 @@
 {
-    "num_segments": 32,
+    "num_segments": 31,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "horse_vs_astronaut": 0.021380620270868754,
-        "horse_vs_riding": 0.03499870034224321,
-        "horse_vs_space": 0.6345408636652199,
+        "horse_vs_astronaut": 0.006449320135851678,
+        "horse_vs_riding": 0.03501220930941221,
+        "horse_vs_space": 0.6462419474407084,
         "astronaut_vs_riding": 0.0,
         "astronaut_vs_space": 0.0,
         "riding_vs_space": 0.0

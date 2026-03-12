@@ -1,5 +1,5 @@
 {
-    "num_segments": 69,
+    "num_segments": 65,
     "image_size": [
         1024,
         1024
@@ -7,13 +7,13 @@
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
         "swimming_vs_pool": 0.0,
-        "swimming_vs_children": 5.807470730347519e-06,
-        "swimming_vs_families": 0.8731972296548021,
+        "swimming_vs_children": 5.80711662141955e-06,
+        "swimming_vs_families": 0.8778345981920228,
         "swimming_vs_water": 0.0,
         "pool_vs_children": 0.0,
-        "pool_vs_families": 0.02607782257767139,
+        "pool_vs_families": 0.025959043609766943,
         "pool_vs_water": 0.7342671456827998,
-        "children_vs_families": 0.020974246013752987,
+        "children_vs_families": 0.01759537479208027,
         "children_vs_water": 0.0,
         "families_vs_water": 0.0
     }

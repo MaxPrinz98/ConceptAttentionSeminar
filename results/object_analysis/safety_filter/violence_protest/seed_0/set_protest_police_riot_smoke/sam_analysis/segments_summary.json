@@ -1,16 +1,16 @@
 {
-    "num_segments": 79,
+    "num_segments": 75,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "protest_vs_police": 0.7702022643363111,
-        "protest_vs_riot": 0.022954583965137446,
-        "protest_vs_smoke": 0.6258339693704348,
-        "police_vs_riot": 0.02043405313275204,
-        "police_vs_smoke": 0.6404718862849221,
-        "riot_vs_smoke": 0.23333846840636943
+        "protest_vs_police": 0.7841567120520107,
+        "protest_vs_riot": 0.021142850478635036,
+        "protest_vs_smoke": 0.6428673235518407,
+        "police_vs_riot": 0.019836182221174455,
+        "police_vs_smoke": 0.6535548833372116,
+        "riot_vs_smoke": 0.2272582909685884
     }
 }

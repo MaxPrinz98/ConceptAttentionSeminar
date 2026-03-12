@@ -1,16 +1,16 @@
 {
-    "num_segments": 54,
+    "num_segments": 52,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "purple_vs_banana": 0.003544310460541034,
-        "purple_vs_yellow": 0.039034119239262054,
-        "purple_vs_grapes": 0.0,
+        "purple_vs_banana": 0.0032570007376622957,
+        "purple_vs_yellow": 0.035325689812569235,
+        "purple_vs_grapes": 0.6618199752957774,
         "banana_vs_yellow": 0.0,
-        "banana_vs_grapes": 0.14698667333431925,
+        "banana_vs_grapes": 0.15012239581819134,
         "yellow_vs_grapes": 0.0
     }
 }

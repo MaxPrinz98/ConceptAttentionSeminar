@@ -1,13 +1,13 @@
 {
-    "num_segments": 28,
+    "num_segments": 26,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "count_vs_objects": 2.86102294921875e-06,
-        "count_vs_colorful": 2.9264838004489228e-06,
-        "objects_vs_colorful": 0.9381276593499646
+        "count_vs_objects": 0.0,
+        "count_vs_colorful": 0.0,
+        "objects_vs_colorful": 0.9978423180630807
     }
 }

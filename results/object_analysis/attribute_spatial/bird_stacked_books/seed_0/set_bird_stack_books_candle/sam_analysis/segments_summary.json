@@ -1,0 +1,16 @@
+{
+    "num_segments": 27,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "bird_vs_stack": 0.0,
+        "bird_vs_books": 5.098607060551057e-06,
+        "bird_vs_candle": 0.0,
+        "stack_vs_books": 0.025685478733292532,
+        "stack_vs_candle": 0.8898217962538147,
+        "books_vs_candle": 7.34121886058331e-05
+    }
+}

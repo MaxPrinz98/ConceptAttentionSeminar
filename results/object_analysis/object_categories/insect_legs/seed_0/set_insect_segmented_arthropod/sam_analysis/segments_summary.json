@@ -1,12 +1,12 @@
 {
-    "num_segments": 24,
+    "num_segments": 23,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "insect_vs_segmented": 0.5051296811263819,
+        "insect_vs_segmented": 0.5053317925605868,
         "insect_vs_arthropod": 0.00017414762652616646,
         "segmented_vs_arthropod": 0.3833641516987951
     }

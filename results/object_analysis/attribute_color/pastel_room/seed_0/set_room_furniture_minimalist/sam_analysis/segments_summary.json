@@ -1,13 +1,13 @@
 {
-    "num_segments": 35,
+    "num_segments": 32,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "room_vs_furniture": 0.052837471009143384,
-        "room_vs_minimalist": 0.0013534788783317305,
+        "room_vs_furniture": 0.5234885672864156,
+        "room_vs_minimalist": 0.0013371653741077844,
         "furniture_vs_minimalist": 0.0
     }
 }

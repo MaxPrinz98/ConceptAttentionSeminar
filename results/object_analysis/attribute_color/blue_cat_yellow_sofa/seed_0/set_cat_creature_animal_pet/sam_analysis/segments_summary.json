@@ -1,16 +1,16 @@
 {
-    "num_segments": 14,
+    "num_segments": 13,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "cat_vs_creature": 0.012379839539904349,
+        "cat_vs_creature": 0.006560984930453559,
         "cat_vs_animal": 0.0,
         "cat_vs_pet": 0.0,
         "creature_vs_animal": 0.0,
-        "creature_vs_pet": 0.2105623643160837,
+        "creature_vs_pet": 0.9186260637965834,
         "animal_vs_pet": 0.0
     }
 }

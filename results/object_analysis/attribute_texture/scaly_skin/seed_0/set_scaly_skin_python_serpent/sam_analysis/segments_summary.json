@@ -1,14 +1,14 @@
 {
-    "num_segments": 104,
+    "num_segments": 102,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "scaly_vs_skin": 0.001444474589793881,
-        "scaly_vs_python": 0.002203818804772645,
-        "scaly_vs_serpent": 0.8507067267685812,
+        "scaly_vs_skin": 0.0014409114005295108,
+        "scaly_vs_python": 0.002198000963915006,
+        "scaly_vs_serpent": 0.8529669194436358,
         "skin_vs_python": 0.0,
         "skin_vs_serpent": 0.03152420661611838,
         "python_vs_serpent": 0.0

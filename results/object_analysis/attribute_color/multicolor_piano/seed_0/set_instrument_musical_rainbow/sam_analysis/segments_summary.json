@@ -1,13 +1,13 @@
 {
-    "num_segments": 15,
+    "num_segments": 13,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "instrument_vs_musical": 0.898585130677493,
-        "instrument_vs_rainbow": 0.7075451077115741,
-        "musical_vs_rainbow": 0.7804104943704864
+        "instrument_vs_musical": 0.8988468941879731,
+        "instrument_vs_rainbow": 0.7529482398375807,
+        "musical_vs_rainbow": 0.8303031261031988
     }
 }

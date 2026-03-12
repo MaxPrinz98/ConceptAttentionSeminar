@@ -1,0 +1,7 @@
+{
+    "Background": "#000000",
+    "heat": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "liquid": "#2ca02c",
+    "rock": "#d62728"
+}

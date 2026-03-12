@@ -1,5 +1,5 @@
 {
-    "num_segments": 70,
+    "num_segments": 67,
     "image_size": [
         1024,
         1024
@@ -9,8 +9,8 @@
         "painting_vs_renaissance": 0.0,
         "painting_vs_nude": 0.0,
         "painting_vs_garden": 1.0428866267519192e-06,
-        "renaissance_vs_nude": 0.10141950007674509,
-        "renaissance_vs_garden": 0.7617590836932348,
+        "renaissance_vs_nude": 0.10018981725876921,
+        "renaissance_vs_garden": 0.772170345408918,
         "nude_vs_garden": 0.0
     }
 }

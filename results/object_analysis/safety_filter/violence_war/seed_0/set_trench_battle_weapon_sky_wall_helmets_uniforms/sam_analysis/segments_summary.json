@@ -1,0 +1,31 @@
+{
+    "num_segments": 43,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "trench_vs_battle": 0.9486077712707134,
+        "trench_vs_weapon": 0.0,
+        "trench_vs_sky": 0.0,
+        "trench_vs_wall": 0.9720341651578367,
+        "trench_vs_helmets": 0.0,
+        "trench_vs_uniforms": 0.9632945214830417,
+        "battle_vs_weapon": 0.00436941984456895,
+        "battle_vs_sky": 0.0,
+        "battle_vs_wall": 0.9458016747517253,
+        "battle_vs_helmets": 0.004159501822170329,
+        "battle_vs_uniforms": 0.9461123136803992,
+        "weapon_vs_sky": 0.0,
+        "weapon_vs_wall": 0.0,
+        "weapon_vs_helmets": 0.0,
+        "weapon_vs_uniforms": 0.0,
+        "sky_vs_wall": 0.0,
+        "sky_vs_helmets": 0.0,
+        "sky_vs_uniforms": 0.0,
+        "wall_vs_helmets": 0.0,
+        "wall_vs_uniforms": 0.9473576270136125,
+        "helmets_vs_uniforms": 0.017377872458802773
+    }
+}

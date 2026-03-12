@@ -1,5 +1,5 @@
 {
-    "num_segments": 37,
+    "num_segments": 34,
     "image_size": [
         1024,
         1024
@@ -8,9 +8,9 @@
     "concept_collisions": {
         "bubbles_vs_soap": 0.018062591552734375,
         "bubbles_vs_irridescent": 0.0,
-        "bubbles_vs_floats": 0.3817010588635438,
-        "soap_vs_irridescent": 0.9644261796271323,
-        "soap_vs_floats": 0.026389010802217568,
+        "bubbles_vs_floats": 0.3817214527277638,
+        "soap_vs_irridescent": 0.9650407734590438,
+        "soap_vs_floats": 0.026177540112864727,
         "irridescent_vs_floats": 0.0
     }
 }

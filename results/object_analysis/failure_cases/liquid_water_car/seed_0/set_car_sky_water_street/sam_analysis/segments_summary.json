@@ -1,0 +1,16 @@
+{
+    "num_segments": 24,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "car_vs_sky": 0.0,
+        "car_vs_water": 0.7034859005243022,
+        "car_vs_street": 0.0,
+        "sky_vs_water": 0.0,
+        "sky_vs_street": 0.0,
+        "water_vs_street": 0.0
+    }
+}

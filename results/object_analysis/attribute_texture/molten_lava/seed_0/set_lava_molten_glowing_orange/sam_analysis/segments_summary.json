@@ -1,16 +1,16 @@
 {
-    "num_segments": 67,
+    "num_segments": 63,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "lava_vs_molten": 0.042695527266313864,
-        "lava_vs_glowing": 0.003168160375531577,
-        "lava_vs_orange": 0.02360852517906819,
-        "molten_vs_glowing": 0.8076968438690209,
-        "molten_vs_orange": 0.7750505921169668,
-        "glowing_vs_orange": 0.9297506315294204
+        "lava_vs_molten": 0.041736842629779856,
+        "lava_vs_glowing": 0.0031125485826108226,
+        "lava_vs_orange": 0.011146729471285423,
+        "molten_vs_glowing": 0.8119482648387881,
+        "molten_vs_orange": 0.7979514230832984,
+        "glowing_vs_orange": 0.9565695280833487
     }
 }

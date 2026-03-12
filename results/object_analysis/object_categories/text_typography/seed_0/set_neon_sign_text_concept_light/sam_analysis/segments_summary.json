@@ -1,5 +1,5 @@
 {
-    "num_segments": 13,
+    "num_segments": 12,
     "image_size": [
         1024,
         1024
@@ -8,13 +8,13 @@
     "concept_collisions": {
         "neon_vs_sign": 0.0,
         "neon_vs_text": 0.0,
-        "neon_vs_CONCEPT": 0.03277433585921907,
+        "neon_vs_CONCEPT": 0.032773099821726895,
         "neon_vs_light": 0.0,
         "sign_vs_text": 0.9869683417016243,
-        "sign_vs_CONCEPT": 0.8363000017170428,
+        "sign_vs_CONCEPT": 0.836335296485595,
         "sign_vs_light": 0.0,
-        "text_vs_CONCEPT": 0.8458051986767425,
+        "text_vs_CONCEPT": 0.8458408945976635,
         "text_vs_light": 0.0,
-        "CONCEPT_vs_light": 0.07357890895598761
+        "CONCEPT_vs_light": 0.07357613403201985
     }
 }

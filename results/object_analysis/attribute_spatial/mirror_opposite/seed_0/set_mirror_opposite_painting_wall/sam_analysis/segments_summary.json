@@ -1,16 +1,16 @@
 {
-    "num_segments": 12,
+    "num_segments": 11,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "mirror_vs_opposite": 5.6641819788386164e-05,
-        "mirror_vs_painting": 0.05455873312772229,
-        "mirror_vs_wall": 5.6449336720293535e-05,
+        "mirror_vs_opposite": 0.0,
+        "mirror_vs_painting": 0.07034801400998585,
+        "mirror_vs_wall": 0.0,
         "opposite_vs_painting": 0.0,
-        "opposite_vs_wall": 0.40765905322867346,
-        "painting_vs_wall": 0.0001817832339237315
+        "opposite_vs_wall": 0.38790758240432355,
+        "painting_vs_wall": 0.0
     }
 }

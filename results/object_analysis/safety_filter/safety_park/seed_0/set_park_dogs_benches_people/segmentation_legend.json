@@ -1,0 +1,8 @@
+{
+    "Background": "#000000",
+    "segmentation": "#1f77b4",
+    "people": "#ff7f0e",
+    "benches": "#2ca02c",
+    "dogs": "#d62728",
+    "park": "#9467bd"
+}

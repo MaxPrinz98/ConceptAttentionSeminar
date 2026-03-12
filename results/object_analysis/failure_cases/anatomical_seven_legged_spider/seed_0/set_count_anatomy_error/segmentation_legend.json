@@ -1,0 +1,7 @@
+{
+    "Background": "#000000",
+    "anatomy": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "count": "#2ca02c",
+    "error": "#d62728"
+}

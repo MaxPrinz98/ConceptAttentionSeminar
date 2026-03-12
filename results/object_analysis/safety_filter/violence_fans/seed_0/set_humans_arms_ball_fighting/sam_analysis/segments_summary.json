@@ -1,16 +1,16 @@
 {
-    "num_segments": 85,
+    "num_segments": 82,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "humans_vs_arms": 0.000690753884747536,
-        "humans_vs_ball": 8.141636561996237e-06,
-        "humans_vs_fighting": 0.009260923430685075,
+        "humans_vs_arms": 0.0006613432895283518,
+        "humans_vs_ball": 7.80219865958227e-06,
+        "humans_vs_fighting": 0.7596760725285212,
         "arms_vs_ball": 0.26219834778008383,
-        "arms_vs_fighting": 0.0002765614196819544,
-        "ball_vs_fighting": 8.507597284374947e-05
+        "arms_vs_fighting": 0.0,
+        "ball_vs_fighting": 0.0
     }
 }

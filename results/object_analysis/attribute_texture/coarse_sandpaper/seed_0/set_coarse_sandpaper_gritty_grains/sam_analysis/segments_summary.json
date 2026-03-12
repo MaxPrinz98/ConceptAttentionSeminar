@@ -1,5 +1,5 @@
 {
-    "num_segments": 146,
+    "num_segments": 145,
     "image_size": [
         1024,
         1024
@@ -7,10 +7,10 @@
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
         "coarse_vs_sandpaper": 0.0,
-        "coarse_vs_gritty": 2.3731351607265114e-06,
-        "coarse_vs_grains": 0.006527163930293223,
-        "sandpaper_vs_gritty": 0.9261891738018956,
-        "sandpaper_vs_grains": 0.7753849265638924,
-        "gritty_vs_grains": 0.7887794884173226
+        "coarse_vs_gritty": 2.3625414330703826e-06,
+        "coarse_vs_grains": 0.006526888558239849,
+        "sandpaper_vs_gritty": 0.9264992457499092,
+        "sandpaper_vs_grains": 0.7790295404542601,
+        "gritty_vs_grains": 0.7925584376913588
     }
 }

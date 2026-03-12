@@ -1,0 +1,13 @@
+{
+    "Background": "#000000",
+    "next": "#1f77b4",
+    "of": "#ff7f0e",
+    "to": "#2ca02c",
+    "candle": "#d62728",
+    "segmentation": "#9467bd",
+    "books": "#8c564b",
+    "bird": "#e377c2",
+    "stack": "#7f7f7f",
+    "top": "#bcbd22",
+    "on": "#17becf"
+}

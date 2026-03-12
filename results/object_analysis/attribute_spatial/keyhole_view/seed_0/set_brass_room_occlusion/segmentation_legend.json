@@ -1,0 +1,7 @@
+{
+    "Background": "#000000",
+    "segmentation": "#1f77b4",
+    "brass": "#ff7f0e",
+    "occlusion": "#2ca02c",
+    "room": "#d62728"
+}

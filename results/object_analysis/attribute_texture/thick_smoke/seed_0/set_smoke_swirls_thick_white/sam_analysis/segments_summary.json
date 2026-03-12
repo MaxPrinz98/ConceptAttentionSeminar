@@ -1,15 +1,15 @@
 {
-    "num_segments": 12,
+    "num_segments": 11,
     "image_size": [
         1024,
         1024
     ],
     "overall_coverage_percent": 100.0,
     "concept_collisions": {
-        "smoke_vs_swirls": 0.9444634120754933,
-        "smoke_vs_thick": 0.9501999018026233,
-        "smoke_vs_white": 0.0036617318416132896,
-        "swirls_vs_thick": 0.9378136443130788,
+        "smoke_vs_swirls": 0.9446964263916016,
+        "smoke_vs_thick": 0.9502121981595995,
+        "smoke_vs_white": 0.003660813444986973,
+        "swirls_vs_thick": 0.9380480799394468,
         "swirls_vs_white": 0.0,
         "thick_vs_white": 0.0
     }

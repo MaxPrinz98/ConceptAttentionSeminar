@@ -1,0 +1,11 @@
+{
+    "Background": "#000000",
+    "fence": "#1f77b4",
+    "segmentation": "#ff7f0e",
+    "house": "#2ca02c",
+    "distance": "#d62728",
+    "white": "#9467bd",
+    "brick": "#8c564b",
+    "red": "#e377c2",
+    "picket": "#7f7f7f"
+}

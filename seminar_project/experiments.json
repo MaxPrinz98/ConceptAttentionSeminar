@@ -873,7 +873,9 @@
                     [
                         "apple",
                         "balanced",
-                        "on",
+                        "top",
+                        "mirror",
+                        "background",
                         "glass"
                     ],
                     [
@@ -1074,13 +1076,12 @@
                     [
                         "sign",
                         "CONSEPT",
-                        "letters",
-                        "text"
+                        "letters"
                     ],
                     [
                         "spelling",
-                        "error",
-                        "typography"
+                        "typography",
+                        "bold"
                     ]
                 ]
             },
@@ -1096,8 +1097,7 @@
                     ],
                     [
                         "lighting",
-                        "physics",
-                        "error"
+                        "physics"
                     ]
                 ]
             },
@@ -1125,9 +1125,9 @@
                 "concept_sets": [
                     [
                         "car",
-                        "liquid",
+                        "sky",
                         "water",
-                        "flowing"
+                        "street"
                     ],
                     [
                         "transparent",
