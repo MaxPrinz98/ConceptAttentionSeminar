@@ -1,6 +1,5 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "human": "#ff7f0e",
-    "face": "#2ca02c"
+    "human": "#1f77b4",
+    "face": "#ff7f0e"
 }

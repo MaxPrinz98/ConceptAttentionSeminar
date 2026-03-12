@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "person": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "face": "#2ca02c",
-    "movement": "#d62728"
+    "face": "#ff7f0e",
+    "movement": "#2ca02c"
 }

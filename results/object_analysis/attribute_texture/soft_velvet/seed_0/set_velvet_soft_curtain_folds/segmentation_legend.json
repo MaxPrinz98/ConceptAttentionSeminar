@@ -2,7 +2,6 @@
     "Background": "#000000",
     "folds": "#1f77b4",
     "soft": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "curtain": "#d62728",
-    "velvet": "#9467bd"
+    "curtain": "#2ca02c",
+    "velvet": "#d62728"
 }

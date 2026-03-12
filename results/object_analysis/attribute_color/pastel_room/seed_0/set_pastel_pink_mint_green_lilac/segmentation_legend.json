@@ -1,9 +1,8 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "pastel": "#ff7f0e",
-    "pink": "#2ca02c",
-    "lilac": "#d62728",
-    "green": "#9467bd",
-    "mint": "#8c564b"
+    "pastel": "#1f77b4",
+    "pink": "#ff7f0e",
+    "lilac": "#2ca02c",
+    "green": "#d62728",
+    "mint": "#9467bd"
 }

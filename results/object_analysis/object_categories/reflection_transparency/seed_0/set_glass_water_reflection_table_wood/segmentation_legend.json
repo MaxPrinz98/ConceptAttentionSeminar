@@ -1,9 +1,8 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "water": "#ff7f0e",
-    "wood": "#2ca02c",
-    "table": "#d62728",
-    "reflection": "#9467bd",
-    "glass": "#8c564b"
+    "water": "#1f77b4",
+    "wood": "#ff7f0e",
+    "table": "#2ca02c",
+    "reflection": "#d62728",
+    "glass": "#9467bd"
 }

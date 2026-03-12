@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "between": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "kitten": "#2ca02c",
-    "middle": "#d62728",
-    "dogs": "#9467bd"
+    "kitten": "#ff7f0e",
+    "middle": "#2ca02c",
+    "dogs": "#d62728"
 }

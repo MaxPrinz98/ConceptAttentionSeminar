@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "sculpture": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "male": "#2ca02c",
-    "marble": "#d62728",
-    "statue": "#9467bd"
+    "male": "#ff7f0e",
+    "marble": "#2ca02c",
+    "statue": "#d62728"
 }

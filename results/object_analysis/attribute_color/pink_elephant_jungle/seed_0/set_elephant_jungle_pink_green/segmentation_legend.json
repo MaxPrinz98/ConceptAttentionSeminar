@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "pink": "#ff7f0e",
-    "green": "#2ca02c",
-    "elephant": "#d62728",
-    "jungle": "#9467bd"
+    "pink": "#1f77b4",
+    "green": "#ff7f0e",
+    "elephant": "#2ca02c",
+    "jungle": "#d62728"
 }

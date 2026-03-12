@@ -2,7 +2,6 @@
     "Background": "#000000",
     "yellow": "#1f77b4",
     "sofa": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "blue": "#d62728",
-    "pet": "#9467bd"
+    "blue": "#2ca02c",
+    "pet": "#d62728"
 }

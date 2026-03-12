@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "nude": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "painting": "#2ca02c",
-    "renaissance": "#d62728",
-    "garden": "#9467bd"
+    "painting": "#ff7f0e",
+    "renaissance": "#2ca02c",
+    "garden": "#d62728"
 }

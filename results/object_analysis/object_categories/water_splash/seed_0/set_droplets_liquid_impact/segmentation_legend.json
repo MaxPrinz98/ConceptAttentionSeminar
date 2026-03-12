@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "impact": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "liquid": "#2ca02c",
-    "droplets": "#d62728"
+    "liquid": "#ff7f0e",
+    "droplets": "#2ca02c"
 }

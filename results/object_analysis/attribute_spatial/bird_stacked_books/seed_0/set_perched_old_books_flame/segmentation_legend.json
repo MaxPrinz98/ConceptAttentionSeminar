@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "books": "#ff7f0e",
-    "old": "#2ca02c",
-    "perched": "#d62728",
-    "flame": "#9467bd"
+    "books": "#1f77b4",
+    "old": "#ff7f0e",
+    "perched": "#2ca02c",
+    "flame": "#d62728"
 }

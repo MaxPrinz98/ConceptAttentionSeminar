@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "rainbow": "#ff7f0e",
-    "colors": "#2ca02c",
-    "hair": "#d62728",
-    "gradient": "#9467bd"
+    "rainbow": "#1f77b4",
+    "colors": "#ff7f0e",
+    "hair": "#2ca02c",
+    "gradient": "#d62728"
 }

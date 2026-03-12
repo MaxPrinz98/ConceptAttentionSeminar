@@ -3,7 +3,6 @@
     "fighting": "#1f77b4",
     "ring": "#ff7f0e",
     "sport": "#2ca02c",
-    "segmentation": "#d62728",
-    "boxers": "#9467bd",
-    "boxing": "#8c564b"
+    "boxers": "#d62728",
+    "boxing": "#9467bd"
 }

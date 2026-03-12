@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "sphere": "#ff7f0e",
-    "surface": "#2ca02c",
-    "thin": "#d62728"
+    "sphere": "#1f77b4",
+    "surface": "#ff7f0e",
+    "thin": "#2ca02c"
 }

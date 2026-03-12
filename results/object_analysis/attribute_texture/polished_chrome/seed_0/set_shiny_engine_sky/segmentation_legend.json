@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "shiny": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "engine": "#2ca02c",
-    "sky": "#d62728"
+    "engine": "#ff7f0e",
+    "sky": "#2ca02c"
 }

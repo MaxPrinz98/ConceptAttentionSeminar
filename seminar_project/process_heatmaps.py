@@ -26,10 +26,11 @@ def process_directory(directory_path, threshold=0.5, force=False):
         return
 
     # Find all heatmap files
-    heatmap_files = list(dir_path.glob("heatmap_*.png"))
+    all_heatmap_files = list(dir_path.glob("heatmap_*.png"))
+    heatmap_files = [f for f in all_heatmap_files if f.name != "heatmap_segmentation.png"]
 
     for heatmap_file in heatmap_files:
-        # Avoid processing already generated files
+        # Avoid processing already generated files or the output segmentation
         if (
             heatmap_file.name.startswith("upscaled_")
             or heatmap_file.name.startswith("mask_")

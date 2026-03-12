@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "furniture": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "room": "#2ca02c",
-    "minimalist": "#d62728"
+    "room": "#ff7f0e",
+    "minimalist": "#2ca02c"
 }

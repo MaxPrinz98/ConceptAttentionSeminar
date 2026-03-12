@@ -1,10 +1,9 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "top": "#ff7f0e",
-    "apple": "#2ca02c",
-    "balanced": "#d62728",
-    "mirror": "#9467bd",
-    "glass": "#8c564b",
-    "background": "#e377c2"
+    "top": "#1f77b4",
+    "apple": "#ff7f0e",
+    "balanced": "#2ca02c",
+    "mirror": "#d62728",
+    "glass": "#9467bd",
+    "background": "#8c564b"
 }

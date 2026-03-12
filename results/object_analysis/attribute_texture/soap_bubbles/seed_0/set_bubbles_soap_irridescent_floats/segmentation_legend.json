@@ -2,7 +2,6 @@
     "Background": "#000000",
     "soap": "#1f77b4",
     "irridescent": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "bubbles": "#d62728",
-    "floats": "#9467bd"
+    "bubbles": "#2ca02c",
+    "floats": "#d62728"
 }

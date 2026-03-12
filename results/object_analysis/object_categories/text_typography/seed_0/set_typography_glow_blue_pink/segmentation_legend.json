@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "pink": "#ff7f0e",
-    "blue": "#2ca02c",
-    "glow": "#d62728",
-    "typography": "#9467bd"
+    "pink": "#1f77b4",
+    "blue": "#ff7f0e",
+    "glow": "#2ca02c",
+    "typography": "#d62728"
 }

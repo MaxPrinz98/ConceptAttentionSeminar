@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "molten": "#ff7f0e",
-    "glowing": "#2ca02c",
-    "lava": "#d62728",
-    "orange": "#9467bd"
+    "molten": "#1f77b4",
+    "glowing": "#ff7f0e",
+    "lava": "#2ca02c",
+    "orange": "#d62728"
 }

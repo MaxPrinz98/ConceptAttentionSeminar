@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "water": "#ff7f0e",
-    "stone": "#2ca02c",
-    "span": "#d62728"
+    "water": "#1f77b4",
+    "stone": "#ff7f0e",
+    "span": "#2ca02c"
 }

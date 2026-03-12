@@ -1,6 +1,5 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "cat": "#ff7f0e",
-    "blue": "#2ca02c"
+    "cat": "#1f77b4",
+    "blue": "#ff7f0e"
 }

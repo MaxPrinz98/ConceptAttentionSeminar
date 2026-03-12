@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "gears": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "chain": "#2ca02c",
-    "handlebar": "#d62728"
+    "chain": "#ff7f0e",
+    "handlebar": "#2ca02c"
 }

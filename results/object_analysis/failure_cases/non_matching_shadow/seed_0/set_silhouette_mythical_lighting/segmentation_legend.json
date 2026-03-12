@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "lighting": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "mythical": "#2ca02c",
-    "silhouette": "#d62728"
+    "mythical": "#ff7f0e",
+    "silhouette": "#2ca02c"
 }

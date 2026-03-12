@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "translucent": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "overlapping": "#2ca02c",
-    "bottles": "#d62728",
-    "glass": "#9467bd"
+    "overlapping": "#ff7f0e",
+    "bottles": "#2ca02c",
+    "glass": "#d62728"
 }

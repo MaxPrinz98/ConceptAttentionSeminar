@@ -2,6 +2,5 @@
     "Background": "#000000",
     "texture": "#1f77b4",
     "soil": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "ground": "#d62728"
+    "ground": "#2ca02c"
 }

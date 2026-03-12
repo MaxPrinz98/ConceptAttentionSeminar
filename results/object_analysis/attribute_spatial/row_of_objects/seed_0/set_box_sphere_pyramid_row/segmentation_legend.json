@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "pyramid": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "sphere": "#2ca02c",
-    "row": "#d62728",
-    "box": "#9467bd"
+    "sphere": "#ff7f0e",
+    "row": "#2ca02c",
+    "box": "#d62728"
 }

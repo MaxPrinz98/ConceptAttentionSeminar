@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "gravity": "#ff7f0e",
-    "sky": "#2ca02c",
-    "logic": "#d62728"
+    "gravity": "#1f77b4",
+    "sky": "#ff7f0e",
+    "logic": "#2ca02c"
 }

@@ -3,9 +3,8 @@
     "dog": "#1f77b4",
     "of": "#ff7f0e",
     "fence": "#2ca02c",
-    "segmentation": "#d62728",
-    "house": "#9467bd",
-    "in": "#8c564b",
-    "behind": "#e377c2",
-    "front": "#7f7f7f"
+    "house": "#d62728",
+    "in": "#9467bd",
+    "behind": "#8c564b",
+    "front": "#e377c2"
 }

@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "dog": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "human": "#2ca02c",
-    "face": "#d62728"
+    "human": "#ff7f0e",
+    "face": "#2ca02c"
 }

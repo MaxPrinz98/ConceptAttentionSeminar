@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "spatial": "#ff7f0e",
-    "animals": "#2ca02c",
-    "husky": "#d62728"
+    "spatial": "#1f77b4",
+    "animals": "#ff7f0e",
+    "husky": "#2ca02c"
 }

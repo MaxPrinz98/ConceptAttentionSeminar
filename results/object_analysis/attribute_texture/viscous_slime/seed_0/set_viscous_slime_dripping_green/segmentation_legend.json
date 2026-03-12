@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "viscous": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "slime": "#2ca02c",
-    "green": "#d62728",
-    "dripping": "#9467bd"
+    "slime": "#ff7f0e",
+    "green": "#2ca02c",
+    "dripping": "#d62728"
 }

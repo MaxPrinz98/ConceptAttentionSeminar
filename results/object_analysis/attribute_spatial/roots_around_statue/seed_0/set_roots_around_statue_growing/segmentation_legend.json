@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "growing": "#ff7f0e",
-    "around": "#2ca02c",
-    "roots": "#d62728",
-    "statue": "#9467bd"
+    "growing": "#1f77b4",
+    "around": "#ff7f0e",
+    "roots": "#2ca02c",
+    "statue": "#d62728"
 }

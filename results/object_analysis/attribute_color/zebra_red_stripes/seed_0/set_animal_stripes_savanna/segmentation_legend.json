@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "savanna": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "animal": "#2ca02c",
-    "stripes": "#d62728"
+    "animal": "#ff7f0e",
+    "stripes": "#2ca02c"
 }

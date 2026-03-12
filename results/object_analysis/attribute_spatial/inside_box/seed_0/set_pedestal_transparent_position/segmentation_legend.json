@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "transparent": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "position": "#2ca02c",
-    "pedestal": "#d62728"
+    "position": "#ff7f0e",
+    "pedestal": "#2ca02c"
 }

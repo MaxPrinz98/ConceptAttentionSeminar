@@ -1,9 +1,8 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "swimming": "#ff7f0e",
-    "water": "#2ca02c",
-    "children": "#d62728",
-    "families": "#9467bd",
-    "pool": "#8c564b"
+    "swimming": "#1f77b4",
+    "water": "#ff7f0e",
+    "children": "#2ca02c",
+    "families": "#d62728",
+    "pool": "#9467bd"
 }

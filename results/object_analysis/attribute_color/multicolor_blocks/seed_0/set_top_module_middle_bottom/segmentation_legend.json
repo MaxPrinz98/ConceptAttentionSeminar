@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "bottom": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "middle": "#2ca02c",
-    "top": "#d62728",
-    "module": "#9467bd"
+    "middle": "#ff7f0e",
+    "top": "#2ca02c",
+    "module": "#d62728"
 }

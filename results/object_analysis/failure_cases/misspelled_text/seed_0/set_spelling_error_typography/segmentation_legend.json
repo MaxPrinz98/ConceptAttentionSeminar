@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "error": "#ff7f0e",
-    "typography": "#2ca02c",
-    "spelling": "#d62728"
+    "error": "#1f77b4",
+    "typography": "#ff7f0e",
+    "spelling": "#2ca02c"
 }

@@ -2,7 +2,6 @@
     "Background": "#000000",
     "rim": "#1f77b4",
     "stability": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "wine": "#d62728",
-    "glass": "#9467bd"
+    "wine": "#2ca02c",
+    "glass": "#d62728"
 }

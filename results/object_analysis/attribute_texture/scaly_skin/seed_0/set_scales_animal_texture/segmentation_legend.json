@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "texture": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "scales": "#2ca02c",
-    "animal": "#d62728"
+    "scales": "#ff7f0e",
+    "animal": "#2ca02c"
 }

@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "wall": "#ff7f0e",
-    "painting": "#2ca02c",
-    "opposite": "#d62728",
-    "mirror": "#9467bd"
+    "wall": "#1f77b4",
+    "painting": "#ff7f0e",
+    "opposite": "#2ca02c",
+    "mirror": "#d62728"
 }

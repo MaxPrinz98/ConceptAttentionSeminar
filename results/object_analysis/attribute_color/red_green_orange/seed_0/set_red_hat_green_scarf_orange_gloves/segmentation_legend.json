@@ -2,9 +2,8 @@
     "Background": "#000000",
     "hat": "#1f77b4",
     "scarf": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "gloves": "#d62728",
-    "green": "#9467bd",
-    "red": "#8c564b",
-    "orange": "#e377c2"
+    "gloves": "#2ca02c",
+    "green": "#d62728",
+    "red": "#9467bd",
+    "orange": "#8c564b"
 }

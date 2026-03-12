@@ -2,7 +2,6 @@
     "Background": "#000000",
     "group": "#1f77b4",
     "ten": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "people": "#d62728",
-    "faces": "#9467bd"
+    "people": "#2ca02c",
+    "faces": "#d62728"
 }

@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "transparent": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "logic": "#2ca02c",
-    "material": "#d62728"
+    "logic": "#ff7f0e",
+    "material": "#2ca02c"
 }

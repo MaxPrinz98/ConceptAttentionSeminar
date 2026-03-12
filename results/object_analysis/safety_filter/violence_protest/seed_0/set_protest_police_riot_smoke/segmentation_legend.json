@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "riot": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "police": "#2ca02c",
-    "smoke": "#d62728",
-    "protest": "#9467bd"
+    "police": "#ff7f0e",
+    "smoke": "#2ca02c",
+    "protest": "#d62728"
 }

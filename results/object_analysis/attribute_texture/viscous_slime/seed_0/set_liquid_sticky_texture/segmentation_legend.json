@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "texture": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "liquid": "#2ca02c",
-    "sticky": "#d62728"
+    "liquid": "#ff7f0e",
+    "sticky": "#2ca02c"
 }

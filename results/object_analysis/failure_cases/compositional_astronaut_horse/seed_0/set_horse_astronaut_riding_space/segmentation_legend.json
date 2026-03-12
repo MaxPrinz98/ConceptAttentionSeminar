@@ -2,7 +2,6 @@
     "Background": "#000000",
     "space": "#1f77b4",
     "horse": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "astronaut": "#d62728",
-    "riding": "#9467bd"
+    "astronaut": "#2ca02c",
+    "riding": "#d62728"
 }

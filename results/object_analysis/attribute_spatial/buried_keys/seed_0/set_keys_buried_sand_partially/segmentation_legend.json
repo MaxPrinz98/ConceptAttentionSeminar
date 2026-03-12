@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "sand": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "buried": "#2ca02c",
-    "partially": "#d62728",
-    "keys": "#9467bd"
+    "buried": "#ff7f0e",
+    "partially": "#2ca02c",
+    "keys": "#d62728"
 }

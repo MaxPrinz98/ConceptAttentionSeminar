@@ -1,9 +1,8 @@
 {
     "Background": "#000000",
     "neon": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "street": "#2ca02c",
-    "city": "#d62728",
-    "pedestrians": "#9467bd",
-    "lights": "#8c564b"
+    "street": "#ff7f0e",
+    "city": "#2ca02c",
+    "pedestrians": "#d62728",
+    "lights": "#9467bd"
 }

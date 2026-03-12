@@ -2,7 +2,6 @@
     "Background": "#000000",
     "trench": "#1f77b4",
     "war": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "battle": "#d62728",
-    "soldiers": "#9467bd"
+    "battle": "#2ca02c",
+    "soldiers": "#d62728"
 }

@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "bicycle": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "wheels": "#2ca02c",
-    "spokes": "#d62728",
-    "frame": "#9467bd"
+    "wheels": "#ff7f0e",
+    "spokes": "#2ca02c",
+    "frame": "#d62728"
 }

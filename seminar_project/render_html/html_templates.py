@@ -146,6 +146,7 @@ def get_implementation_details_html():
                 <ul style="color: #8b949e; font-size: 1.25rem; line-height: 1.7; padding-left: 25px; margin-top: 15px;">
                     <li><strong style="color: #c9d1d9;">Image & Attention Generation:</strong> We hook into the <code>Flux1.schnell</code> transformer during image generation to extract the raw cross-attention probability heatmaps for specific concept tokens.</li>
                     <li><strong style="color: #c9d1d9;">Mask Processing:</strong> We upscale the low-resolution heatmaps and apply adaptive thresholding (Otsu's method) to binarize them into crisp "Concept masks."</li>
+                    <li><strong style="color: #c9d1d9;">Argmax Segmentation:</strong> We create a holistic segmentation map by assigning each pixel to the concept that has the highest attention weight at that location.</li>
                     <li><strong style="color: #c9d1d9;">Automated Ground Truth:</strong> We use the Segment Anything Model (SAM) to break the generated images into generic pieces, then apply a greedy algorithm to compose the pieces that best match the concept mask into a "ground truth" shape.</li>
                     <li><strong style="color: #c9d1d9;">Evaluation:</strong> We score the Concept masks against the automated SAM ground truth to calculate Intersection over Union (IoU), Precision, and Recall.</li>
                     <li><strong style="color: #c9d1d9;">Reporting:</strong> We aggregate all generated artifacts, metrics, and text embeddings into this interactive HTML dashboard.</li>
@@ -172,6 +173,8 @@ def get_implementation_details_html():
                 ├── upscaled_heatmap_*.png        <span style="color: #8b949e;"># High-res colorized attention visualization</span>
                 ├── mask_*.png                    <span style="color: #8b949e;"># Binarized attention threshold mask</span>
                 ├── masked_image_*.png            <span style="color: #8b949e;"># Binary mask overlaid on original image</span>
+                ├── heatmap_segmentation.png      <span style="color: #8b949e;"># Argmax categorical segmentation image</span>
+                ├── segmentation_legend.json      <span style="color: #8b949e;"># Color mappings for the argmax segmentation</span>
                 │
                 └── sam_analysis/                 <span style="color: #8b949e;"># Final SAM Evaluation Artifacts</span>
                     ├── metrics.json              <span style="color: #8b949e;"># Contains IoU, Precision, and Recall scores</span>
@@ -236,6 +239,37 @@ mask_img = Image.fromarray((mask * 255).astype(np.uint8))</code></pre>
                         </div>
                     </div>
 
+                    <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; overflow-x: auto;">
+                        <span style="color: #8b949e; font-size: 1.25rem; display: block; margin-bottom: 12px;">Argmax Segmentation logic:</span>
+<pre style="margin: 0; color: #c9d1d9; font-family: monospace; font-size: 1.15rem;"><code># 1. Stack all individual concept heatmaps and add a base background layer
+bg_layer = np.full(img_size[::-1], 0.1)  # 10% attention threshold for background
+stacked = np.stack([bg_layer] + heatmaps, axis=0)
+
+# 2. Determine the dominant concept per pixel
+segmentation_idx = np.argmax(stacked, axis=0)
+
+# 3. Apply distinct categorical colors
+cmap = cm.get_cmap("tab10")
+colors = [(0, 0, 0)]  # Background is black
+for i in range(len(concept_names)):
+    r, g, b, _ = cmap((i % 10) / 10.0)
+    colors.append((int(r * 255), int(g * 255), int(b * 255)))
+
+seg_rgb = np.zeros((*img_size[::-1], 3), dtype=np.uint8)
+for i, color in enumerate(colors):
+    seg_rgb[segmentation_idx == i] = color
+
+Image.fromarray(seg_rgb).save("heatmap_segmentation.png")</code></pre>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #30363d;">
+                            <p style="color: #8b949e; font-size: 1.2rem; line-height: 1.6; margin: 0;"><strong>How it works:</strong><br>
+                            To get a holistic view of how the model separates visual features, we combine all attention heatmaps into a single image.<br>
+                            • We build a 3D stack of all the concepts plus a generic background threshold.<br>
+                            • `np.argmax` scans the "Z" axis for every pixel and returns the index of the concept that has the strongest weight. If no concept surpasses the 0.1 threshold, the pixel is assigned to Background.<br>
+                            • The categorical mapping applies discrete 'tab10' colors mapped into a <code>segmentation_legend.json</code> reference file.
+                            </p>
+                        </div>
+                    </div>
+
                     <div style="background: #0d1117; padding: 20px; border-radius: 6px; border: 1px solid #30363d; margin-top: 20px; font-family: monospace; font-size: 1.15rem; color: #c9d1d9;">
                         <span style="color: #8b949e; display: block; margin-bottom: 15px; font-size: 1.25rem; text-transform: uppercase;">Generated File Tree (Appended)</span>
 <pre style="margin: 0; color: #c9d1d9; font-size: 1.15rem;">results/object_analysis/
@@ -245,7 +279,9 @@ mask_img = Image.fromarray((mask * 255).astype(np.uint8))</code></pre>
             └── set_{concepts}/
                 ├── mask_*.png                 <span style="color: #8b949e;"># Binary threshold mask</span>
                 ├── masked_image_*.png         <span style="color: #8b949e;"># Mask overlaid on original image</span>
-                └── upscaled_heatmap_*.png     <span style="color: #8b949e;"># Colorized attention visualization</span></pre>
+                ├── upscaled_heatmap_*.png     <span style="color: #8b949e;"># Colorized attention visualization</span>
+                ├── heatmap_segmentation.png   <span style="color: #8b949e;"># Argmax categorical segmentation image</span>
+                └── segmentation_legend.json   <span style="color: #8b949e;"># Color mappings for the argmax segmentation</span></pre>
                     </div>
                 </div>
 

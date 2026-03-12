@@ -1,9 +1,8 @@
 {
     "Background": "#000000",
     "yellow": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "purple": "#2ca02c",
-    "banana": "#d62728",
-    "fruit": "#9467bd",
-    "grapes": "#8c564b"
+    "purple": "#ff7f0e",
+    "banana": "#2ca02c",
+    "fruit": "#d62728",
+    "grapes": "#9467bd"
 }

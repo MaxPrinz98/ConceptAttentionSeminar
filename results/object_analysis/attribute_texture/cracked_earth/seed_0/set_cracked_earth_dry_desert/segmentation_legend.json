@@ -2,7 +2,6 @@
     "Background": "#000000",
     "earth": "#1f77b4",
     "dry": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "desert": "#d62728",
-    "cracked": "#9467bd"
+    "desert": "#2ca02c",
+    "cracked": "#d62728"
 }

@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "room": "#ff7f0e",
-    "frame": "#2ca02c",
-    "glass": "#d62728"
+    "room": "#1f77b4",
+    "frame": "#ff7f0e",
+    "glass": "#2ca02c"
 }

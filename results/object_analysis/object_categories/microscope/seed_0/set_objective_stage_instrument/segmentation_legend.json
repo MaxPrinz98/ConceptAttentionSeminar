@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "instrument": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "objective": "#2ca02c",
-    "stage": "#d62728"
+    "objective": "#ff7f0e",
+    "stage": "#2ca02c"
 }

@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
     "anatomy": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "extra": "#2ca02c",
-    "hallucination": "#d62728"
+    "extra": "#ff7f0e",
+    "hallucination": "#2ca02c"
 }

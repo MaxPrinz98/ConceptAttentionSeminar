@@ -2,7 +2,6 @@
     "Background": "#000000",
     "knitted": "#1f77b4",
     "yarn": "#ff7f0e",
-    "segmentation": "#2ca02c",
-    "wool": "#d62728",
-    "pattern": "#9467bd"
+    "wool": "#2ca02c",
+    "pattern": "#d62728"
 }

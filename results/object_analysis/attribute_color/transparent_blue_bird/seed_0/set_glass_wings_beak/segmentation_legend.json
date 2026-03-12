@@ -1,7 +1,6 @@
 {
     "Background": "#000000",
-    "segmentation": "#1f77b4",
-    "wings": "#ff7f0e",
-    "beak": "#2ca02c",
-    "glass": "#d62728"
+    "wings": "#1f77b4",
+    "beak": "#ff7f0e",
+    "glass": "#2ca02c"
 }

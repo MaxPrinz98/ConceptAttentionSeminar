@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "black": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "zebra": "#2ca02c",
-    "stripes": "#d62728",
-    "red": "#9467bd"
+    "zebra": "#ff7f0e",
+    "stripes": "#2ca02c",
+    "red": "#d62728"
 }

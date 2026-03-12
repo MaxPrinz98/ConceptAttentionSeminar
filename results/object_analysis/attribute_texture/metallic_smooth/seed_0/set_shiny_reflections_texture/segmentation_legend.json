@@ -2,6 +2,5 @@
     "Background": "#000000",
     "texture": "#1f77b4",
     "reflections": "#ff7f0e",
-    "shiny": "#2ca02c",
-    "segmentation": "#d62728"
+    "shiny": "#2ca02c"
 }

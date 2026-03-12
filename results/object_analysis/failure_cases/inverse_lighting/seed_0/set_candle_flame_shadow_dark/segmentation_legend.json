@@ -1,8 +1,7 @@
 {
     "Background": "#000000",
     "candle": "#1f77b4",
-    "segmentation": "#ff7f0e",
-    "shadow": "#2ca02c",
-    "flame": "#d62728",
-    "dark": "#9467bd"
+    "shadow": "#ff7f0e",
+    "flame": "#2ca02c",
+    "dark": "#d62728"
 }
