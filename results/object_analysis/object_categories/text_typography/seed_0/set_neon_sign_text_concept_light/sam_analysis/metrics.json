@@ -1,7 +1,6 @@
 {
     "neon": {
         "iou": 0.030856865180065873,
-        "coverage": 0.1894893899204244,
         "precision": 0.03554878238422542,
         "recall": 0.1894893899204244,
         "segment_indices": [
@@ -29,7 +28,6 @@
     },
     "sign": {
         "iou": 0.36406101287381654,
-        "coverage": 0.9607627671791991,
         "precision": 0.3695556141728029,
         "recall": 0.9607627671791991,
         "segment_indices": [
@@ -64,7 +62,6 @@
     },
     "text": {
         "iou": 0.06279044321151346,
-        "coverage": 1.0,
         "precision": 0.06279044321151346,
         "recall": 1.0,
         "segment_indices": [
@@ -99,7 +96,6 @@
     },
     "CONCEPT": {
         "iou": 0.3523528686272971,
-        "coverage": 1.0,
         "precision": 0.3523528686272971,
         "recall": 1.0,
         "segment_indices": [
@@ -130,7 +126,6 @@
     },
     "light": {
         "iou": 0.1623050648633729,
-        "coverage": 0.3007399830587032,
         "precision": 0.260681037348997,
         "recall": 0.3007399830587032,
         "segment_indices": [

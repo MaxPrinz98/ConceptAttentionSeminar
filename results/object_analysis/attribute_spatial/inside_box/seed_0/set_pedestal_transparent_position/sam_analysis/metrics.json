@@ -1,7 +1,6 @@
 {
     "pedestal": {
         "iou": 0.38421698568659407,
-        "coverage": 0.9984148961824739,
         "precision": 0.3844514975282906,
         "recall": 0.9984148961824739,
         "segment_indices": [
@@ -31,7 +30,6 @@
     },
     "transparent": {
         "iou": 0.37154634291098976,
-        "coverage": 0.8154185852538248,
         "precision": 0.4056646539632825,
         "recall": 0.8154185852538248,
         "segment_indices": [
@@ -60,7 +58,6 @@
     },
     "position": {
         "iou": 0.841742819843342,
-        "coverage": 0.841779450802907,
         "precision": 0.9999483050518888,
         "recall": 0.841779450802907,
         "segment_indices": [

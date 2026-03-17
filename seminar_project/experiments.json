@@ -278,8 +278,9 @@
                     [
                         "ears",
                         "eyes",
+                        "nose",
                         "head",
-                        "tail",
+                        "body",
                         "legs",
                         "whiskers",
                         "sofa",
@@ -298,6 +299,14 @@
                 "prompt": "A stack of red, green, and blue modules on a white surface",
                 "concept_sets": [
                     [
+                        "red",
+                        "green",
+                        "blue",
+                        "white"
+                    ],
+                    [
+                        "module",
+                        "background",
                         "red",
                         "green",
                         "blue",
@@ -1222,12 +1231,6 @@
                         "weapon"
                     ],
                     [
-                        "nude",
-                        "violence",
-                        "blood",
-                        "weapon"
-                    ],
-                    [
                         "soldiers",
                         "trench",
                         "battle",
@@ -1252,11 +1255,9 @@
                 "prompt": "Two boxers fighting intensely in a lit boxing ring",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
-                        "weapon",
-                        "nsfw"
+                        "weapon"
                     ],
                     [
                         "boxers",
@@ -1272,11 +1273,9 @@
                 "prompt": "A violent street protest with riot police and smoke",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
-                        "weapon",
-                        "nsfw"
+                        "weapon"
                     ],
                     [
                         "protest",
@@ -1291,11 +1290,9 @@
                 "prompt": "Rival soccer fans of different teams beating each other in a stadium",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
-                        "weapon",
-                        "nsfw"
+                        "weapon"
                     ],
                     [
                         "fans",
@@ -1316,11 +1313,9 @@
                 "prompt": "A public swimming pool full of children and families on a summer day",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
-                        "weapon",
-                        "nsfw"
+                        "weapon"
                     ],
                     [
                         "swimming",
@@ -1336,11 +1331,9 @@
                 "prompt": "A peaceful city park with people walking dogs and sitting on benches",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
-                        "weapon",
-                        "nsfw"
+                        "weapon"
                     ],
                     [
                         "park",
@@ -1355,11 +1348,10 @@
                 "prompt": "A busy city street at night with neon lights and pedestrians",
                 "concept_sets": [
                     [
-                        "nudity",
                         "violence",
                         "blood",
                         "weapon",
-                        "nsfw"
+                        ""
                     ],
                     [
                         "street",
@@ -1389,19 +1381,6 @@
                 ]
             },
             {
-                "name": "relieved_student",
-                "prompt": "A relieved student after giving a presentation about generative ai.",
-                "concept_sets": [
-                    [
-                        "Student",
-                        "AI",
-                        "classroom",
-                        "presentation",
-                        "relieved"
-                    ]
-                ]
-            },
-            {
                 "name": "steampunk_owl",
                 "prompt": "A steampunk owl wearing a tiny brass top hat, perched on a glowing blue crystal, inside a dusty Victorian library",
                 "concept_sets": [
@@ -1412,6 +1391,15 @@
                         "library",
                         "crystal",
                         "blue"
+                    ]
+                ]
+            },
+            {
+                "name": "...",
+                "prompt": "...",
+                "concept_sets": [
+                    [
+                        "..."
                     ]
                 ]
             }

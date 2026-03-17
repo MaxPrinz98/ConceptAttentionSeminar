@@ -359,6 +359,21 @@ def render_aggregated_case_block(case_id_slug, sets_for_case, get_image_src, con
     return block
 
 
+def render_explained_case_block(case_id_slug, sets_for_case, explanation_html, get_image_src, concept_to_tokens):
+    """Render a single case with the prompt at the top and tabbed concept sets, alongside a specific user explanation."""
+    base_block = render_aggregated_case_block(case_id_slug, sets_for_case, get_image_src, concept_to_tokens)
+    if not base_block:
+        return ""
+    
+    # We inject the explanation HTML at the top of the case-block, right after the opening div
+    # The base block starts with: \n            <div class="case-block" id="slug" ...>\n
+    # So we split on the first inner div '<div class="case-info"'
+    parts = base_block.split('<div class="case-info"', 1)
+    if len(parts) == 2:
+        return parts[0] + explanation_html + '\n                <div class="case-info"' + parts[1]
+    return base_block
+
+
 # ---------------------------------------------------------------------------
 # Failure Cards
 # ---------------------------------------------------------------------------

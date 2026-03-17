@@ -1,7 +1,6 @@
 {
     "lighting": {
         "iou": 0.7909641821083575,
-        "coverage": 0.9875374895150049,
         "precision": 0.798939029855774,
         "recall": 0.9875374895150049,
         "segment_indices": [
@@ -30,7 +29,6 @@
     },
     "physics": {
         "iou": 0.4042387008666992,
-        "coverage": 1.0,
         "precision": 0.4042387008666992,
         "recall": 1.0,
         "segment_indices": [

@@ -1,7 +1,6 @@
 {
     "mirror": {
         "iou": 0.6213134607417166,
-        "coverage": 0.9975592366943434,
         "precision": 0.6222594129794797,
         "recall": 0.9975592366943434,
         "segment_indices": [
@@ -42,7 +41,6 @@
     },
     "reflection": {
         "iou": 0.13142292040312817,
-        "coverage": 1.0,
         "precision": 0.13142292040312817,
         "recall": 1.0,
         "segment_indices": [
@@ -70,7 +68,6 @@
     },
     "person": {
         "iou": 0.3472322633506844,
-        "coverage": 0.3530107125138577,
         "precision": 0.9549807794273595,
         "recall": 0.3530107125138577,
         "segment_indices": [
@@ -103,7 +100,6 @@
     },
     "camera": {
         "iou": 0.3909486645978171,
-        "coverage": 0.4715541165587419,
         "precision": 0.6957813052929579,
         "recall": 0.4715541165587419,
         "segment_indices": [

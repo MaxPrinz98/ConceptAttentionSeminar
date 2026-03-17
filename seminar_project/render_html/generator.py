@@ -30,6 +30,7 @@ from render_html.html_templates import (
     get_html_header_nav,
     get_gallery_navigator,
     get_explanation_block,
+    get_discussion_tab_html,
     get_implementation_details_html,
     get_metrics_tab_html,
     get_statistics_section_html,
@@ -45,6 +46,7 @@ from render_html.html_sections import (
     render_grids_section,
     render_multi_token_section,
     render_tokenization_table,
+    render_explained_case_block,
 )
 
 
@@ -112,9 +114,9 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     html_content += '\n    <div class="main-container">'
     html_content += '\n        <div class="content-area">'
 
-    # --- FINDINGS TAB ---
-    html_content += "\n            <!-- FINDINGS TAB -->"
-    html_content += '\n            <div id="findings" class="tab-content active">'
+    # --- OVERVIEW TAB (formerly Findings) ---
+    html_content += "\n            <!-- OVERVIEW TAB -->"
+    html_content += '\n            <div id="overview" class="tab-content active">'
     html_content += "\n                <!-- NEW EXPLANATION BLOCK -->"
     html_content += get_explanation_block()
     html_content += get_statistics_section_html()
@@ -158,25 +160,73 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     multi_token_html = render_multi_token_section(concept_tokens_list)
     html_content += f"""
                 {multi_token_html}
-                <h2 style="margin-top:0;">Key Findings &amp; Highlights</h2>
-                <p style="color: #8b949e; margin-bottom: 30px;">This section highlights specific cases with commentary, or randomly sampled examples from the dataset.</p>
+                <h2 style="margin-top:0;">Evaluation Highlights</h2>
+                <p style="color: #8b949e; margin-bottom: 30px;">This section highlights specific cases and insights derived from the evaluation.</p>
                 <div class="findings-grid">
     """
 
-    # Highlighted grids
-    highlighted_keys = [
-        "blue_cat",
-        "dog_human_face",
-        "violence_fans",
-        "purple_banana",
-        "violence_war",
-    ]
-    findings_grids_dir = Path("results/results_heatmap_grids")
-    html_content += render_findings_grid_highlights(
-        findings_grids_dir, highlighted_keys, get_image_src
-    )
+    # We need to construct the 5 specific cases from all_cases based on their names and evaluated concepts
+    # all_cases is a list of tuples: (case_path_str, metadata_dict)
 
-    html_content += """
+    cases_to_find = [
+        (
+            "blue_cat_yellow_sofa",
+            ["animal", "blue", "sofa", "yellow"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(88, 166, 255, 0.1); border-left: 4px solid #58a6ff; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> Here, the concept of the sofa takes away almost all the attention from the concept <i>yellow</i>. We hypothesize that this relates to the self-attention mechanism of the concept tokens (where concept self-attentions help repel different concepts).</p></div>",
+        ),
+        (
+            "multicolor_blocks",
+            ["red", "green", "blue", "white"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(63, 185, 80, 0.1); border-left: 4px solid #3fb950; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> In this example, the distinct primary colors (red, green, blue, white) are separated exceptionally well by the concept attention mechanism.</p></div>",
+        ),
+        (
+            "multicolor_blocks",
+            ["top", "middle", "bottom", "white"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(248, 81, 73, 0.1); border-left: 4px solid #f85149; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> You can see that spatial concepts alone do not yield good results. Since we only evaluate single-token concepts currently, we cannot search for the holistic concept \"top block\". The spatial attention alone fails to make up for this context loss.<br><br><b>Follow-up Note:</b> Notice how object concepts (like \"white\") seem to dominate the attention maps if they are included alongside ambiguous spatial terms.</p></div>",
+        ),
+        (
+            "purple_banana_yellow_grapes",
+            ["purple", "banana", "yellow", "grapes"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(210, 153, 34, 0.1); border-left: 4px solid #d29922; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> Concept attention struggles to differentiate between the \"purple banana\" and \"yellow grapes\" representations in the attention maps, even though the diffusion model correctly generated the finalized image conforming to the prompt.</p></div>",
+        ),
+        (
+            "transparent_blue_bird",
+            ["glass", "wings", "white", "branch"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(163, 113, 247, 0.1); border-left: 4px solid #a371f7; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> This serves as a strong positive example where the concept heatmaps cleanly and accurately dissect the composition.</p></div>",
+        ),
+    ]
+
+    for case_name, concepts_req, explanation in cases_to_find:
+        # Sort concepts to compare against meta["concepts"] easily
+        sorted_req = sorted(concepts_req)
+        matching_sets = []
+        for path_str in all_cases:
+            p = Path(path_str)
+            # parent.parent.name is the case name (e.g. blue_cat_yellow_sofa)
+            if p.parent.parent.name == case_name:
+                meta_path = p / "metadata.json"
+                if meta_path.exists():
+                    try:
+                        import json as _json
+
+                        with open(meta_path, "r") as f:
+                            meta = _json.load(f)
+                    except Exception:
+                        continue
+
+                    meta_concepts = meta.get("concepts", [])
+                    if sorted(meta_concepts) == sorted_req:
+                        matching_sets.append((path_str, meta))
+
+        if matching_sets:
+            # We found matching sets for this case
+            case_slug = f"highlight-{case_name}"
+            html_content += render_explained_case_block(
+                case_slug, matching_sets, explanation, get_image_src, concept_to_tokens
+            )
+
+    html_content += (
+        """
                 </div>
             </div>
             
@@ -195,7 +245,9 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                     <div style="display: flex; gap: 20px; align-items: center; margin-top: 12px; flex-wrap: wrap;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <label style="color: #8b949e; font-size: 0.85rem; white-space: nowrap;">Jump to:</label>
-                            """ + get_gallery_navigator(toc_data) + """
+                            """
+        + get_gallery_navigator(toc_data)
+        + """
                         </div>
                         <div class="size-slider-container" style="margin-top: 0;">
                             <label>Image size:</label>
@@ -206,6 +258,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                 </div>
                 <h2 style="margin-top:0;">Complete Gallery</h2>
     """
+    )
 
     # Gallery sections (already rendered above)
     html_content += gallery_html
@@ -236,7 +289,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     """
 
     # --- GRIDS TAB ---
-    grids_dir = Path("results/results_heatmap_grids")
+    grids_dir = results_dir.parent / "results_heatmap_grids"
     html_content += """
             <!-- GRIDS TAB -->
             <div id="grids" class="tab-content">
@@ -254,6 +307,9 @@ def generate_gallery(results_dir, output_html, mode="relative"):
 
     # --- METRICS TAB ---
     html_content += get_metrics_tab_html(get_image_src)
+
+    # --- DISCUSSION TAB ---
+    html_content += get_discussion_tab_html()
 
     # --- IMPLEMENTATION TAB ---
     html_content += get_implementation_details_html()

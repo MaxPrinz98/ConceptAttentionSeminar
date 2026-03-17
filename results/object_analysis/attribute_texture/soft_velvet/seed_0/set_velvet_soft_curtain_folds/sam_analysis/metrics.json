@@ -1,7 +1,6 @@
 {
     "velvet": {
         "iou": 0.04296751696392822,
-        "coverage": 1.0,
         "precision": 0.04296751696392822,
         "recall": 1.0,
         "segment_indices": [
@@ -30,7 +29,6 @@
     },
     "soft": {
         "iou": 0.659820601243755,
-        "coverage": 0.9975880645301058,
         "precision": 0.660874889969,
         "recall": 0.9975880645301058,
         "segment_indices": [
@@ -58,7 +56,6 @@
     },
     "curtain": {
         "iou": 0.9168367385864258,
-        "coverage": 1.0,
         "precision": 0.9168367385864258,
         "recall": 1.0,
         "segment_indices": [
@@ -88,7 +85,6 @@
     },
     "folds": {
         "iou": 0.041748836579771874,
-        "coverage": 0.9600953237847434,
         "precision": 0.041821405797500585,
         "recall": 0.9600953237847434,
         "segment_indices": [

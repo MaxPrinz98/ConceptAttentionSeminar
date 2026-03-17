@@ -1,0 +1,9 @@
+{
+    "num_segments": 62,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {}
+}

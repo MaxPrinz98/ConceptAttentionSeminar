@@ -1,0 +1,25 @@
+{
+    "num_segments": 6,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "module_vs_background": 0.0,
+        "module_vs_red": 0.29992972102301746,
+        "module_vs_green": 0.5374028207624177,
+        "module_vs_blue": 0.16109163767476986,
+        "module_vs_white": 0.0,
+        "background_vs_red": 0.0,
+        "background_vs_green": 0.0,
+        "background_vs_blue": 0.0,
+        "background_vs_white": 1.0,
+        "red_vs_green": 0.0,
+        "red_vs_blue": 0.0,
+        "red_vs_white": 0.0,
+        "green_vs_blue": 0.0,
+        "green_vs_white": 0.0,
+        "blue_vs_white": 0.0
+    }
+}

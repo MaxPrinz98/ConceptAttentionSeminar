@@ -1,0 +1,36 @@
+{
+    "category": "attribute_color",
+    "case_name": "blue_cat_yellow_sofa",
+    "prompt": "A vibrant blue cat sitting comfortably on a bright yellow velvet sofa",
+    "concepts": [
+        "ears",
+        "eyes",
+        "nose",
+        "head",
+        "body",
+        "legs",
+        "whiskers",
+        "sofa",
+        "wall"
+    ],
+    "concept_set_name": "set_ears_eyes_nose_head_body_legs_whiskers_sofa_wall",
+    "seed": 0,
+    "timestamp": "2026-03-16T23:15:59.218364",
+    "model": "flux-schnell",
+    "parameters": {
+        "width": 1024,
+        "height": 1024,
+        "layer_indices": [
+            16,
+            17,
+            18
+        ],
+        "num_inference_steps": 4,
+        "timesteps": [
+            0,
+            1,
+            2,
+            3
+        ]
+    }
+}

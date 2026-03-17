@@ -18,7 +18,7 @@ def calculate_iou(mask1, mask2):
     return float(intersection / union)
 
 
-def calculate_coverage(target_mask, reference_mask):
+def calculate_recall(target_mask, reference_mask):
     """Calculates what percentage of the target mask is covered by the reference mask."""
     intersection = np.logical_and(target_mask, reference_mask).sum()
     target_sum = target_mask.sum()
@@ -34,12 +34,6 @@ def calculate_precision(target_mask, reference_mask):
     if reference_sum == 0:
         return 0.0
     return float(intersection / reference_sum)
-
-
-def calculate_recall(target_mask, reference_mask):
-    """Recall: what proportion of the target mask is captured by the reference mask."""
-    return calculate_coverage(target_mask, reference_mask)
-
 
 def process_directory(set_path, model, device, force=False):
     """
@@ -276,7 +270,6 @@ def process_directory(set_path, model, device, force=False):
 
             metrics[concept] = {
                 "iou": best_iou,
-                "coverage": calculate_coverage(c_mask_np, current_composite_mask),
                 "precision": calculate_precision(c_mask_np, current_composite_mask),
                 "recall": calculate_recall(c_mask_np, current_composite_mask),
                 "segment_indices": [int(idx) for idx in selected_indices],

@@ -1,0 +1,13 @@
+{
+    "num_segments": 65,
+    "image_size": [
+        1024,
+        1024
+    ],
+    "overall_coverage_percent": 100.0,
+    "concept_collisions": {
+        "violence_vs_blood": 0.5826399434245411,
+        "violence_vs_weapon": 0.2956782330388961,
+        "blood_vs_weapon": 0.0
+    }
+}

@@ -1,7 +1,6 @@
 {
     "splash": {
         "iou": 0.1162761750653479,
-        "coverage": 1.0,
         "precision": 0.1162761750653479,
         "recall": 1.0,
         "segment_indices": [
@@ -32,7 +31,6 @@
     },
     "water": {
         "iou": 0.5183218211626844,
-        "coverage": 0.5208753099290742,
         "precision": 0.990630586204771,
         "recall": 0.5208753099290742,
         "segment_indices": [
@@ -62,7 +60,6 @@
     },
     "milk": {
         "iou": 0.44412618425420713,
-        "coverage": 0.9982207256760764,
         "precision": 0.4444780467858177,
         "recall": 0.9982207256760764,
         "segment_indices": [
@@ -92,7 +89,6 @@
     },
     "strawberry": {
         "iou": 0.12936891317378976,
-        "coverage": 1.0,
         "precision": 0.12936891317378976,
         "recall": 1.0,
         "segment_indices": [

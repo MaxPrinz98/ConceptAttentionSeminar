@@ -1,7 +1,6 @@
 {
     "Student": {
         "iou": 0.6901940365857892,
-        "coverage": 0.7143247185279389,
         "precision": 0.9533394064342906,
         "recall": 0.7143247185279389,
         "segment_indices": [
@@ -31,7 +30,6 @@
     },
     "AI": {
         "iou": 0.06751063407038559,
-        "coverage": 0.8592145326933994,
         "precision": 0.06826578100334174,
         "recall": 0.8592145326933994,
         "segment_indices": [
@@ -59,7 +57,6 @@
     },
     "classroom": {
         "iou": 0.8080563148258647,
-        "coverage": 1.0,
         "precision": 0.8080563148258647,
         "recall": 1.0,
         "segment_indices": [
@@ -104,7 +101,6 @@
     },
     "presentation": {
         "iou": 0.027643593629840896,
-        "coverage": 0.5982388107933431,
         "precision": 0.028166496133525547,
         "recall": 0.5982388107933431,
         "segment_indices": [
@@ -135,7 +131,6 @@
     },
     "relieved": {
         "iou": 0.035681781469034286,
-        "coverage": 0.7891686998954339,
         "precision": 0.03602519555994885,
         "recall": 0.7891686998954339,
         "segment_indices": [

@@ -1,7 +1,6 @@
 {
     "droplets": {
         "iou": 0.12194402656539621,
-        "coverage": 0.9995985477902674,
         "precision": 0.12194999898852346,
         "recall": 0.9995985477902674,
         "segment_indices": [
@@ -30,7 +29,6 @@
     },
     "liquid": {
         "iou": 0.48592567149029453,
-        "coverage": 1.0,
         "precision": 0.48592567149029453,
         "recall": 1.0,
         "segment_indices": [
@@ -63,7 +61,6 @@
     },
     "impact": {
         "iou": 0.36169568952053727,
-        "coverage": 0.9947891358448929,
         "precision": 0.3623822661042757,
         "recall": 0.9947891358448929,
         "segment_indices": [
