@@ -118,19 +118,6 @@ def get_css():
     """
 
 
-def get_html_head(css):
-    """Return the ``<head>`` element including CSS and Chart.js."""
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Object Analysis Evaluation</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-{css}
-    </style>
-</head>"""
 
 
 def get_implementation_details_html():
@@ -447,22 +434,36 @@ def get_metrics_tab_html(get_image_src):
     """
 
 
-def get_html_header_nav():
-    """Return the top navigation bar with tab buttons."""
-    return """
+def get_html_header_nav(title):
+    """Return the HTML for the top navigation bar."""
+    return f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        {get_css()}
+    </style>
+</head>
+<body>
     <div class="header-nav">
-        <h1>Concept Attention Analysis</h1>
+        <h1>{title}</h1>
         <div class="tabs">
-            <button class="tab-btn" onclick="switchTab('metrics')">Metrics</button>
-            <button class="tab-btn" onclick="switchTab('implementation')">Implementation</button>
             <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
             <button class="tab-btn" onclick="switchTab('discussion')">Discussion</button>
             <button class="tab-btn" onclick="switchTab('gallery')">Gallery</button>
-            <button class="tab-btn" onclick="switchTab('failure')">Failure Analysis</button>
             <button class="tab-btn" onclick="switchTab('grids')">Grids</button>
+            <button class="tab-btn" onclick="switchTab('metrics')">Metrics</button>
+            <button class="tab-btn" onclick="switchTab('implementation')">Implementation</button>
             <button class="tab-btn" onclick="switchTab('tokenization')">Tokenization</button>
         </div>
-    </div>"""
+    </div>
+    """
 
 
 def get_gallery_navigator(toc_data):
@@ -506,14 +507,77 @@ def get_explanation_block():
 def get_discussion_tab_html():
     return """
         <!-- DISCUSSION TAB -->
-        <div id="discussion" class="tab-content">
-            <h2 style="margin-top:0; font-size: 2.5rem; color:#c9d1d9;">General Discussion</h2>
-            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; margin-bottom: 40px;">
-                <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.6rem; border-bottom: 1px solid #30363d; padding-bottom: 10px;">Key Findings</h3>
-                <ul style="color: #8b949e; font-size: 1.3rem; line-height: 1.7; padding-left: 25px; margin-top: 15px;">
-                    <li><strong style="color: #c9d1d9;">The model works only really well, when you actually already know which concepts the image contains.</strong></li>
-                    <li><strong style="color: #c9d1d9;">It does not work really good if you just put in some general concepts.</strong></li>
-                    <li>For example, in the authors' quantitative evaluation, they used a handcrafted concept vocabulary for each of the ImageNet images such that the generated heatmaps are good.</li>
+        <div id="discussion" class="tab-content" style="max-width: 1200px; margin: 0 auto; padding-top: 40px;">
+            <h2 style="margin-top:0; font-size: 2.8rem; color:#c9d1d9; border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 40px;">Project Discussion & Outlook</h2>
+            
+            <!-- METHODOLOGY PANEL -->
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <h3 style="margin-top: 0; color: #58a6ff; font-size: 1.8rem; display: flex; align-items: center; gap: 15px;">
+                    <span style="background: #58a6ff; color: #0d1117; width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1.2rem;">1</span>
+                    Establishing "Ground Truth" via SAM
+                </h3>
+                <div style="margin-top: 20px; color: #8b949e; font-size: 1.15rem; line-height: 1.8;">
+                    <p>To quantitatively evaluate the <i>Concept Attention</i> heatmaps, I developed a heuristic to map concept tokens to <b>Segment Anything Model (SAM)</b> masks. By comparing the attention peaks against these segments, we can calculate metrics like <b>IoU (Intersection over Union)</b>.</p>
+                    
+                    <ul style="padding-left: 25px; margin-top: 15px;">
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #c9d1d9;">Success in Object Classes:</strong> This approach works remarkably well for distinct, tangible objects (e.g., "blue cat" vs "sofa"). The high alignment scores suggest concept attention effectively locks onto physical boundaries.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #c9d1d9;">Failure with Spatial / Abstract Concepts:</strong> For concepts like "top" or "transparent", the heuristic often breaks down. SAM is inherently <i>object-centric</i>, making it difficult to generate a meaningful "ground truth" for non-object regions.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #c9d1d9;">Semantic Misalignment:</strong> In several cases, we observed instances where the IoU score was numerically high, but the assigned semantic label was logically incorrect. This suggests the attention mechanism might be "looking" at the right place for the wrong reason.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- OUTLOOK PANEL -->
+            <div style="background: #1d212b; border: 1px solid #388bfd66; border-radius: 12px; padding: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(88, 166, 255, 0.1);">
+                <h3 style="margin-top: 0; color: #79c0ff; font-size: 1.8rem; display: flex; align-items: center; gap: 15px;">
+                    <span style="background: #79c0ff; color: #0d1117; width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1.2rem;">2</span>
+                    Outlook: Future Research Paths
+                </h3>
+                
+                <div style="margin-top: 25px; background: #0d1117; padding: 25px; border-radius: 10px; border: 1px solid #30363d; text-align: center; margin-bottom: 30px;">
+                    <p style="color: #8b949e; margin-bottom: 15px; font-family: monospace;">Core Attention Formula (Softmax over Concept Dimension):</p>
+                    <div style="font-size: 1.8rem; color: #c9d1d9;">
+                        $$\phi(o_x, o_c) = \text{softmax}(o_x o_c^T)$$
+                    </div>
+                </div>
+
+                <div style="color: #8b949e; font-size: 1.1rem; line-height: 1.8;">
+                    <!-- POINT A -->
+                    <div style="margin-bottom: 30px; border-left: 3px solid #79c0ff; padding-left: 20px;">
+                        <h4 style="color: #c9d1d9; font-size: 1.3rem; margin-top: 0;">A. Reversing Mutual Exclusivity</h4>
+                        <p>Currently, the softmax is applied across concepts for each patch (forcing concepts to compete for space). By swapping the cross-product to focus on the <i>spatial</i> dimension, we could identify the most relevant patches for every concept individually.</p>
+                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Compare heatmaps generated with Softmax(Concepts) vs. Softmax(Pixels) to measure separation quality.</p>
+                    </div>
+
+                    <!-- POINT B -->
+                    <div style="margin-bottom: 30px; border-left: 3px solid #79c0ff; padding-left: 20px;">
+                        <h4 style="color: #c9d1d9; font-size: 1.3rem; margin-top: 0;">B. Breaking the Single-Token Constraint</h4>
+                        <p>Concepts are currently limited to single tokens. This fails for complex prompts (e.g., "owl" vs "beak" vs "feathers"). Aggregating attention from multiple tokens into a single semantic heatmap represents a massive opportunity for improvement.</p>
+                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Test various pooling strategies (Mean, Max, or Attention-weighted) for multi-token concepts.</p>
+                    </div>
+
+                    <!-- POINT C -->
+                    <div style="margin-bottom: 10px; border-left: 3px solid #79c0ff; padding-left: 20px;">
+                        <h4 style="color: #c9d1d9; font-size: 1.3rem; margin-top: 0;">C. Solving the "Fallback Problem" (Sink Token)</h4>
+                        <p>Because the attention must sum to 100%, semantically nonsensical concepts often receive artificial boosts in attention. Introducing a "Sink Token" (a background junk token) would allow for low-confidence regions to be absorbed mathematically rather than assigned randomly.</p>
+                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Inject a learnable or fixed "neutral" embedding into the concept set and observe if it "soaks" background noise.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY FINDINGS SECTION (ORIGINAL) -->
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 35px; margin-bottom: 50px;">
+                <h3 style="margin-top: 0; color: #d29922; font-size: 1.6rem; border-bottom: 1px solid #30363d; padding-bottom: 10px;">Summary of Findings</h3>
+                <ul style="color: #8b949e; font-size: 1.2rem; line-height: 1.7; padding-left: 25px; margin-top: 20px;">
+                    <li><strong style="color: #c9d1d9;">Precision requires Priors:</strong> the model performs optimally when the set of concepts is pre-defined and aligned with the prompt.</li>
+                    <li><strong style="color: #c9d1d9;">Sensitivity to Generality:</strong> General concepts (e.g., "something", "background") tend to create diffuse attention maps that lack precision.</li>
+                    <li>In the original authors' quantitative evaluation, handcrafted concept vocabularies were used for every image to achieve high-quality results.</li>
                 </ul>
             </div>
         </div>

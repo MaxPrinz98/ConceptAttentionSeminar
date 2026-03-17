@@ -25,8 +25,6 @@ from render_html.metrics import (
 )
 from render_html.image_utils import make_image_src_resolver
 from render_html.html_templates import (
-    get_css,
-    get_html_head,
     get_html_header_nav,
     get_gallery_navigator,
     get_explanation_block,
@@ -107,10 +105,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
     # =====================================================================
     # Assemble HTML
     # =====================================================================
-    css = get_css()
-    html_content = get_html_head(css)
-    html_content += "\n<body>"
-    html_content += get_html_header_nav()
+    html_content = get_html_header_nav("Concept Attention Analysis")
     html_content += '\n    <div class="main-container">'
     html_content += '\n        <div class="content-area">'
 
@@ -185,6 +180,11 @@ def generate_gallery(results_dir, output_html, mode="relative"):
             "<div style='margin-bottom: 15px; padding: 15px; background: rgba(248, 81, 73, 0.1); border-left: 4px solid #f85149; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> You can see that spatial concepts alone do not yield good results. Since we only evaluate single-token concepts currently, we cannot search for the holistic concept \"top block\". The spatial attention alone fails to make up for this context loss.<br><br><b>Follow-up Note:</b> Notice how object concepts (like \"white\") seem to dominate the attention maps if they are included alongside ambiguous spatial terms.</p></div>",
         ),
         (
+            "multicolor_blocks",
+            ["module", "background", "red", "green", "blue", "white"],
+            '<div style=\'margin-bottom: 15px; padding: 15px; background: rgba(248, 81, 73, 0.1); border-left: 4px solid #f85149; border-radius: 4px;\'><p style=\'margin: 0; color: #c9d1d9;\'><b>Observation:</b> You cannot actually search for concepts that occupy the same image regions. For example, the concept "module" takes almost all the attention and leaves very little for the specific colors "red", "green", and "blue".</p></div>',
+        ),
+        (
             "purple_banana_yellow_grapes",
             ["purple", "banana", "yellow", "grapes"],
             "<div style='margin-bottom: 15px; padding: 15px; background: rgba(210, 153, 34, 0.1); border-left: 4px solid #d29922; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> Concept attention struggles to differentiate between the \"purple banana\" and \"yellow grapes\" representations in the attention maps, even though the diffusion model correctly generated the finalized image conforming to the prompt.</p></div>",
@@ -220,7 +220,7 @@ def generate_gallery(results_dir, output_html, mode="relative"):
 
         if matching_sets:
             # We found matching sets for this case
-            case_slug = f"highlight-{case_name}"
+            case_slug = f"highlight-{case_name}-{'_'.join(sorted_req)}"
             html_content += render_explained_case_block(
                 case_slug, matching_sets, explanation, get_image_src, concept_to_tokens
             )
