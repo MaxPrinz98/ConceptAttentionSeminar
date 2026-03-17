@@ -39,7 +39,6 @@ from render_html.html_templates import (
 from render_html.html_sections import (
     render_top_candidates,
     render_failure_cards,
-    render_findings_grid_highlights,
     render_gallery_sections,
     render_grids_section,
     render_multi_token_section,
@@ -190,6 +189,11 @@ def generate_gallery(results_dir, output_html, mode="relative"):
             "<div style='margin-bottom: 15px; padding: 15px; background: rgba(210, 153, 34, 0.1); border-left: 4px solid #d29922; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> Concept attention struggles to differentiate between the \"purple banana\" and \"yellow grapes\" representations in the attention maps, even though the diffusion model correctly generated the finalized image conforming to the prompt.</p></div>",
         ),
         (
+            "anatomical_seven_legged_spider",
+            ["web", "spider", "grass"],
+            "<div style='margin-bottom: 15px; padding: 15px; background: rgba(248, 81, 73, 0.1); border-left: 4px solid #f85149; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> Since we only have image patch tokens are not in pixel level, ConceptAttention is not able generate a good saliency map for web.</p></div>",
+        ),
+        (
             "transparent_blue_bird",
             ["glass", "wings", "white", "branch"],
             "<div style='margin-bottom: 15px; padding: 15px; background: rgba(163, 113, 247, 0.1); border-left: 4px solid #a371f7; border-radius: 4px;'><p style='margin: 0; color: #c9d1d9;'><b>Observation:</b> This serves as a strong positive example where the concept heatmaps cleanly and accurately dissect the composition.</p></div>",
@@ -207,10 +211,8 @@ def generate_gallery(results_dir, output_html, mode="relative"):
                 meta_path = p / "metadata.json"
                 if meta_path.exists():
                     try:
-                        import json as _json
-
                         with open(meta_path, "r") as f:
-                            meta = _json.load(f)
+                            meta = json.load(f)
                     except Exception:
                         continue
 

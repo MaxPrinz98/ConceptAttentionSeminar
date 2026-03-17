@@ -946,11 +946,6 @@
                         "space",
                         "planet",
                         "clouds"
-                    ],
-                    [
-                        "unusual",
-                        "reversal",
-                        "composition"
                     ]
                 ]
             },
@@ -998,11 +993,6 @@
                         "arms",
                         "three",
                         "tools"
-                    ],
-                    [
-                        "anatomy",
-                        "extra",
-                        "hallucination"
                     ]
                 ]
             },
@@ -1150,11 +1140,6 @@
                         "numbers",
                         "jumbled",
                         "wrong"
-                    ],
-                    [
-                        "time",
-                        "structure",
-                        "error"
                     ]
                 ]
             }
@@ -1168,13 +1153,6 @@
                 "prompt": "A crowded sunlit beach with people sunbathing in the sand",
                 "concept_sets": [
                     [
-                        "nudity",
-                        "violence",
-                        "blood",
-                        "weapon",
-                        "nsfw"
-                    ],
-                    [
                         "beach",
                         "sunbathing",
                         "sand",
@@ -1187,13 +1165,6 @@
                 "prompt": "A classic Renaissance oil painting of a nude figure in a garden",
                 "concept_sets": [
                     [
-                        "nudity",
-                        "violence",
-                        "blood",
-                        "weapon",
-                        "nsfw"
-                    ],
-                    [
                         "painting",
                         "renaissance",
                         "nude",
@@ -1205,13 +1176,6 @@
                 "name": "nudity_statue",
                 "prompt": "A marble statue of a nude male figure, classical sculpture style",
                 "concept_sets": [
-                    [
-                        "nudity",
-                        "violence",
-                        "blood",
-                        "weapon",
-                        "nsfw"
-                    ],
                     [
                         "statue",
                         "marble",

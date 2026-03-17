@@ -118,8 +118,6 @@ def get_css():
     """
 
 
-
-
 def get_implementation_details_html():
     """Return the HTML for the Implementation Details tab."""
     return """
@@ -358,11 +356,25 @@ while True:
 
 def get_metrics_tab_html(get_image_src):
     """Return the HTML for the Metrics explanation tab."""
-    base_path = Path("results/object_analysis/attribute_color/blue_cat_yellow_sofa/seed_0/set_animal_blue_sofa_yellow")
+    base_path = Path(
+        "results/object_analysis/attribute_color/blue_cat_yellow_sofa/seed_0/set_animal_blue_sofa_yellow"
+    )
     # If paths don't exist (e.g., partial runs), fallback to empty placeholders, but we assume they exist for the main report.
-    concept_mask_src = get_image_src(base_path / "masked_image_animal.png") if (base_path / "masked_image_animal.png").exists() else ""
-    sam_mask_src = get_image_src(base_path / "sam_analysis" / "matched_masked_image_animal.png") if (base_path / "sam_analysis" / "matched_masked_image_animal.png").exists() else ""
-    overlap_vis_src = get_image_src(base_path / "sam_analysis" / "overlap_diagnostic_animal.png") if (base_path / "sam_analysis" / "overlap_diagnostic_animal.png").exists() else ""
+    concept_mask_src = (
+        get_image_src(base_path / "masked_image_animal.png")
+        if (base_path / "masked_image_animal.png").exists()
+        else ""
+    )
+    sam_mask_src = (
+        get_image_src(base_path / "sam_analysis" / "matched_masked_image_animal.png")
+        if (base_path / "sam_analysis" / "matched_masked_image_animal.png").exists()
+        else ""
+    )
+    overlap_vis_src = (
+        get_image_src(base_path / "sam_analysis" / "overlap_diagnostic_animal.png")
+        if (base_path / "sam_analysis" / "overlap_diagnostic_animal.png").exists()
+        else ""
+    )
 
     return f"""
         <!-- METRICS TAB -->
@@ -443,7 +455,6 @@ def get_html_header_nav(title):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -454,12 +465,12 @@ def get_html_header_nav(title):
     <div class="header-nav">
         <h1>{title}</h1>
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
-            <button class="tab-btn" onclick="switchTab('discussion')">Discussion</button>
-            <button class="tab-btn" onclick="switchTab('gallery')">Gallery</button>
-            <button class="tab-btn" onclick="switchTab('grids')">Grids</button>
             <button class="tab-btn" onclick="switchTab('metrics')">Metrics</button>
             <button class="tab-btn" onclick="switchTab('implementation')">Implementation</button>
+            <button class="tab-btn" onclick="switchTab('discussion')">Discussion</button>
+            <button class="tab-btn active" onclick="switchTab('overview')"><strong style="color: #58a6ff;">Overview</strong></button>
+            <button class="tab-btn" onclick="switchTab('gallery')">Gallery</button>
+            <button class="tab-btn" onclick="switchTab('grids')">Grids</button>
             <button class="tab-btn" onclick="switchTab('tokenization')">Tokenization</button>
         </div>
     </div>
@@ -504,6 +515,7 @@ def get_explanation_block():
                     </p>
                 </div>"""
 
+
 def get_discussion_tab_html():
     return """
         <!-- DISCUSSION TAB -->
@@ -517,17 +529,23 @@ def get_discussion_tab_html():
                     Establishing "Ground Truth" via SAM
                 </h3>
                 <div style="margin-top: 20px; color: #8b949e; font-size: 1.15rem; line-height: 1.8;">
-                    <p>To quantitatively evaluate the <i>Concept Attention</i> heatmaps, I developed a heuristic to map concept tokens to <b>Segment Anything Model (SAM)</b> masks. By comparing the attention peaks against these segments, we can calculate metrics like <b>IoU (Intersection over Union)</b>.</p>
+                    <p>To quantitatively evaluate the <i>Concept Attention</i> heatmaps, I developed a heuristic to map concept tokens to <b>Segment Anything Model (SAM)</b> masks. By comparing the attention peaks against these segments, we can calculate metrics like <b>IoU (Intersection over Union)</b>. Throughout this evaluation, several critical patterns emerged regarding how the model localizes concepts.</p>
                     
                     <ul style="padding-left: 25px; margin-top: 15px;">
                         <li style="margin-bottom: 15px;">
-                            <strong style="color: #c9d1d9;">Success in Object Classes:</strong> This approach works remarkably well for distinct, tangible objects (e.g., "blue cat" vs "sofa"). The high alignment scores suggest concept attention effectively locks onto physical boundaries.
+                            <strong style="color: #c9d1d9;">Success in Object Classes:</strong> This approach works remarkably well for distinct, tangible objects (e.g., "blue cat" vs "sofa"). The high alignment scores suggest concept attention effectively locks onto physical boundaries when the concept represents a clear, segmentable entity.
                         </li>
                         <li style="margin-bottom: 15px;">
-                            <strong style="color: #c9d1d9;">Failure with Spatial / Abstract Concepts:</strong> For concepts like "top" or "transparent", the heuristic often breaks down. SAM is inherently <i>object-centric</i>, making it difficult to generate a meaningful "ground truth" for non-object regions.
+                            <strong style="color: #c9d1d9;">Precision requires Priors:</strong> One of the strongest observations is that the model's precision is heavily dependent on the concept set being well-defined and closely aligned with the actual prompt. In the original evaluation by the authors, they used handcrafted, per-image vocabularies to achieve their reported high-quality localization. 
                         </li>
                         <li style="margin-bottom: 15px;">
-                            <strong style="color: #c9d1d9;">Semantic Misalignment:</strong> In several cases, we observed instances where the IoU score was numerically high, but the assigned semantic label was logically incorrect. This suggests the attention mechanism might be "looking" at the right place for the wrong reason.
+                            <strong style="color: #c9d1d9;">Sensitivity to Generality:</strong> When using general or abstract concepts (e.g., "something", "background", "top", or "transparent"), the attention maps tend to become diffuse and lose precision. Concept attention seems to struggle when the target lacks a clear semantic "shape" or when the concept is too broad to be localized to a specific image region.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #c9d1d9;">Heuristic Limitations with SAM:</strong> SAM is fundamentally <i>object-centric</i>. This creates a natural bias in our evaluation: for non-object concepts like spatial relations or textures, SAM cannot provide a reliable "ground truth," leading to lower numerical scores even if the attention might be qualitatively reasonable.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #c9d1d9;">Semantic Misalignment:</strong> In some edge cases, we observed high IoU scores for tokens that were semantically incorrect for the region they highlighted. This suggests the attention mechanism might sometimes "latch onto" proximity features rather than deep semantic understanding of the specific token.
                         </li>
                     </ul>
                 </div>
@@ -543,7 +561,7 @@ def get_discussion_tab_html():
                 <div style="margin-top: 25px; background: #0d1117; padding: 25px; border-radius: 10px; border: 1px solid #30363d; text-align: center; margin-bottom: 30px;">
                     <p style="color: #8b949e; margin-bottom: 15px; font-family: monospace;">Core Attention Formula (Softmax over Concept Dimension):</p>
                     <div style="font-size: 1.8rem; color: #c9d1d9;">
-                        $$\phi(o_x, o_c) = \text{softmax}(o_x o_c^T)$$
+                        $$\phi(o_x, o_c) = \\text{softmax}(o_x o_c^T)$$
                     </div>
                 </div>
 
@@ -552,7 +570,7 @@ def get_discussion_tab_html():
                     <div style="margin-bottom: 30px; border-left: 3px solid #79c0ff; padding-left: 20px;">
                         <h4 style="color: #c9d1d9; font-size: 1.3rem; margin-top: 0;">A. Reversing Mutual Exclusivity</h4>
                         <p>Currently, the softmax is applied across concepts for each patch (forcing concepts to compete for space). By swapping the cross-product to focus on the <i>spatial</i> dimension, we could identify the most relevant patches for every concept individually.</p>
-                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Compare heatmaps generated with Softmax(Concepts) vs. Softmax(Pixels) to measure separation quality.</p>
+                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Compare heatmaps generated with Softmax(Concepts) vs. Softmax(Patches) to measure separation quality.</p>
                     </div>
 
                     <!-- POINT B -->
@@ -566,19 +584,9 @@ def get_discussion_tab_html():
                     <div style="margin-bottom: 10px; border-left: 3px solid #79c0ff; padding-left: 20px;">
                         <h4 style="color: #c9d1d9; font-size: 1.3rem; margin-top: 0;">C. Solving the "Fallback Problem" (Sink Token)</h4>
                         <p>Because the attention must sum to 100%, semantically nonsensical concepts often receive artificial boosts in attention. Introducing a "Sink Token" (a background junk token) would allow for low-confidence regions to be absorbed mathematically rather than assigned randomly.</p>
-                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Inject a learnable or fixed "neutral" embedding into the concept set and observe if it "soaks" background noise.</p>
+                        <p style="font-style: italic; font-size: 0.95rem; color: #58a6ff55;">Suggested Experiment: Monitor the variance of attention logits across patches; if variance falls below a confidence threshold, introduce a "garbage token" with a logit value of (mean + 2σ) to absorb background noise.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- KEY FINDINGS SECTION (ORIGINAL) -->
-            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 35px; margin-bottom: 50px;">
-                <h3 style="margin-top: 0; color: #d29922; font-size: 1.6rem; border-bottom: 1px solid #30363d; padding-bottom: 10px;">Summary of Findings</h3>
-                <ul style="color: #8b949e; font-size: 1.2rem; line-height: 1.7; padding-left: 25px; margin-top: 20px;">
-                    <li><strong style="color: #c9d1d9;">Precision requires Priors:</strong> the model performs optimally when the set of concepts is pre-defined and aligned with the prompt.</li>
-                    <li><strong style="color: #c9d1d9;">Sensitivity to Generality:</strong> General concepts (e.g., "something", "background") tend to create diffuse attention maps that lack precision.</li>
-                    <li>In the original authors' quantitative evaluation, handcrafted concept vocabularies were used for every image to achieve high-quality results.</li>
-                </ul>
             </div>
         </div>
     """
